@@ -33,16 +33,16 @@ comments: false
 <a href="/assets/dat/barres-cv.pdf"><b>CV</b></a> and <b>Resume</b>.
 </div>
 
-## Relevant personal interests
+## Personal interests
 * Historical linguistics, evolution of language (biological and cultural), and any crossover those might have (or could have) with NLP.
 * Self-organization and emergence in complex dynamic systems.
 * Philosophy of mind and semiotics.
-* Cryptography and decipherment.
-* Any attempt to use NLP in the pursuit of artistic, absurdist, dadaist, pataphysic, oulipian or any other useless playfull goals.
+* Cryptography.
+* Attempts to use NLP in the pursuit of artistic, absurdist, dadaist, pataphysic, oulipian or any other useless playfull goals.
 * Discrete mathematics.
 * Epistemology (a la Francaise).
 
-## Things I need
+## But also...
 * My daughter Madeleine and my wife Lauren.
 * Coffee (black, no sugar)
 * <a href="https://en.wikipedia.org/wiki/Tsundoku"> Tsundoku </a> and labyrinthine libraries.
