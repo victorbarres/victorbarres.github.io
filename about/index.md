@@ -10,12 +10,12 @@ comments: false
 	<img src="/assets/img/portrait.png">
 </figure>
 
-## Core research interests
-* Computational neuroscience and Brain theory
-* Computational Linguistics, Artificial Intelligence, and Machine Learning.
+## Research topics
+* Computational neuroscience and brain theory
+* Computational linguistics, artificial intelligence, and machine learning.
 * Cognitive neuroscience of language (focus on aphasia, semantics, and neural architecture) and psycholinguistics (focus on Visual World Paradigm)
-* Cognitive linguistics (focus on computational construction grammar)
-* Modeling situated language use: vision-language interactions.
+* Cognitive linguistics (focus on computational construction grammar).
+* Situated language use modeling (focus on vision-language interactions).
 * Hybrid systems for top-down approach to cognitive computation.
 * Synthetic Brain Imaging (SBI): Predicting EEG signals from neurolinguistics computational models.
 
@@ -26,27 +26,23 @@ comments: false
 * Vidal, <b>Barres</b> (2015) - ...
 
 ## Education
-* Neuroscience PhD candidate (P.I. <a href="https://scholar.google.com/citations?user=it1vhYAAAAAJ&hl=en">Michael Arbib</a>) - University of Southern California (2010 - Now)
-* B.S. Cognitive Science Ecole Normale Superieure Paris & E.H.E.S.S
-* B.S. Physics - Ecole Polytechnique
-
-## CV and Resume
-
-Here are my Resume and my CV.
-
-
-## Personal interests
-* Historical linguistics, the evolution of language (biological and cultural), and any crossover those might have (or could have) with NLP.
-* Any attempt to use NLP in the pursuit of artistic, absurdist, dadaist, pataphysic, oulipian or any other useless or purely playfull goals.
-* Philosophy of mind, semiotics, phenomenology, and hermeneutics.
-* Mental illness and neuropsychology.
+* Neuroscience PhD candidate (P.I. <a href="https://scholar.google.com/citations?user=it1vhYAAAAAJ&hl=en">Michael Arbib</a>)  (2010 - Now) - University of Southern California - Los Angeles, CA, USA.
+* B.S. Cognitive Science (2008 - 2010) - Ecole Normale Superieure Paris & E.H.E.S.S - Paris, France.
+* B.S. Physics (2003 - 2006) - Ecole Polytechnique - Palaiseau, France
+<div align="center">
+<a href="/assets/dat/barres-cv.pdf">CV</a> and Resume.
+</div>
+## Relevant personal interests
+* Historical linguistics, evolution of language (biological and cultural), and any crossover those might have (or could have) with NLP.
+* Self-organization and emergence in complex dynamic systems.
+* Philosophy of mind and semiotics.
 * Cryptography and decipherment.
+* Any attempt to use NLP in the pursuit of artistic, absurdist, dadaist, pataphysic, oulipian or any other useless playfull goals.
 * Discrete mathematics.
-* Self-organization and emergence in complex systems: relations between part and whole.
 * Epistemology (a la Francaise).
 
 
-## True passions
+## Things I need
 * My daughter Madeleine and my wife Lauren.
 * Coffee (black, no sugar)
 * <a href="https://en.wikipedia.org/wiki/Tsundoku"> Tsundoku </a> and labyrinthine libraries.
