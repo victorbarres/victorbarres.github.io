@@ -32,6 +32,7 @@ comments: false
 <div align="center">
 <a href="/assets/dat/barres-cv.pdf">CV</a> and Resume.
 </div>
+
 ## Relevant personal interests
 * Historical linguistics, evolution of language (biological and cultural), and any crossover those might have (or could have) with NLP.
 * Self-organization and emergence in complex dynamic systems.
@@ -40,7 +41,6 @@ comments: false
 * Any attempt to use NLP in the pursuit of artistic, absurdist, dadaist, pataphysic, oulipian or any other useless playfull goals.
 * Discrete mathematics.
 * Epistemology (a la Francaise).
-
 
 ## Things I need
 * My daughter Madeleine and my wife Lauren.
