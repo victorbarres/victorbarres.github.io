@@ -28,7 +28,7 @@ comments: false
 * <b>Barres</b>, Lee (2014) - Template Construction Grammar: From visual scene description to language comprehension and agrammatism. Neuroinformatics.
 * Vidal, <b>Barres</b> (2014) - Hearing (rivaling) lips and seeing voices: how audiovisual interactions modulate perceptual stabilization in binocular rivalry. Frontiers in Human Neuroscience.
 * Arbib, <b>Barres</b> (2013) - Are grammatical constructions linked to embodied meaning representations? IEEE CIS Autonomous Mental Development Newsletter Fall 2013.
-* <b>Barres</b>, Simons III, Arbib (2014) - Synthetic event-related potentials: a computational bridge between neurolinguistics models and experiments. Neural Networks.
+* <b>Barres</b>, Simons III, Arbib (2013) - Synthetic event-related potentials: a computational bridge between neurolinguistics models and experiments. Neural Networks.
 
 ## Education
 * Neuroscience PhD candidate (P.I. <a href="https://scholar.google.com/citations?user=it1vhYAAAAAJ&hl=en">Michael Arbib</a>)  (2010 - Now) - University of Southern California - Los Angeles, CA, USA.
