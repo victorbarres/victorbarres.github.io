@@ -9,4 +9,4 @@ feature: /assets/img/Current_Dip.png
 comments: false
 ---
 
-Details <a href="\SynteticEEG">here<\a>.
+Details <a href="\SynteticEEG">here</a>.
