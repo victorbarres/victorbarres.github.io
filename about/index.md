@@ -30,7 +30,7 @@ comments: false
 * B.S. Cognitive Science (2008 - 2010) - Ecole Normale Superieure Paris & E.H.E.S.S - Paris, France.
 * B.S. Physics (2003 - 2006) - Ecole Polytechnique - Palaiseau, France
 <div align="center">
-<a href="/assets/dat/barres-cv.pdf">CV</a> and Resume.
+<a href="/assets/dat/barres-cv.pdf"><b>CV</b></a> and <b>Resume</b>.
 </div>
 
 ## Relevant personal interests
