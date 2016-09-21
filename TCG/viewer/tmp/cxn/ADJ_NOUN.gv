@@ -1,0 +1,22 @@
+digraph G {
+rankdir=LR;
+fontname=consolas;
+subgraph cluster_SemFrame {
+bgcolor=lightcoral;
+label=SemFrame;
+OBJ [style=filled, fontsize=10, fillcolor=white, color=black, shape=doublecircle, label="ENTITY+"];
+ATTR [style=filled, fontsize=10, fillcolor=white, color=black, shape=circle, label="PROPERTY+"];
+ATTR -> OBJ  [label=MODIFY];
+}
+
+subgraph cluster_SynForm {
+bgcolor=lightblue;
+label=SynForm;
+S1 [shape=box, fontsize=10, style=filled, fillcolor=white, label="[A]"];
+S2 [shape=box, fontsize=10, style=filled, fillcolor=white, label="[NP, N]"];
+S1 -> S2  [label=next];
+}
+
+OBJ -> S2  [color=red, dir=none, penwidth=1];
+ATTR -> S1  [color=red, dir=none, penwidth=1];
+}

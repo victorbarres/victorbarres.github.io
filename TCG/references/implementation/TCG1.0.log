@@ -1,0 +1,461 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.6.16)  24 SEP 2014 10:00
+entering extended mode
+**TCG1.0.tex
+
+("C:\Users\victor\Dropbox\Project_IMPLEMENTATION\TCG1.0 implementation paper\TC
+G1.0.tex"
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 68 languages loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\algorithms\algorithm.sty"
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count88
+\float@exts=\toks15
+\float@box=\box26
+\@float@everytoks=\toks16
+\@floatcapt=\box27
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks17
+\c@algorithm=\count89
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\algorithms\algorithmic.sty"
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count90
+\c@ALC@line=\count91
+\c@ALC@rem=\count92
+\c@ALC@depth=\count93
+\ALC@tlm=\skip43
+\algorithmicindent=\skip44
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks18
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip45
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks19
+\ex@=\dimen105
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen106
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count94
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count95
+\leftroot@=\count96
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count97
+\DOTSCASE@=\count98
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box28
+\strutbox@=\box29
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count99
+\c@MaxMatrixCols=\count100
+\dotsspace@=\muskip10
+\c@parentequation=\count101
+\dspbrk@lvl=\count102
+\tag@help=\toks20
+\row@=\count103
+\column@=\count104
+\maxfields@=\count105
+\andhelp@=\toks21
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks22
+\multlinegap=\skip46
+\multlinetaggap=\skip47
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+("C:\Users\victor\Dropbox\Project_IMPLEMENTATION\TCG1.0 implementation paper\TC
+G1.0.aux"
+
+LaTeX Warning: Label `fig:lex_cxn_feat_struct' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count106
+\scratchdimen=\dimen114
+\scratchbox=\box30
+\nofMPsegments=\count107
+\nofMParguments=\count108
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count109
+\MPscratchDim=\dimen115
+\MPnumerator=\count110
+\makeMPintoPDFobject=\count111
+\everyMPtoPDFconversion=\toks25
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 17.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 17.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<Figures/Knoeferle&Crocker(04)_Jackendoff97.png, id=12, 753.5653pt x 241.65282p
+t>
+File: Figures/Knoeferle&Crocker(04)_Jackendoff97.png Graphic file (type png)
+ <use Figures/Knoeferle&Crocker(04)_Jackendoff97.png>
+Package pdftex.def Info: Figures/Knoeferle&Crocker(04)_Jackendoff97.png used on
+ input line 54.
+(pdftex.def)             Requested size: 289.07999pt x 92.69922pt.
+
+<Figures/cholitas.jpg, id=14, 1026.83624pt x 681.54625pt>
+File: Figures/cholitas.jpg Graphic file (type jpg)
+
+<use Figures/cholitas.jpg>
+Package pdftex.def Info: Figures/cholitas.jpg used on input line 66.
+(pdftex.def)             Requested size: 289.07999pt x 191.8716pt.
+ [2 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation paper
+/Figures/Knoeferle&Crocker(04)_Jackendoff97.png> <C:/Users/victor/Dropbox/Proje
+ct_IMPLEMENTATION/TCG1.0 implementation paper/Figures/cholitas.jpg>]
+<Figures/perceptual_schemas.png, id=19, 1780.7328pt x 685.6014pt>
+File: Figures/perceptual_schemas.png Graphic file (type png)
+
+<use Figures/perceptual_schemas.png>
+Package pdftex.def Info: Figures/perceptual_schemas.png used on input line 80.
+(pdftex.def)             Requested size: 361.34999pt x 139.11598pt.
+
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 80--81
+ [][] 
+ []
+
+
+Overfull \hbox (5.55171pt too wide) in paragraph at lines 90--92
+\OT1/cmr/m/n/10 ject or re-la-tion. An \OT1/cmr/m/it/10 ob-ject per-cep-tual sc
+hema \OT1/cmr/m/n/10 is de-fined sim-ply as $(\OML/cmm/m/it/10 concept; region\
+OT1/cmr/m/n/10 )$
+ []
+
+[3 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation paper/
+Figures/perceptual_schemas.png (PNG copy)>]
+<Figures/vWM.png, id=29, 414.5889pt x 492.8814pt>
+File: Figures/vWM.png Graphic file (type png)
+ <use Figures/vWM.png>
+Package pdftex.def Info: Figures/vWM.png used on input line 113.
+(pdftex.def)             Requested size: 216.81pt x 257.75882pt.
+
+[4] [5 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation pa
+per/Figures/vWM.png (PNG copy)>]
+<Figures/SemRep_def.png, id=36, 624.4128pt x 615.2586pt>
+File: Figures/SemRep_def.png Graphic file (type png)
+
+<use Figures/SemRep_def.png>
+Package pdftex.def Info: Figures/SemRep_def.png used on input line 138.
+(pdftex.def)             Requested size: 216.81pt x 213.62572pt.
+
+<Figures/SemRep_ex.png, id=37, 420.6114pt x 225.9642pt>
+File: Figures/SemRep_ex.png Graphic file (type png)
+
+<use Figures/SemRep_ex.png>
+Package pdftex.def Info: Figures/SemRep_ex.png used on input line 151.
+(pdftex.def)             Requested size: 144.54pt x 77.65086pt.
+ [6 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation paper
+/Figures/SemRep_def.png (PNG copy)>]
+<Figures/SemRepInstance.png, id=41, 395.5578pt x 552.8655pt>
+File: Figures/SemRepInstance.png Graphic file (type png)
+
+<use Figures/SemRepInstance.png>
+Package pdftex.def Info: Figures/SemRepInstance.png used on input line 167.
+(pdftex.def)             Requested size: 144.54pt x 202.02621pt.
+ [7 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation paper
+/Figures/SemRep_ex.png (PNG copy)> <C:/Users/victor/Dropbox/Project_IMPLEMENTAT
+ION/TCG1.0 implementation paper/Figures/SemRepInstance.png (PNG copy)>]
+<Figures/Griffin04_1.png, id=46, 927.465pt x 423.5825pt>
+File: Figures/Griffin04_1.png Graphic file (type png)
+
+<use Figures/Griffin04_1.png>
+Package pdftex.def Info: Figures/Griffin04_1.png used on input line 184.
+(pdftex.def)             Requested size: 289.07999pt x 132.02664pt.
+
+<Figures/conceptual_knowledge.png, id=47, 1445.4pt x 706.8006pt>
+File: Figures/conceptual_knowledge.png Graphic file (type png)
+
+<use Figures/conceptual_knowledge.png>
+Package pdftex.def Info: Figures/conceptual_knowledge.png used on input line 19
+8.
+(pdftex.def)             Requested size: 289.07999pt x 141.3576pt.
+ [8 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation paper
+/Figures/Griffin04_1.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 225.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 225.
+ [9 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation paper
+/Figures/conceptual_knowledge.png>] <Figures/constructions-01.png, id=55, 423.5
+022pt x 238.491pt>
+File: Figures/constructions-01.png Graphic file (type png)
+
+<use Figures/constructions-01.png>
+Package pdftex.def Info: Figures/constructions-01.png used on input line 249.
+(pdftex.def)             Requested size: 216.81pt x 122.09459pt.
+
+<Figures/constructions-02.png, id=56, 712.1004pt x 412.4208pt>
+File: Figures/constructions-02.png Graphic file (type png)
+
+<use Figures/constructions-02.png>
+Package pdftex.def Info: Figures/constructions-02.png used on input line 256.
+(pdftex.def)             Requested size: 216.81pt x 125.56474pt.
+ [10 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation pape
+r/Figures/constructions-01.png (PNG copy)>]
+Missing character: There is no â in font cmbx10!
+Missing character: There is no € in font cmbx10!
+Missing character: There is no ¢ in font cmbx10!
+
+[11 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation paper
+/Figures/constructions-02.png (PNG copy)>] [12] [13]
+Underfull \hbox (badness 5417) in paragraph at lines 353--354
+[] []\OT1/cmr/m/n/10 A se-man-tic rep-re-sen-ta-tion $\OML/cmm/m/it/10 SemRep$ 
+\OT1/cmr/m/n/10 and a $\OML/cmm/m/it/10 cxn[]schema \OMS/cmsy/m/n/10 2$
+ []
+
+[14] <Figures/SemMatch_Invoke.png, id=73, 820.2645pt x 418.2024pt>
+File: Figures/SemMatch_Invoke.png Graphic file (type png)
+
+<use Figures/SemMatch_Invoke.png>
+Package pdftex.def Info: Figures/SemMatch_Invoke.png used on input line 379.
+(pdftex.def)             Requested size: 289.07999pt x 147.38126pt.
+ [15 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation pape
+r/Figures/SemMatch_Invoke.png (PNG copy)>]
+[16] [17] [18] <Figures/match.png, id=88, 353.1594pt x 398.6895pt>
+File: Figures/match.png Graphic file (type png)
+
+<use Figures/match.png>
+Package pdftex.def Info: Figures/match.png used on input line 508.
+(pdftex.def)             Requested size: 216.81pt x 244.75761pt.
+ [19] [20 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation
+ paper/Figures/match.png (PNG copy)>] [21] [22] [23]
+
+LaTeX Warning: Command \j invalid in math mode on input line 679.
+
+[24] [25]
+Overfull \hbox (8.63954pt too wide) in paragraph at lines 720--721
+\OT1/cmr/m/n/10 quence that up-dates the phono-log-i-cal WM. This is done by ca
+ll-ing Read-out(A.Top,
+ []
+
+[26] <Figures/ReadOut.png, id=115, 634.2897pt x 595.2639pt>
+File: Figures/ReadOut.png Graphic file (type png)
+
+<use Figures/ReadOut.png>
+Package pdftex.def Info: Figures/ReadOut.png used on input line 749.
+(pdftex.def)             Requested size: 216.81pt x 203.46793pt.
+ [27] [28 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation
+ paper/Figures/ReadOut.png (PNG copy)>] [29]
+Overfull \hbox (14.07916pt too wide) in paragraph at lines 815--816
+ \OT1/cmr/bx/n/10 Case 2[] \OT1/cmr/m/n/10 Let's con-sider the case where $\OML
+/cmm/m/it/10 C \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 c[]; c[]\OM
+S/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 FL \OT1/cmr/m/n/10 = []$
+ with $\OML/cmm/m/it/10 fl:daugter \OT1/cmr/m/n/10 =$
+ []
+
+
+Overfull \hbox (23.62605pt too wide) in paragraph at lines 820--821
+$\OML/cmm/m/it/10 man$ \OT1/cmr/m/n/10 which is linked to $\OML/cmm/m/it/10 slo
+t[]$\OT1/cmr/m/n/10 , then clearly $\OML/cmm/m/it/10 F[] \OT1/cmr/m/n/10 = \OML
+/cmm/m/it/10 The; man; is; slot[]; by; the; slot[]$\OT1/cmr/m/n/10 .
+ []
+
+[30] <Figures/LanguageSchemaTemplate.png, id=129, 151.5261pt x 202.5969pt>
+File: Figures/LanguageSchemaTemplate.png Graphic file (type png)
+
+<use Figures/LanguageSchemaTemplate.png>
+Package pdftex.def Info: Figures/LanguageSchemaTemplate.png used on input line 
+860.
+(pdftex.def)             Requested size: 72.26999pt x 96.62712pt.
+ [31 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation pape
+r/Figures/LanguageSchemaTemplate.png (PNG copy)>]
+Overfull \hbox (4.05627pt too wide) in paragraph at lines 876--877
+\OT1/cmr/m/n/10 co-op-er-a-tive com-pu-ta-tion op-er-a-tional-ize the dy-nam-ic
+s of on-line in-cre-men-tal gram-
+ []
+
+<Figures/constructions-FeatStruct-02.png, id=134, 211.5102pt x 182.6022pt>
+File: Figures/constructions-FeatStruct-02.png Graphic file (type png)
+
+<use Figures/constructions-FeatStruct-02.png>
+Package pdftex.def Info: Figures/constructions-FeatStruct-02.png used on input 
+line 880.
+(pdftex.def)             Requested size: 144.54pt x 124.78918pt.
+
+<Figures/constructions-FeatStruct-03.png, id=135, 269.5671pt x 381.3447pt>
+File: Figures/constructions-FeatStruct-03.png Graphic file (type png)
+
+<use Figures/constructions-FeatStruct-03.png>
+Package pdftex.def Info: Figures/constructions-FeatStruct-03.png used on input 
+line 887.
+(pdftex.def)             Requested size: 144.54pt x 204.47417pt.
+ [32 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation pape
+r/Figures/constructions-FeatStruct-02.png (PNG copy)> <C:/Users/victor/Dropbox/
+Project_IMPLEMENTATION/TCG1.0 implementation paper/Figures/constructions-FeatSt
+ruct-03.png (PNG copy)>]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+
+<Figures/SemRep_FeatStruct.png, id=139, 331.2375pt x 262.3401pt>
+File: Figures/SemRep_FeatStruct.png Graphic file (type png)
+
+<use Figures/SemRep_FeatStruct.png>
+Package pdftex.def Info: Figures/SemRep_FeatStruct.png used on input line 905.
+(pdftex.def)             Requested size: 216.81pt x 171.71191pt.
+ [33 <C:/Users/victor/Dropbox/Project_IMPLEMENTATION/TCG1.0 implementation pape
+r/Figures/SemRep_FeatStruct.png (PNG copy)>]
+("C:\Users\victor\Dropbox\Project_IMPLEMENTATION\TCG1.0 implementation paper\TC
+G1.0.aux")
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2919 strings out of 493706
+ 37165 string characters out of 3144580
+ 102770 words of memory out of 3000000
+ 6197 multiletter control sequences out of 15000+200000
+ 12456 words of font info for 48 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 27i,7n,35p,1423b,710s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/symbols/msbm10.pfb>
+Output written on TCG1.0.pdf (33 pages, 8845743 bytes).
+PDF statistics:
+ 193 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+

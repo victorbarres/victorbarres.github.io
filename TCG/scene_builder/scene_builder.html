@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html>
+<head>
+<title> TCG Scene Builder </title>
+<link rel="shortcut icon", href="TCG.ico">
+<link rel="stylesheet" href="scene_builder.css" type="text/css">
+</head>
+
+<body>
+
+<div id="title">
+<img id="icon" src="TCG.ico" alt="TCG icon" style="width:32px;height:32px" align="left">
+<h1>Scene Builder</h1>
+</div>
+
+<div id="scene_input">
+<div id="scene_fig">
+	<svg id="fig_svg">
+		<defs>
+			<marker id="arrow" markerWidth="13" markerHeight="13" refx="2" refy="4" orient="auto">
+				<path d="M2,2 L2,7 L6,4 L2,2"/>
+			</marker>
+		</defs>
+	</svg>
+</div>
+<div id="forms">
+<div id="add_schema">
+<form method="POST" action="" id="schema_form">
+	<div class="section_title">ADD PERCEPTUAL SCHEMA</div>
+	<fieldset>
+		<legend>NAME:</legend>
+		<div><label class="field" for="schema_nameField">Name:</label><input type="text" id="schema_nameField" name="schema_nameField" value="Schema_0" /></div>
+	</fieldset>
+	<fieldset>
+		<legend> SELECT SCHEMA TYPE:</legend>
+		<div id="type_list">
+			<select id="type_select" onchange="set_schema_form(this.value)">
+			</select>
+		</div>
+	</fieldset>
+	<fieldset id="schema_field">
+		<legend>SELECT SCHEMA:</legend>
+		<div id="schema_list">
+		</div>
+	</fieldset>
+	<fieldset id="area">
+		<legend>AREA:</legend>
+		<div>
+			<label class="field" for="x_Field">x:</label><input type="text" class="num_val" id="x_Field" name="x_Field" value="0" />
+			<label class="field" for="y_Field">y:</label><input type="text" class="num_val" id="y_Field" name="y_Field" value="0" />
+			<label class="field" for="width_Field">w:</label><input type="text" class="num_val" id="width_Field" name="width_Field" value="0" />
+			<label class="field" for="height_Field">h:</label><input type="text" class="num_val" id="height_Field" name="height_Field" value="0" />
+		</div>
+	</fieldset>
+	<fieldset id="perceptual_params">
+		<legend>PERCEPTUAL PARAMETERS:</legend>
+		<div>
+			<label class="field" for="saliency_Field">Saliency:</label><input type="text" class="num_val" id="saliency_Field" name="saliency_Field" value="auto" />
+			<label class="field" for="uncertainty_Field">Uncertainty:</label><input type="text" class="num_val" id="uncertainty_Field" name="uncertainty_Field" value="1" />
+		</div>
+	</fieldset>
+	<div class="save-reset"><button type="submit" onclick="submit_schema_form_data()">Add schema</button><button type="button" onclick="reset_schema_form()">Reset form</button></div>
+</form>
+</div>
+
+<div id="add_subscene">
+<form method="POST" action="" id="subscene_form">
+	<div class="section_title">BUILD SUBSCENE</div>
+	<fieldset>
+		<legend>NAME:</legend>
+		<div><label class="field" for="subscene_nameField">Name:</label><input type="text" id="subscene_nameField" name="subscene_nameField" value="Subscene_0" /></div>
+	</fieldset>
+	<fieldset>
+		<legend>ADD SCHEMA:</legend>
+		<div id="scene_schemas"></div>
+		<div id="def_schema_list">
+		</div>
+	</fieldset>
+	<fieldset id="subscene_perceptual_params">
+		<legend>PERCEPTUAL PARAMETERS:</legend>
+		<div>
+			<label class="field" for="subscene_saliencyField">Saliency:</label><input type="text" class="num_val" id="subscene_saliencyField" name="subscene_saliencyField" value="auto" />
+			<label class="field" for="subscene_uncertaintyField">Uncertainty:</label><input type="text" class="num_val" id="subscene_uncertaintyField" name="subscene_uncertaintyField" value="1" />
+		</div>
+	</fieldset>
+	<div class="save-reset"><button type="submit" onclick="submit_subscene_form_data()">Add subscene</button><button type="button" onclick="reset_subscene_form()">Reset form</button></div>
+</form>
+</div>
+</div>
+</div>
+
+<div id="scene_content">
+<div class="section_title">SCENE CONTENT</div>
+<div id="defined_schemas">
+</div>
+<div id="defined_subscenes">
+</div>
+</div>
+<div class="save-reset">
+<p><button id="reset" onclick="reset_scene()">RESET ALL</button></p>
+<p><button id="generate_data" onclick="generate_data()">Generate scene data</button></p>
+</div>
+<div id="save_data"></div>
+
+<script src="./js/jquery-1.11.2.min.js"></script>
+<script>
+//My data
+var xmlns = "http://www.w3.org/2000/svg" //SVG XML namspace.
+var xlink = "http://www.w3.org/1999/xlink"
+var height = 400;
+var scale = 0 // Stores the scaling factor.
+var scene = {resolution:[], schemas:{}, subscenes:{}}; // Stores all the regions informations for the given scene.
+var schema2fig = {}; //Stores correspondence table between schema id and fig id.
+var fig2schema = {}; //Stores correspondence table between fig id and schema id.
+
+var SCHEMA_COUNT = 0;
+var SUBSCENE_COUNT = 0; 
+
+var RELATIONS = ['RELATION']; // The schema types that define relations.
+
+var schema_form_clone = $("#schema_form").clone();//Keeps a version of the original schema form.
+var subscene_form_clone = $("#subscene_form").clone();//Keeps a version of the original subscene form.
+
+var data_folder = "./tmp/data/"
+var scene_folder = "./tmp/scene/"
+var scene_file = scene_folder + "scene.png"
+var per_knowledge = {};
+
+/////////////////
+/// Load data ///
+/////////////////
+function AJAX_JSON_Req(url, action){
+	var AJAX_req = new XMLHttpRequest();
+	AJAX_req.open("GET", url, true);
+	AJAX_req.setRequestHeader("Content-type", "application/json");
+	
+	AJAX_req.onreadystatechange = function()
+	{
+		if(AJAX_req.readyState == 4 && AJAX_req.status == 200)
+		{
+			var json_data = JSON.parse(AJAX_req.responseText);
+			action(json_data)
+		}
+	};
+	AJAX_req.send()
+};
+
+//////////////////////////////////////////////////////////////
+/// Load perceptual knowledge and scene data (if it exists)///
+//////////////////////////////////////////////////////////////
+/**
+* Load scene data
+*/
+function load_scene_data(json_data){
+	console.log(json_data)
+	scene = json_data.scene;
+	disp_schemas()
+	disp_subscenes()
+};
+
+/**
+* Load perceptual knowledge data
+*/
+function load_perceptual_knowledge(json_data){
+	per_knowledge = json_data.PERCEPTUAL_KNOWLEDGE;
+	set_schema_types();
+	AJAX_JSON_Req(scene_folder + "TCG_scene.json", load_scene_data); //Tries to load scene data.
+};
+AJAX_JSON_Req(data_folder + "TCG_semantics.json", load_perceptual_knowledge);
+
+///////////////////
+///Display image///
+///////////////////
+dispSceneImage();
+get_native_resolution();
+//Drawing regions
+initDraw(document.getElementById("fig_svg"));
+disp_schemas();
+
+/**
+ * Display the scene image.
+ */
+function dispSceneImage(){
+	var mySVG = document.getElementById("fig_svg");
+	mySVG.setAttribute("xmlns", xmlns);
+	mySVG.setAttribute("xmlns:xlink", xlink);
+	
+	var myImg = document.createElementNS(xmlns, "image");
+	myImg.setAttribute("id", "scene_img");
+	mySVG.appendChild(myImg);
+};
+
+/**
+ * Get image native resolution and rescales.
+ * Opens the image without displaying it.
+ */
+function get_native_resolution(){
+	var img = new Image();
+	img.onload = function(){
+		var img_width  = this.width;
+        var img_height = this.height;
+		scene.resolution = [img_width, img_height];
+		//rescale image
+		scale = height/img_height;
+		var myImg = document.getElementById("scene_img");
+		myImg.setAttributeNS(xlink, "xlink:href", scene_file);
+		myImg.setAttribute("x", 0);
+		myImg.setAttribute("y", 0);
+		myImg.setAttribute("width", scene["resolution"][0]*scale);
+		myImg.setAttribute("height", scene["resolution"][1]*scale);
+		
+		var mySVG = document.getElementById("fig_svg");
+		mySVG.setAttribute("width", scene["resolution"][0]*scale);
+		mySVG.setAttribute("height", scene["resolution"][1]*scale);
+		
+		};
+	img.src = scene_file;
+};
+
+/////////////////////////////
+///Display defined schemas///
+/////////////////////////////
+/**
+ * For all the schemas defined and stored in scene.schemas -> Display schemas information.
+ */
+function disp_schemas(){
+	var section = document.getElementById("defined_schemas");
+	while (section.firstChild) {
+		section.removeChild(section.firstChild);
+	};
+	for(var sc_id in scene.schemas){
+		var sc = scene.schemas[sc_id];
+		var aDiv = document.createElement("div");
+		aDiv.id = sc_id;
+		aDiv.setAttribute("class",  "schema");
+		aDiv.setAttribute("onclick", "expand_schema(this)");
+		if(!(is_rel(sc["type"]))){
+			aDiv.setAttribute("onmouseover", "highlight_schema(schema2fig[this.id], 'area')");
+			aDiv.setAttribute("onmouseout", "dim_schema(schema2fig[this.id], 'area')");
+		}
+		else{
+			aDiv.setAttribute("onmouseover", "highlight_schema(schema2fig[this.id], 'arrow')");
+			aDiv.setAttribute("onmouseout", "dim_schema(schema2fig[this.id], 'arrow')");
+		};
+		section.appendChild(aDiv);
+		
+		var subDiv = document.createElement("div");
+		subDiv.setAttribute("class", "schema_info");
+		subDiv.innerHTML = sc.name  + ": " + sc.schema + " (" + sc.type + ")";
+		aDiv.appendChild(subDiv);
+	};
+	
+	//disp updated schema figs
+	disp_figs();
+	
+	//Updates the schema choices options for subscene.
+	update_schema_choices();
+};
+
+/**
+ * Show all schema info.
+ */
+function expand_schema(obj){
+	// Get schema data
+	var data = scene.schemas[obj.id];
+	 
+	var details = document.createElement("div");
+	details.setAttribute("class", "schema_details");
+	obj.appendChild(details);
+	
+	//Location & Size
+	var area_div = document.createElement("div");
+	details.appendChild(area_div);
+	var area_data = "Loc: (" + data.location.join(", ") + ") ; Size: (" + data.size.join(", ")+ ")";
+	area_div.innerHTML = area_data;
+	//Saliency
+	var sal_div = document.createElement("div");
+	details.appendChild(sal_div);
+	sal_div.innerHTML = "Saliency: "+ data.saliency;
+	//Uncertainty
+	var uncert_div = document.createElement("div");
+	details.appendChild(uncert_div);
+	uncert_div.innerHTML = "Uncertainty: " + data.uncertainty;
+	//Schema data
+	expand_schema_data(details, data);
+	//Delete button
+	var del_button = document.createElement("button");
+	details.appendChild(del_button);
+	del_button.innerHTML = "Delete schema";
+	del_button.setAttribute("onclick","del_schema('"+ obj.id +"')");
+	//Reset onclick
+	obj.setAttribute("onclick", "reduce_schema(this)");
+};
+
+/**
+ * Show all perceptual schemas informations.
+ */
+function expand_schema_data(obj, data){
+	var type_div = document.createElement("div");
+	obj.appendChild(type_div)
+	type_div.innerHTML = "Type: " + data["type"];
+	
+	var schema_div = document.createElement("div");
+	obj.appendChild(schema_div)
+	schema_div.innerHTML = "schema: " + data["schema"];
+	
+	if(is_rel(data["type"])){
+		var from_to_div = document.createElement("div");
+		obj.appendChild(from_to_div)
+		type_div.innerHTML = "From: " + data["from"] + ", To: " + data["to"];
+	};
+	
+};
+
+/**
+ * Show only basic schema info.
+ */
+function reduce_schema(obj){
+	var children = obj.children;
+	for(var i=0; i<children.length; i++){
+		if(children[i].className == "schema_details"){
+			obj.removeChild(children[i])
+			obj.setAttribute("onclick", "expand_schema(this)");
+			break;
+		};
+	};
+};
+
+/**
+ * Delete a schema and its associated fig.
+ * NOTE: Should also deletes all the subscenes that contain this schema!!
+ */
+function del_schema(id){
+	var sc = document.getElementById(id);
+	var fig = document.getElementById(schema2fig[id]);
+	delete schema2fig[id];
+	delete fig2schema[fig.id];
+	delete scene.schemas[id];
+	sc.remove();
+	fig.remove();
+	disp_schemas();
+};
+
+///////////////////////////////
+///Display defined subscenes///
+///////////////////////////////
+/**
+ * For all the subscenes defined and stored in scene.subscenes -> Display subscene information.
+ */
+function disp_subscenes(){
+	var section = document.getElementById("defined_subscenes");
+	while (section.firstChild) {
+		section.removeChild(section.firstChild);
+	};
+	for(var ss_id in scene.subscenes){
+		var ss = scene.subscenes[ss_id];
+		var aDiv = document.createElement("div");
+		aDiv.id = ss_id;
+		aDiv.setAttribute("class",  "subscene");
+		aDiv.setAttribute("onclick", "expand_subscene(this)");
+		aDiv.setAttribute("onmouseover", "highlight_subscene(this.id)");
+		aDiv.setAttribute("onmouseout", "dim_subscene(this.id)");
+		section.appendChild(aDiv);
+		
+		var subDiv = document.createElement("div");
+		subDiv.setAttribute("class", "subscene_info");
+		subDiv.innerHTML = ss.name  + " (" + ss.schemas.length + " schemas)";
+		aDiv.appendChild(subDiv);
+	};
+	
+	//Updates the schema choices options for subscene.
+	update_schema_choices();
+};
+
+/**
+ * Show all subscene info.
+ */
+function expand_subscene(obj){
+	// Get subscene data
+	var data = scene.subscenes[obj.id];
+	 
+	var details = document.createElement("div");
+	details.setAttribute("class", "subscene_details");
+	obj.appendChild(details);
+	
+	//Schemas
+	for(var i=0; i<data.schemas.length; i++){
+		var schema_div = document.createElement("div");
+		details.appendChild(schema_div);
+		schema_div.innerHTML = data.schemas[i];
+	};
+	//Saliency
+	var sal_div = document.createElement("div");
+	details.appendChild(sal_div);
+	sal_div.innerHTML = "Saliency: "+ data.saliency;
+	//Uncertainty
+	var uncert_div = document.createElement("div");
+	details.appendChild(uncert_div);
+	uncert_div.innerHTML = "Uncertainty: " + data.uncertainty;
+	//Delete button
+	var del_button = document.createElement("button");
+	details.appendChild(del_button);
+	del_button.innerHTML = "Delete subscene";
+	del_button.setAttribute("onclick","del_subscene('"+ obj.id +"')");
+	//Reset onclick
+	obj.setAttribute("onclick", "reduce_subscene(this)");
+};
+
+/**
+ * Show only basic subscene info.
+ */
+function reduce_subscene(obj){
+	var children = obj.children;
+	for(var i=0; i<children.length; i++){
+		if(children[i].className == "subscene_details"){
+			obj.removeChild(children[i])
+			obj.setAttribute("onclick", "expand_subscene(this)");
+			break;
+		};
+	};
+};
+
+/**
+ * Delete a subscene.
+ */
+function del_subscene(id){
+	var ss = document.getElementById(id);
+	delete scene.subscenes[id];
+	ss.remove();
+	disp_subscenes();
+};
+
+////////////////////////////////////
+///Handling schemas figs on image///
+////////////////////////////////////
+/**
+* Sets up the svg for drawing.
+* @param {svg element} svg.
+*/
+function initDraw(fig_svg) {
+	$('.rectangle').remove();
+    function setMousePosition(e) {
+        var ev = e || window.event; //Moz || IE
+        if (ev.pageX) { //Moz
+            mouse.x = ev.pageX + window.pageXOffset;
+            mouse.y = ev.pageY + window.pageYOffset;
+        } else if (ev.clientX) { //IE
+            mouse.x = ev.clientX + document.body.scrollLeft;
+            mouse.y = ev.clientY + document.body.scrollTop;
+        }
+    };
+
+    var mouse = {
+        x: 0,
+        y: 0,
+        startX: 0,
+        startY: 0
+    };
+    var element = null;
+	
+	var fig_rect = document.getElementById("fig_svg").getBoundingClientRect();
+
+    fig_svg.onmousemove = function () {
+        setMousePosition();
+        if (element !== null) {
+            element.setAttribute("width", Math.abs(mouse.x - fig_rect.left - mouse.startX) + 'px');
+            element.setAttribute("height", Math.abs(mouse.y - fig_rect.top - mouse.startY) + 'px');
+            element.setAttribute("x", (mouse.x - fig_rect.left - mouse.startX < 0) ? mouse.x - fig_rect.left+ 'px' : mouse.startX + 'px');
+            element.setAttribute("y", (mouse.y  - fig_rect.top - mouse.startY < 0) ? mouse.y - fig_rect.top + 'px' : mouse.startY + 'px');
+        }
+    }
+
+    fig_svg.onclick = function (e) {
+        if (element !== null) {
+			var rect = element.getBoundingClientRect();
+			update_schema_form(Math.round((rect.top-fig_rect.top)/scale), Math.round((rect.left-fig_rect.left)/scale), Math.round(rect.width/scale), Math.round(rect.height/scale));
+            element = null;
+            fig_svg.style.cursor = "default";
+            console.log("finsihed.");
+        } else {
+			$('.rectangle').remove();
+            console.log("begun.");
+            mouse.startX = mouse.x - fig_rect.left;
+            mouse.startY = mouse.y - fig_rect.top;
+            element = document.createElementNS(xmlns,'rect');
+            element.setAttribute("class", 'rectangle');
+			element.setAttribute("id", 'rectangle_' + SCHEMA_COUNT);
+            element.setAttribute("x", mouse.x - fig_rect.left + 'px');
+            element.setAttribute("y", mouse.y - fig_rect.top+ 'px');
+            fig_svg.appendChild(element)
+            fig_svg.style.cursor = "crosshair";
+        }
+    }
+};
+
+/**
+* Stops the svg drawing option.
+*/
+function stopDraw(fig_svg){
+	$('.rectangle').remove();
+	fig_svg.onmousemove = function () {};
+	fig_svg.onclick = function(e) {};
+};
+
+/**
+* Display the schema area figs for all the schemas currently defined in scene.schemas object.
+*/
+function disp_figs(){
+	$('.fig').remove(); // Start by deleting all the existing figs.
+	var fig_svg = document.getElementById("fig_svg");
+	var fig_rect = fig_svg.getBoundingClientRect();
+	
+	for(var sc_id in scene.schemas){
+		var schema = scene.schemas[sc_id];
+		if(!(is_rel(schema["type"]))){
+			var fig = document.createElementNS(xmlns, "rect");
+			fig.setAttribute("class", "fig area");
+			fig.setAttribute("id", "fig_" + sc_id);
+			fig_svg.appendChild(fig);
+			var loc = schema.location;
+			var size = schema.size;
+			//fig.style.position = "absolute";
+			fig.setAttribute("y", loc[0]*scale + "px");
+			fig.setAttribute("x", loc[1]*scale + "px");
+			fig.setAttribute("width", size[0]*scale + "px");
+			fig.setAttribute("height", size[1]*scale + "px");
+			fig.setAttribute("onclick", "area_schema_expand(this, fig2schema[this.id])");
+			fig.setAttribute("onmouseover", "highlight_schema(this.id, 'area')");
+			fig.setAttribute("onmouseout", "dim_schema(this.id, 'area')");
+		}
+		else{
+			var from_schema = scene.schemas[find_schema_id(schema["from"])];
+			var to_schema = scene.schemas[find_schema_id(schema["to"])];
+			
+			var from_loc = from_schema.location;
+			var from_size = from_schema.size;
+			
+			var to_loc = to_schema.location;
+			var to_size = to_schema.size;
+			
+			var begin_pos = [from_loc[1]*scale + from_size[0]*scale*1/2, from_loc[0]*scale + from_size[1]*scale*1/2];
+			var end_pos = [to_loc[1]*scale + to_size[0]*scale*1/2, to_loc[0]*scale + to_size[1]*scale*1/2];
+			
+			fig_svg = document.getElementById("fig_svg");
+			draw_arrow(fig_svg, sc_id, begin_pos, end_pos, schema.name);
+		};
+		schema2fig[sc_id] = "fig_" + sc_id; //Setting a correspondence table between reg id and fig id.
+		fig2schema["fig_" + sc_id] = sc_id;
+	};
+};
+
+/**
+* Draws an arrow in the svg starting at begin_pos and ending at end_pos.
+*/
+function draw_arrow(fig_svg, id, begin_pos, end_pos){
+	var arrow = document.createElementNS(xmlns, "path");
+	fig_svg.appendChild(arrow);
+	arrow.setAttribute("class", "fig arrow");
+	arrow.setAttribute("id", "fig_" + id);
+	arrow.setAttribute("d", "M" + begin_pos[0] + "," + begin_pos[1] + " L" + end_pos[0] + "," + end_pos[1]);
+	arrow.setAttribute("style", "marker-end: url(#arrow);");
+	arrow.setAttribute("onclick", "area_schema_expand(this, fig2schema[this.id])");
+	arrow.setAttribute("onmouseover", "highlight_schema(this.id, 'arrow')");
+	arrow.setAttribute("onmouseout", "dim_schema(this.id, 'arrow')");
+};
+
+/**
+* Highlight fig and schemas when mouse over.
+*/
+function highlight_schema(id, type){
+	var myfig = document.getElementById(id);
+	if(type == "area"){
+		myfig.setAttribute("class", "fig highlight_area");
+	}
+	else if(type == "arrow"){
+		myfig.setAttribute("class", "fig highlight_arrow");
+	};
+	var mySchema = document.getElementById(fig2schema[id]);
+	mySchema.setAttribute("class", "highlight_schema");
+};
+
+/**
+* Dims fig and schema when mouse out.
+*/
+function dim_schema(id, type){
+	var myfig = document.getElementById(id);
+	if(type == "area"){
+		myfig.setAttribute("class", "fig area");
+	}
+	else if(type == "arrow"){
+		myfig.setAttribute("class", "fig arrow");
+	};
+	var mySchema = document.getElementById(fig2schema[id]);
+	mySchema.setAttribute("class", "schema");
+};
+
+/**
+* Highlights schemas and figs associated with a subscene when mouse over.
+*/
+function highlight_subscene(id){
+	var subscene_data = scene.subscenes[id].schemas;
+	for(var i=0; i<subscene_data.length; i++){
+		var sc_id  = find_schema_id(subscene_data[i]);
+		var sc_type = scene.schemas[sc_id].type;
+		if(is_rel(sc_type)){
+			highlight_schema("fig_" + sc_id, "arrow");
+		}
+		else{
+			highlight_schema("fig_" + sc_id, "area");
+		};
+	};
+};
+
+/**
+* Dims schemas and figs associated with a subscene when mouse out.
+*/
+function dim_subscene(id){
+	var subscene_data = scene.subscenes[id].schemas;
+	for(var i=0; i<subscene_data.length; i++){
+		var sc_id  = find_schema_id(subscene_data[i]);
+		var sc_type = scene.schemas[sc_id].type;
+		if(is_rel(sc_type)){
+			dim_schema("fig_" + sc_id, "arrow");
+		}
+		else{
+			dim_schema("fig_" + sc_id, "area");
+		};
+	};
+};
+
+/**
+* If schema not expanded, expand schema info when fig is clicked.
+*/
+function area_schema_expand(obj, id){
+	reduce_schema(document.getElementById(id));
+	expand_schema(document.getElementById(id));
+	obj.setAttribute("onclick", "area_schema_reduce(this, fig2schema[this.id])");
+};
+
+/**
+* If schema expanded, reduce schema info when fig is clicked.
+*/
+function area_schema_reduce(obj, id){
+	reduce_schema(document.getElementById(id));
+	obj.setAttribute("onclick", "area_schema_expand(this, fig2schema[this.id])");
+};
+
+//////////////////////////
+///Handling schema form///
+//////////////////////////
+/**
+* Update form x, y, w, h values based on the fig being drawn.
+*/
+function update_schema_form(startX, startY, width, height){
+	document.getElementById("x_Field").setAttribute("value", startX);
+	document.getElementById("y_Field").setAttribute("value", startY);
+	document.getElementById("width_Field").setAttribute("value", width);
+	document.getElementById("height_Field").setAttribute("value", height);
+};
+
+/**
+* Updates the schema form based on the type of schema chosen
+*/
+function set_schema_form(type){
+	var schema_form = document.getElementById("schema_form");
+	var area_field = document.getElementById("area");
+	var params_field = document.getElementById("perceptual_params");
+	var fig_svg = document.getElementById("fig_svg");
+	var schema_field = document.getElementById("schema_field");
+	
+	var schema_list = document.getElementById("schema_list");
+	add_schema_select(schema_list, "schema_select", type);
+	
+	if(!is_rel(type)){
+		initDraw(fig_svg); // allows drawing.
+		area_field.setAttribute("style","display:block;");
+		params_field.setAttribute("style","display:block;");
+		
+		var from_to = document.getElementById("from_to");
+		if(from_to){
+		 from_to.remove()
+		};
+	}
+	else{
+		stopDraw(fig_svg); // disallow drawing.
+		area_field.setAttribute("style","display:none;");
+		params_field.setAttribute("style","display:none;");
+		var from_to = document.createElement("div");
+		from_to.setAttribute("id", "from_to");
+		schema_field.appendChild(from_to);
+		
+		var from_div = document.createElement("div");
+		from_to.appendChild(from_div);
+		entry_name = document.createElement("div");
+		from_div.appendChild(entry_name);
+		entry_name.innerHTML = "From: "
+		add_defschema_select(from_div, "schema_from", false, false);
+		
+		var to_div = document.createElement("div");
+		from_to.appendChild(to_div);
+		entry_name = document.createElement("div");
+		to_div.appendChild(entry_name);
+		entry_name.innerHTML = "To: "
+		add_defschema_select(to_div, "schema_to", false, false);
+	};
+};
+
+/**
+* Schema form submit function.
+*/
+function submit_schema_form_data(){
+    // This will act when the submit BUTTON is clicked
+    $("#schema_form").submit(function(event){
+        event.preventDefault();
+        var schema_data = build_schema_data();
+		save_schema(schema_data)
+		SCHEMA_COUNT +=1;
+		reset_schema_form();
+    });
+};
+
+/**
+* Saves the schema once the schema form is submitted.
+*/
+function save_schema(data){
+	var rect = document.getElementById('rectangle_' + SCHEMA_COUNT)
+	if(rect) {
+	 rect.remove();
+	};
+	schema_name = 'sc_' + SCHEMA_COUNT;
+	scene.schemas[schema_name] = data;
+	disp_schemas();
+};
+
+/**
+* Reset form
+*/
+function reset_schema_form(){
+	$("#schema_form").replaceWith(schema_form_clone.clone());
+	var elem = document.getElementById("schema_nameField");
+	elem.setAttribute("value", "Schema_" + SCHEMA_COUNT);
+	$('.rectangle').remove();
+	set_schema_types();
+};
+////////////////////////////
+///Handling subscene form///
+////////////////////////////
+/**
+* Update schema choices.
+*/
+function update_schema_choices(){
+	var schema_select  = document.getElementById("def_schema_select");
+	if(schema_select){
+		schema_select.remove();
+	};
+	var schema_list = document.getElementById("def_schema_list");
+	add_defschema_select(schema_list, "def_schema_select", true, true);
+	subscene_form_clone = $("#subscene_form").clone();//Update subscene form clone.
+	
+};
+
+/**
+* Subscene form submit function.
+*/
+function submit_subscene_form_data(){
+    // This will act when the submit BUTTON is clicked
+    $("#subscene_form").submit(function(event){
+        event.preventDefault();
+        var subscene_data = build_subscene_data();
+		if(subscene_data["schemas"] != null && subscene_data["schemas"].length>0){
+			save_subscene(subscene_data)
+			SUBSCENE_COUNT +=1;
+			reset_subscene_form();
+		}
+		else{
+			window.alert("Please choose at least 1 perceptual schema");
+		}
+    });
+};
+
+/**
+* Saves the subscene once the subscene form is submitted.
+*/
+function save_subscene(data){
+	ss_id = 'ss_' + SUBSCENE_COUNT
+	scene.subscenes[ss_id] = data;
+	disp_subscenes();
+};
+
+/**
+* Reset form
+*/
+function reset_subscene_form(){
+	$("#subscene_form").replaceWith(subscene_form_clone.clone());
+	var elem = document.getElementById("subscene_nameField");
+	elem.setAttribute("value", "Subscene_" + SUBSCENE_COUNT);
+};
+
+/////////////////
+/// Functions ///
+/////////////////
+/**
+* Sets up the form type selection to include all those types.
+*/
+function set_schema_types(){
+	var select = document.getElementById("type_select");
+	var set_default=true;
+	for(key in per_knowledge){
+		var option = document.createElement("option");
+		select.appendChild(option);
+		option.innerHTML = key;
+		if (set_default){
+			option.setAttribute("selected", "selected");
+			add_schema_select(document.getElementById("schema_field"), "schema_select", key);
+			set_default = false;
+		};
+	};
+};
+
+/**
+* Returns true if the type belongs to RELATIONS.
+*/
+function is_rel(type){
+	var is_rel = false;
+	for(var i=0; i<RELATIONS.length; i++){
+		if(RELATIONS[i]==type){
+			is_rel = true;
+		};
+	};
+	return is_rel
+};
+
+/**
+* Adds a selection option of all perceptual schemas of type "type"
+* @param:
+*	obj: Object to which the selection should be added
+*	id: id of the select object.
+* 	type: one of the schema high level type.
+*/
+function add_schema_select(obj, id, type){
+	var pre_select = document.getElementById(id);
+	if(pre_select != null){
+		pre_select.remove();
+	};
+	var select = document.createElement("select");
+	obj.appendChild(select);
+	select.setAttribute("id", id);
+	add_options(select, per_knowledge[type]);
+};
+function add_options(select, data){
+	if(data.constructor === Array){
+		for(var i=0; i<data.length; i++){
+			var option = document.createElement("option");
+			select.appendChild(option);
+			option.innerHTML = data[i];
+		};
+	}
+	else{
+		for(key in data){
+			var group = document.createElement("optgroup");
+			select.appendChild(group);
+			group.setAttribute("label", key);
+			for(new_key in data){
+				add_options(select,data[new_key]);
+			};
+		};
+	};
+};
+
+/**
+* Adds a selection option of all defined perceptual schemas.
+* @param:
+*	obj: Object to which the selection should be added
+*	id: id of the select object.
+*	include_rel: if =true includes relation schemas, else only includes non relation schemas.
+*	multiple: true or false
+*/
+function add_defschema_select(obj, id, include_rel, multiple){
+	var select = document.createElement("select");
+	obj.appendChild(select);
+	select.setAttribute("id", id);
+	select.multiple = multiple;
+	var sc = scene.schemas;
+	for(var i in sc){
+		if(include_rel || !(is_rel(sc[i]["type"]))){
+			var opt = document.createElement("option");
+			select.appendChild(opt);
+			opt.innerHTML = sc[i]["name"];
+		};
+	};
+};
+
+/**
+* Find the id for a given schema name.
+*/
+function find_schema_id(name){
+	for(i in scene.schemas){
+		if(scene.schemas[i]["name"] == name){
+			return i;
+		};
+	};
+	return -1;
+};
+
+//////////////////
+///Data handing///
+//////////////////
+/**
+* This will generate a variable containing all the schema form data
+*/
+function build_schema_data(){
+    var data = {};
+	data["name"] = $("#schema_nameField").val();
+	data["location"] = [Math.round($("#x_Field").val()), Math.round($("#y_Field").val())];
+	data["size"] = [Math.round($("#width_Field").val()), Math.round($("#height_Field").val())];
+    data["saliency"] = $("#saliency_Field").val();
+	data["uncertainty"] = $("#uncertainty_Field").val();
+	data["type"] = $("#type_select").val();
+	data["schema"] = $("#schema_select").val();
+	if(is_rel(data["type"])){
+		data["from"] = $("#schema_from").val();
+		data["to"] = $("#schema_to").val();
+	}
+    return data;
+};
+
+/**
+* This will generate a variable containing all the subscene form data
+*/
+function build_subscene_data(){
+    var data = {};
+	data["name"] = $("#subscene_nameField").val();
+	data["schemas"] = $("#def_schema_select").val();
+	data["saliency"]  = $("#subscene_saliencyField").val();
+	data["uncertainty"] = $("#subscene_uncertaintyField").val();
+    return data;
+};
+
+/**
+* Allow user to download the data in JSON format.
+*/
+function generate_data(){
+	var myScene = {"scene": scene};
+	var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(myScene, null, ' '));
+	$('<a href="data:' + data + '" download="TCG_scene.json" onclick="delete_save(this)">download JSON</a>').appendTo('#save_data');
+};
+
+/**
+* Load json data as myScene.
+*/
+function load_data(){
+};
+
+/**
+* Delete an html object
+*/
+function delete_save(obj){
+	obj.remove();
+}
+
+/**
+* Reset scene
+*/
+function reset_scene(){
+	SCHEMA_COUNT = 0;
+	SUBSCENE_COUNT = 0;
+	reset_schema_form();
+	reset_subscene_form();
+	img_rect = {};
+	scene.schemas = {};
+	scene.subscenes = {};
+	disp_schemas();
+	disp_subscenes();
+	initDraw();
+}
+</script>
+
+</body>
+</html>
