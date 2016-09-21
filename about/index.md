@@ -15,12 +15,12 @@ comments: false
 </div>
 
 ## Research topics
-* Computational neuroscience and brain theory
-* Computational linguistics, artificial intelligence, and machine learning.
+* Computational neuroscience and brain theory.
+* Computational linguistics and artificial intelligence.
 * Cognitive neuroscience of language (focus on aphasia, semantics, and neural architecture) and psycholinguistics (focus on Visual World Paradigm)
 * Cognitive linguistics (focus on computational construction grammar).
-* Situated language use modeling (focus on vision-language interactions).
-* Hybrid systems for top-down approach to cognitive computation.
+* Situated language use (focus on modeling vision-language interactions).
+* Hybrid systems for top-down approach to modeling brain functions.
 * Synthetic Brain Imaging (SBI): Predicting EEG signals from neurolinguistics computational models.
 
 ## Publications
@@ -34,17 +34,11 @@ comments: false
 * B.S. Cognitive Science (2008 - 2010) - Ecole Normale Superieure Paris & E.H.E.S.S - Paris, France.
 * B.S. Physics (2003 - 2006) - Ecole Polytechnique - Palaiseau, France
 
-## Personal interests
+## Some personal interests
 * Historical linguistics, evolution of language (biological and cultural), and any crossover those might have (or could have) with NLP.
-* Self-organization and emergence in complex dynamic systems.
-* Philosophy of mind and semiotics.
 * Cryptography.
 * Attempts to use NLP in the pursuit of artistic, absurdist, dadaist, pataphysic, oulipian or any other useless playfull goals.
 * Discrete mathematics.
-* Epistemology (a la Francaise).
-
-## But also...
-* My daughter Madeleine and my wife Lauren.
 * Coffee (black, no sugar)
 * <a href="https://en.wikipedia.org/wiki/Tsundoku"> Tsundoku </a> and labyrinthine libraries.
 * Baroque and American folk music.
