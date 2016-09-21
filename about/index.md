@@ -10,6 +10,10 @@ comments: false
 	<img src="/assets/img/portrait.png">
 </figure>
 
+<div align="center">
+<a href="/assets/dat/barres-cv.pdf"><b>CV</b></a> and <b>Resume</b>.
+</div>
+
 ## Research topics
 * Computational neuroscience and brain theory
 * Computational linguistics, artificial intelligence, and machine learning.
@@ -29,9 +33,6 @@ comments: false
 * Neuroscience PhD candidate (P.I. <a href="https://scholar.google.com/citations?user=it1vhYAAAAAJ&hl=en">Michael Arbib</a>)  (2010 - Now) - University of Southern California - Los Angeles, CA, USA.
 * B.S. Cognitive Science (2008 - 2010) - Ecole Normale Superieure Paris & E.H.E.S.S - Paris, France.
 * B.S. Physics (2003 - 2006) - Ecole Polytechnique - Palaiseau, France
-<div align="center">
-<a href="/assets/dat/barres-cv.pdf"><b>CV</b></a> and <b>Resume</b>.
-</div>
 
 ## Personal interests
 * Historical linguistics, evolution of language (biological and cultural), and any crossover those might have (or could have) with NLP.
