@@ -22,54 +22,58 @@
 	@include font-rem(14);
 	margin: 4px auto;
 	@extend %btnextend;
+  &.home-nav {
+    float: left;
+    position: absolute;
+  }
 	&.btn-success {
-      background-color: $success;
+    background-color: $success;
+    color: $white;
+    border-color: $success;
+    &:visited {
       color: $white;
-      border-color: $success;
-      &:visited {
-        color: $white;
-      }
-      &:hover {
-        background-color: $white;
-        color: $success;
-      }
     }
-    &.btn-warning {
-      background-color: $warning;
+    &:hover {
+      background-color: $white;
+      color: $success;
+    }
+  }
+  &.btn-warning {
+    background-color: $warning;
+    color: $white;
+    border-color: $warning;
+    &:visited {
       color: $white;
-      border-color: $warning;
-      &:visited {
-        color: $white;
-      }
-      &:hover {
-        background-color: $white;
-        color: $warning;
-      }
     }
-    &.btn-danger {
-      background-color: $danger;
+    &:hover {
+      background-color: $white;
+      color: $warning;
+    }
+  }
+  &.btn-danger {
+    background-color: $danger;
+    color: $white;
+    border-color: $danger;
+    &:visited {
       color: $white;
-      border-color: $danger;
-      &:visited {
-        color: $white;
-      }
-      &:hover {
-        background-color: $white;
-        color: $danger;
-      }
     }
-    &.btn-info {
-      background-color: $info;
+    &:hover {
+      background-color: $white;
+      color: $danger;
+    }
+  }
+  &.btn-info {
+    background-color: $info;
+    color: $white;
+    border-color: $info;
+    &:visited {
       color: $white;
-      border-color: $info;
-      &:visited {
-        color: $white;
-      }
-      &:hover {
-        background-color: $white;
-        color: $info;
-      }
     }
+    &:hover {
+      background-color: $white;
+      color: $info;
+    }
+  }
 }
 .title .btn {
     margin: 10px;
