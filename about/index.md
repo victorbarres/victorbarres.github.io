@@ -26,7 +26,7 @@ comments: false
 ## Publications
 * <a href="/assets/dat/papers/Arbib, Gasser, & Barres13.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, Gasser, and <b>Barres</b> (2014) - Language is Handy but is it Embodied? Neuropsychologia.
 * <a href="/assets/dat/papers/Barres&al13(NeuroInfo).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> <b>Barres</b>, Lee (2014) - Template Construction Grammar: From visual scene description to language comprehension and agrammatism. Neuroinformatics.
-* <a href="/assets/dat/papers/Vidal&Barres14(FrontiersHumanNeur)"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Vidal, <b>Barres</b> (2014) - Hearing (rivaling) lips and seeing voices: how audiovisual interactions modulate perceptual stabilization in binocular rivalry. Frontiers in Human Neuroscience.
+* <a href="/assets/dat/papers/Vidal&Barres14(FrontiersHumanNeur).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Vidal, <b>Barres</b> (2014) - Hearing (rivaling) lips and seeing voices: how audiovisual interactions modulate perceptual stabilization in binocular rivalry. Frontiers in Human Neuroscience.
 * <a href="/assets/dat/papers/Arbib&Barres13(AMD Newsletter).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, <b>Barres</b> (2013) - Are grammatical constructions linked to embodied meaning representations? IEEE CIS Autonomous Mental Development Newsletter Fall 2013.
 * <a href="/assets/dat/papers/Barres&al13(NeuralNetwork).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> <b>Barres</b>, Simons III, Arbib (2013) - Synthetic event-related potentials: a computational bridge between neurolinguistics models and experiments. Neural Networks.
 
