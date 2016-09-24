@@ -4,7 +4,7 @@ bio:                'Brain, Language, and Computation'
 description:        "Personal page"
 reading_time:       true
 words_per_minute:   200
-logo:               '/assets/img/logo.png'
+logo:               '/assets/img/logo.svg'
 background:         '/assets/img/funktionskreis.png'
 tiled_bg:           true   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
