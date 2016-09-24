@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Binocular Rivalry + McGurk = Multimodal bistability"
+title: "Binocular Rivalry + McGurk =\n Multimodal bistability"
 date: 2016-09-20
 excerpt: "Experimental study of multimodal bistability."
 project: true
@@ -9,4 +9,4 @@ feature: /assets/img/BR.png
 comments: false
 ---
 
-Lorem ipsum.
+Under construction.
