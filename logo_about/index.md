@@ -12,6 +12,7 @@ comments: false
 </figure>
 
 # Maturana and Varela's enactive systems:
+
 ## First-order self-maintaining autopoietic unity and its coupling with the environment.
 <figure>
 	<img src="/assets/img/first_order_autopoietic_unity.png">
