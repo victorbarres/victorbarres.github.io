@@ -10,12 +10,6 @@
 	-webkit-perspective-origin: 50% 200%;
 	-moz-perspective-origin: 50% 200%;
 	perspective-origin: 50% 200%;
-	@media #{$notsmall} {
-		position: fixed;
-		max-width: 175px;
-		top: 25px;
-		left: 25px;
-	}
 	button {
 		top: 0;
 		left: 0;
@@ -30,9 +24,6 @@
 		outline: none;
 		@include border-radius(0,3px,0,0);
 		opacity: 1;
-		@media #{$notsmall} {
-			@include border-radius(3px,3px,3px,3px);
-		}
 	}
 	button:hover,
 	button.dl-active,
@@ -137,10 +128,6 @@
 		-webkit-backface-visibility: hidden;
 		-moz-backface-visibility: hidden;
 		backface-visibility: hidden;
-		@media #{$notsmall} {
-			@include border-radius(3px,3px,3px,3px);
-			max-height: 650px;
-		}
 	}
 	.dl-menu.dl-menu-toggle {
 		-webkit-transition: all 0.3s ease;
@@ -165,7 +152,32 @@
 	li .dl-submenu {
 		display: none;
 	}
+	@media #{$notsmall} {
+		position: fixed;
+		max-width: 175px;
+		top: 25px;
+		left: 25px;
+		button {
+			@include border-radius(3px,3px,3px,3px);
+		}
+		.dl-trigger {
+				display: none;
+		}
+		.dl-menu {
+			@include border-radius(3px,3px,3px,3px);
+			max-height: 650px;
+			opacity: 1;
+			pointer-events: auto;
+			-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			transform: translateY(0px);
+			li {
+				display: block;
+			}
+		}
+	}
 }
+
 /* 
 When a submenu is openend, we will hide all li siblings.
 For that we give a class to the parent menu called "dl-subview".
