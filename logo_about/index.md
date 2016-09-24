@@ -6,7 +6,7 @@ date: 2016-09-19
 comments: false
 ---
 
-# Von Uexkull's funktionkreis:
+# Von Uexkull's funktionskreis:
 <figure>
 	<img src="/assets/img/funktionskreis.png">
 </figure>
