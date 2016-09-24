@@ -32,15 +32,17 @@ comments: false
 
 ## Education
 * Neuroscience Ph.D. candidate (P.I. <a href="https://scholar.google.com/citations?user=it1vhYAAAAAJ&hl=en">Michael Arbib</a>)  (2010 - Now) - University of Southern California - Los Angeles, CA, USA.
-* M.S. Cognitive Science (2008 - 2010) - Ecole Normale Superieure Paris & E.H.E.S.S - Paris, France.
+* M.S. Cognitive Science (2008 - 2010) - Ecole Normale Superieure Paris & E.H.E.S.S - Paris, France.<a href="http://sapience.dec.ens.fr/cogmaster/www/doc/MEMOIRES/2010_BARRES_Victor.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 * M.S. Physics (2003 - 2006) - Ecole Polytechnique - Palaiseau, France
 
 ## Some personal interests
+* Semiotics (meaning-making in all its forms!)
+* History of cognitive neuroscience, its epistemological foundations, and its impact on our societies.
 * Historical linguistics, evolution of language (biological and cultural), and any crossover those might have (or could have) with NLP.
 * Cryptography.
-* Attempts to use NLP in the pursuit of artistic, absurdist, dadaist, pataphysic, oulipian or any other useless playfull goals.
-* Discrete mathematics.
+* Attempts to use NLP in the pursuit of artistic, absurdist, dadaist, pataphysic, oulipian or any other useless playful goals.
+* Wondrous mathematical results (I didn't say "elegant" - sure Euler's identity is quite nice....).
 * Coffee (black, no sugar).
-* <a href="https://en.wikipedia.org/wiki/Tsundoku"> Tsundoku </a> and labyrinthine libraries.
+* <a href="https://en.wikipedia.org/wiki/Tsundoku"> Tsundoku </a> and labyrinthine libraries (you'll find me in the stacks).
 * Baroque and American folk music.
-* <a href="http://www.cultureboxe.com/">Boxing</a>
+* <a href="http://www.cultureboxe.com/">Boxing</a>.
