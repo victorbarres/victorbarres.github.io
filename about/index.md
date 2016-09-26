@@ -38,9 +38,9 @@ comments: false
 -->
 
 ## Conference presentations
-* <b>Barres</b> 2015. Modeling Performance Based on Construction Grammar: Challenges for Integration. Action Brain Language and Evolution (ABLE) Workshop, Chicago, USA, October, 2015
-* <b>Barres</b> 2014. Template Construction Grammar: Neuro-Computational Modeling of the Vision-Language Interface . Cluster of Excellence Cognitive Interaction Technology (CITEC) & Action Brain Language and Evolution (ABLE) Workshop, Bielefeld, Germany, December, 2014
-* <b>Barres</b> 2014. Neuro-Computational Modeling of the Language-Vision Interface: Construction Grammar, Visually Anchored Semantics, and Neural Architecture. Action Brain Language and Evolution (ABLE) Workshop, Los Angeles, USA, January, 2014
+* <b>Barres</b> (2015). Modeling Performance Based on Construction Grammar: Challenges for Integration. Action Brain Language and Evolution (ABLE) Workshop, Chicago, USA, October, 2015.
+* <b>Barres</b> (2014). Template Construction Grammar: Neuro-Computational Modeling of the Vision-Language Interface . Cluster of Excellence Cognitive Interaction Technology (CITEC) & Action Brain Language and Evolution (ABLE) Workshop, Bielefeld, Germany, December, 2014.
+* <b>Barres</b> (2014). Neuro-Computational Modeling of the Language-Vision Interface: Construction Grammar, Visually Anchored Semantics, and Neural Architecture. Action Brain Language and Evolution (ABLE) Workshop, Los Angeles, USA, January, 2014.
 
 <!--
 ## Contacts with other labs
