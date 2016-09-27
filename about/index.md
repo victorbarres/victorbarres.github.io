@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-tags: [about, victor barres, barres, TCG, neurolinguistics, NLP, computational neuroscience, AI, construction grammar]
+tags: [about, victor barres, barres, victorbarres, TCG, neurolinguistics, NLP, computational neuroscience, AI, construction grammar]
 date: 2016-09-19
 comments: false
 ---
@@ -11,13 +11,13 @@ comments: false
 </figure>
 
 <div align="center">
-<a href="/assets/dat/barres-cv.pdf"><b>CV</b></a> and <a href="/assets/dat/barres-resume.pdf"><b>Resume</b></a>.
+<a href="/assets/dat/barres-resume.pdf"><b>Resume</b></a> and <a href="/assets/dat/barres-cv.pdf"><b>CV</b></a>.
 </div>
 
 ## Research topics
 * Computational neuroscience and brain theory.
 * Computational linguistics and artificial intelligence.
-* Cognitive neuroscience of language (focus on aphasia, semantics, and neural architecture) and psycholinguistics (focus on Visual World Paradigm)
+* Cognitive neuroscience of language (focus on aphasia, semantics, and neural architecture) and psycholinguistics (focus on Visual World Paradigm).
 * Cognitive linguistics (focus on computational construction grammar).
 * Situated language use (focus on modeling vision-language interactions).
 * Hybrid systems for top-down approach to modeling brain functions.
@@ -49,7 +49,7 @@ comments: false
 -->
 
 ## Teaching experience
-* T.A. for Brain Theory and Artificial Intelligence (CS564). Instructor: Dr. Michael Arbib. USC Viterbi School of Engineering. 2013 (Spring, Fall), 2015 (Spring)
+* T.A. for Brain Theory and Artificial Intelligence (CS564). Instructor: Dr. Michael Arbib. USC Viterbi School of Engineering. 2013 (Spring, Fall), 2015 (Spring).
 * T.A. for Applied Natural Language Processing (CS544). Instructor: Dr. Zornista Kozareva. USC Viterbi School of Engineering. 2013 (Spring). See <a href="http://www.isi.edu/natural-language/teaching/cs544/">here</a>.
 
 ## Education
