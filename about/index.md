@@ -65,6 +65,6 @@ comments: false
 * Attempts to use NLP in the pursuit of artistic, absurdist, dadaist, pataphysic, oulipian or any other useless playful goals.
 * Wondrous mathematical results (I didn't say "elegant" - sure Euler's identity is quite nice....).
 * Coffee (black, no sugar).
-* <a href="https://en.wikipedia.org/wiki/Tsundoku"> Tsundoku </a> and <a href="">labyrinthine</a> <a href="https://libraryofbabel.info/">libraries</a> (you'll find me in the stacks).
+* <a href="https://en.wikipedia.org/wiki/Tsundoku"> Tsundoku </a> and labyrinthine <a href="https://libraryofbabel.info/">libraries</a> (you'll find me in the stacks).
 * Baroque and American folk music.
 * <a href="http://www.cultureboxe.com/">Boxing</a>.
