@@ -11,7 +11,7 @@ comments: false
 </figure>
 
 <div align="center">
-<a href="/assets/dat/barres-resume.pdf"><b>Resume</b></a> and <a href="/assets/dat/barres-cv.pdf"><b>CV</b></a>.
+<a href="/assets/dat/barres-resume.pdf"><b>Resume</b></a> and <a href="/assets/dat/barres-cv.pdf"><b>CV</b></a>
 </div>
 
 ## Research topics
