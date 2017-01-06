@@ -11,7 +11,7 @@ comments: false
 
 # Summary
 Template Construction Grammar (TCG) is developed as part of an overarching effort to build a system-level neuro-computational model simulating the dynamics 
-at play during language-vision interactions. 
+at play during language-vision interactions.
 
 TCG offers a computational framework designed to model the human brain’s capacity to dynamically coordinate two concurrent incremental processes, 
 one generating a message and the other organizing its mapping onto a linguistic form. 
@@ -23,9 +23,6 @@ cognitive-level hybrid computational models that operate in the style of the bra
 TCG emerges from an attempt to build a language model that integrates rather than dissects. 
 
 The project's straddles three main fields: neurolinguistics (in particular aphasiology), psycholinguistics, and cognitive linguistics (in particular usage-based construction grammar theories).
-
-The goal is to assess what is ripe for neuro-cognitive modelling at their intersection, and doing so by engaging actively with the other research groups that are currently
-developing computational construction grammar models.
 
 # Implementation
 *The code for TCG is available on GitHub.
