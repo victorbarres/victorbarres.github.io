@@ -37,12 +37,6 @@ The project\'s straddles three main fields: neurolinguistics (in particular apha
 
 * <a href="/assets/dat/papers/Arbib&Lee(2007)_BVAI.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, Lee (2007). Vision and Action in the Language-Ready Brain: From Mirror Neurons to SemRep. In F. Mele, G. Ramella, S. Santillo, & F. Ventriglia (Eds.), Advances in Brain, Vision, and Artificial Intelligence (pp. 104–123). Springer Berlin Heidelberg.
 
-## Genesis story
-* <a href="/assets/dat/papers/Itti&Arbib(2006).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Itti, Arbib (2006). Attention and the Minimal Subscene.
-* <a href="/assets/dat/papers/Navalpakkam,Arbib,Itti(2005).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Navalpakkam, Arbib, Itti (2005). Attention and Scene Understanding. In Neurobiology of Attention (pp. 197–203). Elsevier.
-* <a href="/assets/dat/papers/Arbib&Hill87(Hawkin).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, Hill (1987). Language Acquisition: Schemas Replace Universal Grammar.
-* Arbib, Hill, Conklin (1987). From schema theory to language. Oxford University Press.
-
 
 
 
