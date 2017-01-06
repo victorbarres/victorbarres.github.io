@@ -42,4 +42,4 @@ The project's straddles three main fields: neurolinguistics (in particular aphas
 * <a href="/assets/dat/papers/Lee(2012)_Thesis.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Lee (2012). YET ANOTHER SOMETHING
 
 ## TCG Viewer (old!)
-<a href=“/SALVIA-TCG/“>here!</a>
+<a href=“/SALVIA-TCG“>here!</a>
