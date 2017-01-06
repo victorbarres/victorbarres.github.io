@@ -26,8 +26,8 @@ TCG emerges from an attempt to build a language model that integrates rather tha
 The project\'s straddles three main fields: neurolinguistics (in particular aphasiology), psycholinguistics, and cognitive linguistics (in particular usage-based construction grammar theories).
 
 ## Implementation
-*The code for TCG is available on GitHub.
-*For the latest theoretical outline of the implementation:
+* The code for TCG is available on GitHub.
+* For the latest theoretical outline of the implementation:
 <a href="/assets/dat/papers/TCG_p_theory"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a><b>Barres</b>Template Construction Grammar: a Schema-Theoretic Computational Construction Grammar (draft).
 
 ## TCG Publications
