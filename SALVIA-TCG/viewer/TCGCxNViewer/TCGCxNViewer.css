@@ -1,0 +1,35 @@
+body{
+	font-family: consolas;
+	width:600px;
+}
+
+#grammar_size{
+	font-weight : bold;
+	font-size: 12pt;
+}
+
+.cxn {
+	color: black;
+	margin: 20px;
+	font-size:10pt;
+	background-color: white;
+	border: 2px solid;
+    border-radius: 15px;
+	padding: 0.5em;
+}
+
+.cxn.expand{
+	display: inline-block;
+}
+.cxn_name{
+	font-weight : bold;
+	font-size: 12pt;
+}
+
+.cxn_details{
+	margin-left: 10px;
+}
+
+.cxn_data{
+	margin-left: 10px;
+}

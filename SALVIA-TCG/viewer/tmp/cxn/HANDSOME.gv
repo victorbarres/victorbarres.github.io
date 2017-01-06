@@ -1,0 +1,16 @@
+digraph G {
+rankdir=LR;
+fontname=consolas;
+subgraph cluster_SemFrame {
+bgcolor=lightcoral;
+label=SemFrame;
+N1 [style=filled, fontsize=10, fillcolor=white, color=black, shape=doublecircle, label=HANDSOME];
+}
+
+subgraph cluster_SynForm {
+bgcolor=lightblue;
+label=SynForm;
+S1 [shape=box, fontsize=10, style=filled, fillcolor=white, label=handsome];
+}
+
+}

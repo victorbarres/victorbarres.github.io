@@ -1,0 +1,19 @@
+digraph G {
+rankdir=LR;
+fontname=consolas;
+subgraph cluster_SemFrame {
+bgcolor=lightcoral;
+label=SemFrame;
+SUBJ [style=filled, fontsize=10, fillcolor=white, color=black, shape=doublecircle, label="OBJECT+"];
+}
+
+subgraph cluster_SynForm {
+bgcolor=lightblue;
+label=SynForm;
+S1 [shape=box, fontsize=10, style=filled, fillcolor=white, label="there is"];
+S2 [shape=box, fontsize=10, style=filled, fillcolor=white, label="[NC, NP, N]"];
+S1 -> S2  [label=next];
+}
+
+SUBJ -> S2  [color=red, dir=none, penwidth=1];
+}

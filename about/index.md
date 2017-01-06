@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-tags: [about, victor barres, barres, victorbarres, TCG, neurolinguistics, NLP, computational neuroscience, AI, construction grammar]
+tags: [about, victor barres, barres, victorbarres, Template Construction Grammar, TCG, neurolinguistics, NLP, computational neuroscience, AI, construction grammar]
 date: 2016-09-19
 comments: false
 ---
@@ -21,7 +21,7 @@ comments: false
 * Cognitive linguistics (focus on computational construction grammar).
 * Situated language use (focus on modeling vision-language interactions).
 * Hybrid systems for top-down approach to modeling brain functions.
-* Synthetic Brain Imaging (SBI): Predicting EEG signals from neurolinguistics computational models.
+* Synthetic Brain Imaging (SBI): Simulating EEG signals from neurolinguistics computational models.
 
 ## Publications
 * <a href="/assets/dat/papers/Arbib, Gasser, & Barres13.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, Gasser, and <b>Barres</b> (2014). Language is Handy but is it Embodied? Neuropsychologia, 55, 57-70.

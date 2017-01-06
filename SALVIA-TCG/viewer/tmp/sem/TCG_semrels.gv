@@ -1,0 +1,22 @@
+digraph G {
+rankdir=BT;
+fontname=consolas;
+THEMATIC [style=filled, fontsize=10, fillcolor=white, color=black, shape=box, label=THEMATIC];
+THEMATIC -> SEMANTIC_RELATIONS  [fontsize=10, label=is_a];
+PATIENT [style=filled, fontsize=10, fillcolor=white, color=black, shape=box, label=PATIENT];
+PATIENT -> THEMATIC  [fontsize=10, label=is_a];
+AGENT [style=filled, fontsize=10, fillcolor=white, color=black, shape=box, label=AGENT];
+AGENT -> THEMATIC  [fontsize=10, label=is_a];
+TEMPORAL [style=filled, fontsize=10, fillcolor=white, color=black, shape=box, label=TEMPORAL];
+TEMPORAL -> SEMANTIC_RELATIONS  [fontsize=10, label=is_a];
+CONCURRENT [style=filled, fontsize=10, fillcolor=white, color=black, shape=box, label=CONCURRENT];
+CONCURRENT -> TEMPORAL  [fontsize=10, label=is_a];
+SUCCESSIVE [style=filled, fontsize=10, fillcolor=white, color=black, shape=box, label=SUCCESSIVE];
+SUCCESSIVE -> TEMPORAL  [fontsize=10, label=is_a];
+MODIFY [style=filled, fontsize=10, fillcolor=white, color=black, shape=box, label=MODIFY];
+MODIFY -> SEMANTIC_RELATIONS  [fontsize=10, label=is_a];
+SPATIAL [style=filled, fontsize=10, fillcolor=white, color=black, shape=box, label=SPATIAL];
+SPATIAL -> SEMANTIC_RELATIONS  [fontsize=10, label=is_a];
+IN [style=filled, fontsize=10, fillcolor=white, color=black, shape=box, label=IN];
+IN -> SPATIAL  [fontsize=10, label=is_a];
+}
