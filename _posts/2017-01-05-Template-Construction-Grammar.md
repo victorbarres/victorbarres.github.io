@@ -28,9 +28,18 @@ The project's straddles three main fields: neurolinguistics (in particular aphas
 ## Implementation
 * The code for TCG is available on GitHub.
 * For the latest theoretical outline of the implementation:
+
 <a href="/assets/dat/papers/TCG_p_theory"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a><b>Barres</b>Template Construction Grammar: a Schema-Theoretic Computational Construction Grammar (draft).
 
 ## TCG Publications
 * <a href="/assets/dat/papers/Barres&al13(NeuroInfo).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> <b>Barres</b>, Lee (2014). Template Construction Grammar: From visual scene description to language comprehension and agrammatism.  Neuroinformatics, 1-28.
 * <a href="/assets/dat/papers/Arbib&Barres13(AMD Newsletter).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, <b>Barres</b> (2013). Are grammatical constructions linked to embodied meaning representations? IEEE CIS Autonomous Mental Development Newsletter Fall 2013.
 * <a href="/assets/dat/papers/Lee(2012)_Thesis.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Lee (2012). Linking eyes to mouth: a schema-based computational model for describing visual scenes. (PhD Thesis). University of Southern California.
+
+## Genesis story
+ <a href="/assets/dat/papers/Barres&al13(NeuroInfo).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> SOMETHING SOMETHING
+* <a href="/assets/dat/papers/Arbib&Barres13(AMD Newsletter).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> ANOTHER SOMETHING
+* <a href="/assets/dat/papers/Lee(2012)_Thesis.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Lee (2012). YET ANOTHER SOMETHING
+
+## TCG Viewer (old!)
+<a href=“/SALVIA-TCG/>here!</a>
