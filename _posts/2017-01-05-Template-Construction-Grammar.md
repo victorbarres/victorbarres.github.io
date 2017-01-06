@@ -4,7 +4,11 @@ title: "Template Construction Grammar"
 date: 2017-01-05
 excerpt: "Description of Template Construction Grammar (TCG): a brain theory based computational construction grammar for neurolinguistic modeling."
 project: true
+<<<<<<< HEAD
 tags: [construction grammar, grammar, production, comprehension, dynamic system, incremental, modeling, neurolinguistic, computational]
+=======
+tags: [construction grammar, grammar, incremental, modeling, neurolinguistic, computational]
+>>>>>>> ee59be74eba75ba14ea0bdb80beb401c6bb7337f
 feature: /assets/img/TCG_Logo.png
 comments: false
 ---
