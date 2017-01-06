@@ -43,4 +43,4 @@ The project's straddles three main fields: neurolinguistics (in particular aphas
 
 ## TCG Viewer (old!)
 
-<a href=“/SALVIA-TCG“> here! </a>
+<a href=“/SALVIA-TCG">here</a>
