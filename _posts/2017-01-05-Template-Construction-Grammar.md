@@ -37,9 +37,9 @@ The project's straddles three main fields: neurolinguistics (in particular aphas
 * <a href="/assets/dat/papers/Lee(2012)_Thesis.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Lee (2012). Linking eyes to mouth: a schema-based computational model for describing visual scenes. (PhD Thesis). University of Southern California.
 
 ## Genesis story
- <a href="/assets/dat/papers/Barres&al13(NeuroInfo).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> SOMETHING SOMETHING
+* <a href="/assets/dat/papers/Barres&al13(NeuroInfo).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> SOMETHING SOMETHING
 * <a href="/assets/dat/papers/Arbib&Barres13(AMD Newsletter).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> ANOTHER SOMETHING
 * <a href="/assets/dat/papers/Lee(2012)_Thesis.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Lee (2012). YET ANOTHER SOMETHING
 
 ## TCG Viewer (old!)
-<a href=“/SALVIA-TCG/>here!</a>
+<a href=“/SALVIA-TCG/“>here!</a>
