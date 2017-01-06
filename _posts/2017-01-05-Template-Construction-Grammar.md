@@ -34,3 +34,15 @@ The project\'s straddles three main fields: neurolinguistics (in particular apha
 * <a href="/assets/dat/papers/Barres&al13(NeuroInfo).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> <b>Barres</b>, Lee (2014). Template Construction Grammar: From visual scene description to language comprehension and agrammatism.  Neuroinformatics, 1-28.
 * <a href="/assets/dat/papers/Arbib&Barres13(AMD Newsletter).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, <b>Barres</b> (2013). Are grammatical constructions linked to embodied meaning representations\? IEEE CIS Autonomous Mental Development Newsletter Fall 2013.
 * <a href="/assets/dat/papers/Lee(2012)_Thesis.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Lee (2012). Linking eyes to mouth: a schema-based computational model for describing visual scenes. (PhD Thesis). University of Southern California.
+
+* <a href="/assets/dat/papers/Arbib&Lee(2007)_BVAI.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, Lee (2007). Vision and Action in the Language-Ready Brain: From Mirror Neurons to SemRep. In F. Mele, G. Ramella, S. Santillo, & F. Ventriglia (Eds.), Advances in Brain, Vision, and Artificial Intelligence (pp. 104–123). Springer Berlin Heidelberg.
+
+## Genesis story
+* <a href="/assets/dat/papers/Itti&Arbib(2006).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Itti, Arbib (2006). Attention and the Minimal Subscene.
+* <a href="/assets/dat/papers/Navalpakkam,Arbib,Itti(2005).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Navalpakkam, Arbib, Itti (2005). Attention and Scene Understanding. In Neurobiology of Attention (pp. 197–203). Elsevier.
+* <a href="/assets/dat/papers/Arbib&Hill87(Hawkin).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, Hill (1987). Language Acquisition: Schemas Replace Universal Grammar.
+* Arbib, Hill, Conklin (1987). From schema theory to language. Oxford University Press.
+
+
+
+
