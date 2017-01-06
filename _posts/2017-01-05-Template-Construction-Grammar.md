@@ -12,3 +12,5 @@ comments: false
 ## Summary
 
 Template Construction Grammar (TCG) is developed as part of an overarching effort to build a system-level neuro-computational model simulating the dynamics at play during language-vision interactions.
+
+TCG offers a computational framework designed to model the human brain’s capacity to dynamically coordinate two concurrent incremental processes, one generating a message and the other organizing its mapping onto a linguistic form.
