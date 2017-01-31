@@ -4,12 +4,8 @@ title: "Template Construction Grammar"
 date: 2017-01-05
 excerpt: "Description of Template Construction Grammar (TCG): a brain theory based computational construction grammar for neurolinguistic modeling."
 project: true
-<<<<<<< HEAD
 tags: [construction grammar, grammar, production, comprehension, dynamic system, incremental, modeling, neurolinguistic, computational]
-=======
-tags: [construction grammar, grammar, incremental, modeling, neurolinguistic, computational]
->>>>>>> ee59be74eba75ba14ea0bdb80beb401c6bb7337f
-feature: /assets/img/TCG_Logo.png
+feature: /assets/img/TCG_logo.png
 comments: false
 ---
 
@@ -29,10 +25,9 @@ TCG emerges from an attempt to build a language model that integrates rather tha
 The project's straddles three main fields: neurolinguistics (in particular aphasiology), psycholinguistics, and cognitive linguistics (in particular usage-based construction grammar theories).
 
 ## Implementation
-* The code for TCG is available on GitHub.
+* The code for TCG is available on <a href="https://github.com/victorbarres/TCG">GitHub</a>.
 * For the latest theoretical outline of the implementation:
-
-<a href="/assets/dat/papers/TCG_p_theory.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a><b>Barres</b>Template Construction Grammar: a Schema-Theoretic Computational Construction Grammar (draft).
+	* <a href="/assets/dat/papers/TCG_p_theory.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> <b>Barres</b> (2016). Template Construction Grammar: a Schema-Theoretic Computational Construction Grammar (draft).
 
 ## TCG Publications
 * <a href="/assets/dat/papers/Barres&al13(NeuroInfo).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> <b>Barres</b>, Lee (2014). Template Construction Grammar: From visual scene description to language comprehension and agrammatism.  Neuroinformatics, 1-28.
@@ -46,7 +41,6 @@ The project's straddles three main fields: neurolinguistics (in particular aphas
 * <a href="/assets/dat/papers/Navalpakkam,Arbib,Itti(2005).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Navalpakkam, Arbib, Itti (2005). Attention and Scene Understanding. In Neurobiology of Attention (pp. 197–203). Elsevier.
 * <a href="/assets/dat/papers/Arbib&Hill87(Hawkin).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, Hill (1987). Language Acquisition: Schemas Replace Universal Grammar.
 * Arbib, Hill, Conklin (1987). From schema theory to language. Oxford University Press.
-
 
 ## Web viewer (old!)
 <a href="\SALVIA-TCG">here</a>.

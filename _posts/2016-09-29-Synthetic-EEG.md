@@ -9,4 +9,16 @@ feature: /assets/img/Current_Dip.png
 comments: false
 ---
 
-Details <a href="\SyntheticEEG">here</a>.
+## Synthetic Brain Imaging (SBI) for neurolinguistics
+
+Explain the SBI approach and the need to tackle EEG and in particular ERP to help linking neurolinguistic models to brain data.
+
+GiHub <a href="http://victorbarres.github.io/SyntheticEEG" target="_blank">page</a>.
+
+## Synthetic Brain Imaging vs. Dynamic Causal Modeling
+
+Explain in a nutshell how the two approaches are complementary and how they differ.
+
+## Other Synthetic Brain Imaging work
+* Synthetic PET
+* Synthetic fMRI
