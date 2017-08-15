@@ -11,7 +11,7 @@ comments: false
 
 ## Schema Theory: Modeling framework for cognitive-level computational architectures
 
-## (Neuro) Schema Theory
+## COAST: COgnitive Architecture Schema Theory
 
 ## Schema Theory papers
 * Brain theory
