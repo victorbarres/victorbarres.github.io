@@ -11,14 +11,6 @@ comments: false
 
 ## Schema Theory: Modeling framework for cognitive-level computational architectures
 
-
-Place my graph of models types here.
-
-Add a line or two taken from AAAI or theory paper about schema theory
-Distributed
-Dynamic
-System-of-Systems
-
 ## (Neuro) Schema Theory
 
 ## Schema Theory papers

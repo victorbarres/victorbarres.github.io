@@ -15,10 +15,6 @@ Explain the SBI approach and the need to tackle EEG and in particular ERP to hel
 
 GiHub <a href="http://victorbarres.github.io/SyntheticEEG" target="_blank">page</a>.
 
-## Synthetic Brain Imaging vs. Dynamic Causal Modeling
-
-Explain in a nutshell how the two approaches are complementary and how they differ.
-
 ## Other Synthetic Brain Imaging work
 * Synthetic PET
 * Synthetic fMRI
