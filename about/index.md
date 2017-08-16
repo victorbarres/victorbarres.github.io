@@ -24,6 +24,8 @@ comments: false
 * Synthetic Brain Imaging (SBI): Simulating EEG signals from neurolinguistics computational models.
 
 ## Publications
+* <a href="/assets/dat/papers/Barres(2017)_PhD_dissertation.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> <b>Barres</b> (2017) Schema Architecture for Language-Vision InterActions: A Computational Cognitive Neuroscience Model of Language Use. (PhD Dissertation)
+* <a href="/assets/dat/papers/Barres(2017)_AAAI.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> <b>Barres</b> (2017) Template Construction Grammar: A Schema-Theoretic Computational Construction Grammar. In 2017 AAAI Spring Symposium Series.
 * <a href="/assets/dat/papers/Arbib, Gasser, & Barres13.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Arbib, Gasser, and <b>Barres</b> (2014). Language is Handy but is it Embodied? Neuropsychologia, 55, 57-70.
 * <a href="/assets/dat/papers/Barres&al13(NeuroInfo).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> <b>Barres</b>, Lee (2014). Template Construction Grammar: From visual scene description to language comprehension and agrammatism.  Neuroinformatics, 1-28.
 * <a href="/assets/dat/papers/Vidal&Barres14(FrontiersHumanNeur).pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> Vidal, <b>Barres</b> (2014). Hearing (rivaling) lips and seeing voices: how audiovisual interactions modulate perceptual stabilization in binocular rivalry. Frontiers in Human Neuroscience, 8.
@@ -37,7 +39,9 @@ comments: false
 * <b>Barres</b>, Lee, Arbib (in preparation). From gaze patterns to utterances: Modeling the dynamics of visual scene description.
 -->
 
-## Conference presentations
+## Talks
+* <b>Barres</b> (2017). Template Construction Grammar: A Schema-Theoretic Computational Construction Grammar. AAAI Spring Symposium Series.
+* <b>Barres</b> (2017). Description of visual scenes as well as sentence comprehension, using the Schema Architecture Language-Vision InterAction (SALVIA) cognitive model. Center for Research in Language Talk. UCSD
 * <b>Barres</b> (2015). Modeling Performance Based on Construction Grammar: Challenges for Integration. Action Brain Language and Evolution (ABLE) Workshop, Chicago, USA, October, 2015.
 * <b>Barres</b> (2014). Template Construction Grammar: Neuro-Computational Modeling of the Vision-Language Interface . Cluster of Excellence Cognitive Interaction Technology (CITEC) & Action Brain Language and Evolution (ABLE) Workshop, Bielefeld, Germany, December, 2014.
 * <b>Barres</b> (2014). Neuro-Computational Modeling of the Language-Vision Interface: Construction Grammar, Visually Anchored Semantics, and Neural Architecture. Action Brain Language and Evolution (ABLE) Workshop, Los Angeles, USA, January, 2014.
@@ -59,12 +63,12 @@ comments: false
 
 ## Some personal interests
 * Semiotics (meaning-making in all its forms).
+* Logic with a current interest in J. Y. Girard's Linear Logic and the applications it found in Categorial Grammars)
+* Relations between dynamic and symbolic representations (check out beim Graben's work if you have time)
 * History of cognitive neuroscience, its epistemological foundations, and its impact on our societies.
 * Historical linguistics, evolution of language (biological and cultural), and any crossover those might have (or could have) with NLP.
+* Coffee (black, no sugar).
 * Cryptography.
 * Attempts to use NLP in the pursuit of artistic, absurdist, dadaist, pataphysic, oulipian or any other useless playful goals.
-* Wondrous mathematical results (I didn't say "elegant" - sure Euler's identity is quite nice....).
-* Coffee (black, no sugar).
 * <a href="https://en.wikipedia.org/wiki/Tsundoku"> Tsundoku </a> and labyrinthine <a href="https://libraryofbabel.info/">libraries</a> (you'll find me in the stacks).
-* Baroque and American folk music.
 * <a href="http://www.cultureboxe.com/">Boxing</a>.
