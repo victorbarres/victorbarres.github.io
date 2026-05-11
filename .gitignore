@@ -13,3 +13,13 @@ assets/rendercv/rendercv_output/*.typ
 Gemfile.lock
 node_modules/
 vendor
+
+# LaTeX build artifacts for cv-src/. The CV PDF is the deliverable
+# (published to assets/pdf/barres_cv.pdf via bin/build_cv.sh); these
+# intermediates should not ship and should not be committed.
+cv-src/*.aux
+cv-src/*.fdb_latexmk
+cv-src/*.fls
+cv-src/*.log
+cv-src/*.out
+cv-src/*.xdv

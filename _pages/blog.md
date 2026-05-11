@@ -2,8 +2,11 @@
 layout: default
 permalink: /blog/
 title: blog
+description: coming soon — no posts yet.
 nav: false # hidden for now — flip to true if you start posting
 nav_order: 1
+sitemap: false # hide the empty blog placeholder from sitemap.xml until there are posts
+noindex: true # consumed by _includes/metadata.liquid → <meta name="robots" content="noindex,nofollow">
 pagination:
   enabled: true
   collection: posts

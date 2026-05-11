@@ -5,8 +5,7 @@
 # TODO: drop your CV PDF in assets/pdf/ and update the path below (or comment this line to hide the CV link)
 # cv_pdf: /assets/pdf/victor_barres_cv.pdf
 
-# TODO: confirm preferred contact email — work (victor@sierra.ai) vs personal
-# email: victor@sierra.ai
+email: victor.barres@gmail.com # rendered via jekyll-email-protect (obfuscated in HTML)
 
 github_username: victorbarres # GitHub (uses the future username; rename of the account is planned separately)
 
