@@ -1,4 +1,9 @@
-nbconvert
+# Python tooling used by repo scripts.
+# - scholarly: used by bin/update_scholar_citations.py to fetch Google Scholar
+#   citation counts (populates _data/citations.yml, displayed on bib entries).
+# - pyyaml: used by various scripts to read/write site config.
+#
+# (nbconvert and rendercv[full] were used by the al-folio template's Jupyter
+# blog and rendercv workflows, neither of which is wired up in this repo.)
 pyyaml
-rendercv[full]
 scholarly

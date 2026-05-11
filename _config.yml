@@ -198,9 +198,9 @@ plugins:
   - jekyll-cache-bust
   - jekyll-email-protect
   - jekyll-feed
-  - jekyll-get-json
+  # - jekyll-get-json # disabled — no external JSON data sources in use
   - jekyll-imagemagick
-  - jekyll-jupyter-notebook
+  # - jekyll-jupyter-notebook # disabled — no .ipynb files to render
   - jekyll-link-attributes
   - jekyll-minifier
   - jekyll-paginate-v2
@@ -635,23 +635,26 @@ third_party_libraries:
     version: "2.1.8"
 
 # -----------------------------------------------------------------------------
-# Get external JSON data
+# Get external JSON data — unused (no jekyll-get-json plugin, no JSONResume).
+# If you ever want to drive the CV page from JSONResume, re-enable
+# jekyll-get-json in the plugin list, restore an assets/json/resume.json file,
+# and uncomment the blocks below.
 # -----------------------------------------------------------------------------
-
-jekyll_get_json:
-  - data: resume
-    json: assets/json/resume.json # it can also be an url
-
-jsonresume:
-  - basics
-  - work
-  - education
-  - publications
-  - projects
-  - volunteer
-  - awards
-  - certificates
-  - skills
-  - languages
-  - interests
-  - references
+#
+# jekyll_get_json:
+#   - data: resume
+#     json: assets/json/resume.json
+#
+# jsonresume:
+#   - basics
+#   - work
+#   - education
+#   - publications
+#   - projects
+#   - volunteer
+#   - awards
+#   - certificates
+#   - skills
+#   - languages
+#   - interests
+#   - references
