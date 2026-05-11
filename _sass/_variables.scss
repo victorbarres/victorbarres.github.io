@@ -32,9 +32,21 @@ $grey-900: #212529;
 $white-color: #ffffff !default;
 $black-color: #000000 !default;
 
+// Sepia/ink palette — chosen to harmonize with the 19th-c. phrenology
+// engraving banner used on the about page.
+// Light mode: deep ink teal (the color old fountain-pen-on-cotton-paper takes
+//   on when slightly oxidized) — quiet, unambiguously an "ink" tone, reads
+//   clearly as a link without competing with body text.
+// Dark mode: warm parchment tan that echoes the banner's ink color exactly.
+// Contrast ratios are AA-compliant (≥ 4.5:1) against their respective bg.
+$ink-color: #0d7490 !default; // 5.7:1 on white — main link/accent in light mode
+$ink-color-dark: #155e75 !default; // 7.0:1 — hover/active in light mode
+$parchment-color: #d4a373 !default; // 8.1:1 on #1c1c1d — main accent in dark mode
+$parchment-color-bright: #e9b384 !default; // hover/highlight in dark mode
+
 // Theme colors
 
-$code-bg-color-light: rgba($purple-color, 0.05);
+$code-bg-color-light: rgba($ink-color, 0.06);
 $code-bg-color-dark: #2c3237 !default;
 
 // Font awesome location

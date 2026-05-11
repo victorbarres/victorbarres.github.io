@@ -259,3 +259,40 @@ ul.task-list input[type="checkbox"] {
 .d2h-diff-table {
   position: relative;
 }
+
+// Bootstrap / MDB button overrides: route the `btn-primary` and
+// `btn-outline-primary` family through `--global-theme-color` so primary
+// buttons (e.g. the CV download button) follow the site's sepia/ink palette
+// in both themes instead of using Bootstrap's hard-coded blue or MDB's
+// Material Design blue. `!important` is needed because MDB declarations also
+// use `!important`; we deliberately match that specificity.
+
+.btn-outline-primary {
+  color: var(--global-theme-color) !important;
+  border-color: var(--global-theme-color) !important;
+  background-color: transparent !important;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    color: var(--global-hover-text-color) !important;
+    background-color: var(--global-theme-color) !important;
+    border-color: var(--global-theme-color) !important;
+  }
+}
+
+.btn-primary {
+  color: var(--global-hover-text-color) !important;
+  background-color: var(--global-theme-color) !important;
+  border-color: var(--global-theme-color) !important;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    color: var(--global-hover-text-color) !important;
+    background-color: var(--global-hover-color) !important;
+    border-color: var(--global-hover-color) !important;
+  }
+}
