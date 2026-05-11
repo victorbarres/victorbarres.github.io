@@ -5,7 +5,7 @@
 # TODO: drop your CV PDF in assets/pdf/ and update the path below (or comment this line to hide the CV link)
 # cv_pdf: /assets/pdf/victor_barres_cv.pdf
 
-email: victor.barres@gmail.com # rendered via jekyll-email-protect (obfuscated in HTML)
+email: victor.barres@gmail.com # rendered as a plain mailto: link by jekyll-socials (not HTML-obfuscated)
 
 github_username: victorbarres # GitHub (uses the future username; rename of the account is planned separately)
 
