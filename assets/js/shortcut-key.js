@@ -1,0 +1,1 @@
+document.addEventListener("readystatechange",()=>{if("interactive"===document.readyState){let e=navigator.platform.toUpperCase().indexOf("MAC")>=0,a=document.querySelector("#search-toggle .nav-link");a&&e&&(a.innerHTML='<span class="search-shortcut d-none d-sm-inline">&#x2318; k </span><i class="fa-solid fa-magnifying-glass"></i>')}});
