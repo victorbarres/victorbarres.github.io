@@ -38,13 +38,12 @@ Each entry carries a `keywords` field (`ai-agents` or `cogsci`) for future use, 
 
 ## Selected papers (homepage)
 
-Papers marked `selected = {true}` appear on the homepage selected-papers panel. Currently 5:
+Papers marked `selected = {true}` appear on the homepage selected-papers panel. Currently 6:
+- τ-Knowledge (2026)
 - τ-Voice (2026) — equal contribution
 - τ²-Bench (2025) — equal contribution
 - From Generating Answers to Building Explanations (NAACL 2025)
 - LLM-ARC (2024)
-- Template Construction Grammar: From Visual Scene Description… (Neuroinformatics 2014)
 - Template Construction Grammar: A Schema-Theoretic Computational CG (AAAI-SS 2017)
-- Synthetic event-related potentials (Neural Networks 2013)
 
-(Adjust `selected` flags in `papers.bib` to taste.)
+The homepage panel renders all `selected = {true}` entries via `_includes/selected_papers.liquid`; a "See all publications →" link below it points to `/publications/`. Aim for ≤ 6 selected to keep the panel scannable; adjust `selected` flags in `papers.bib` to taste.
