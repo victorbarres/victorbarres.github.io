@@ -8,8 +8,8 @@ middle_name: # TODO: confirm with user (leaving blank for now)
 last_name: Barres
 contact_note: >
   The fastest way to reach me is by email.
-description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  AI Researcher at Sierra. I lead the τ-Bench family of agent benchmarks for conversational AI agents that must execute complex tool-using tasks while sustaining long, coherent conversational interactions.
+description: > # ≤155 chars for SERP. Distinct from the about-page body copy on purpose.
+  AI Researcher at Sierra. I work on conversational AI agents and the τ-Bench family of benchmarks for tool use and long-form dialogue.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.

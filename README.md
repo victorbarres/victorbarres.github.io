@@ -19,7 +19,10 @@ Runs at `http://127.0.0.1:4000/`. Live-reloads on most file edits; `_config.yml`
 - `_pages/publications.md` — `/publications/`, year-grouped list driven by `_bibliography/papers.bib`.
 - `_pages/service.md` — currently `nav: false`; re-enable once it has 3+ entries.
 - `_pages/cv.md` — `/cv/`, embeds the PDF compiled from `cv-src/barres_cv.tex` (see CV workflow below).
-- `_news/` — homepage news bullets.
+- `_news/` — homepage news bullets. Filenames are numbered most-recent-first
+  (`announcement_1.md` = newest), so the filename order mirrors the on-page
+  order. When adding a new item, rename the existing files up (shift _1 → _2,
+  _2 → _3, …) and drop the new entry into `announcement_1.md`.
 - `_bibliography/papers.bib` — all publications. Mark papers with `selected = {true}` to surface them on the homepage. See `_bibliography/README.md` for the curation conventions.
 - `_data/socials.yml` — socials shown in the page footer.
 - `_config.yml` — site-wide identity and Jekyll plugin config.
@@ -58,6 +61,11 @@ Not yet pushed to GitHub. When ready:
 
 Search for `TODO` in the repo for outstanding placeholders. Notable ones:
 
-- `_data/cv.yml` — placeholder. The CV page (`/cv/`) currently embeds the LaTeX-rendered PDF directly; switch back to the al-folio `layout: cv` if you ever want HTML rendering driven by this YAML file.
 - `_pages/about.md` — `more_info:` block is empty (optional contact line under the profile picture).
 - `_config.yml` — `middle_name` is blank; intentional for now.
+
+The CV page (`/cv/`) embeds the LaTeX-rendered PDF directly and includes a
+hand-curated HTML summary above it (for SEO indexability). If you ever want
+to switch to the al-folio `layout: cv` for HTML rendering, create a
+`_data/cv.yml` in the rendercv schema (see al-folio docs) and change
+`_pages/cv.md`'s `layout:` accordingly.

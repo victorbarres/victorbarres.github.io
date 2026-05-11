@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2026-04-20
+date: 2026-03-18
 inline: true
 related_posts: false
 ---
 
-[μ-Bench](https://sierra.ai/blog/mu-bench-an-open-multilingual-transcription-benchmark) released — an open multilingual transcription benchmark covering 5 locales, 5 ASR providers, and 4,270 human-annotated utterances from real customer calls.
+[τ³-Bench released](https://sierra.ai/blog/bench-advancing-agent-benchmarking-to-knowledge-and-voice) — extending τ-Bench with a knowledge-retrieval domain (τ-Knowledge), full-duplex voice evaluation (τ-Voice), and community-contributed task fixes. Live leaderboard at [taubench.com](https://taubench.com).

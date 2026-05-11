@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2026-03-02
+date: 2026-05-01
 inline: true
 related_posts: false
 ---
 
-Organizing and judging the Sierra τ²-Bench Custom Track of the [AgentX–AgentBeats Competition](https://rdi.berkeley.edu/agentx-agentbeats.html) (Berkeley RDI, Fall 2025 – Spring 2026).
+[τ-Voice](https://sierra.ai/blog/tau-voice-benchmarking-real-time-voice-agents-on-real-world-tasks) — first benchmark to measure full-duplex voice agents on realistic, grounded customer-service tasks. Voice agents have closed most of the gap to non-reasoning text models in ~8 months.

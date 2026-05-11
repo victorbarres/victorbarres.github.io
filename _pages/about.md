@@ -8,6 +8,7 @@ profile:
   align: right
   image: victor_barres.jpg
   image_circular: false # crops the image to make it circular
+  alt: Victor Barres, AI Researcher at Sierra. # screen-reader / SEO alt text; defaults to image filename if omitted
   more_info: # TODO: add address / office / contact lines here if desired
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
