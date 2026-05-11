@@ -1,0 +1,12 @@
+# LaTeX build artifacts (the source is barres_cv.tex; everything else regenerates).
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.xdv
+*.synctex.gz
+# The local PDF from latexmk is intermediate; bin/build_cv.sh copies it to
+# assets/pdf/barres_cv.pdf which is the canonical, committed copy.
+*.pdf

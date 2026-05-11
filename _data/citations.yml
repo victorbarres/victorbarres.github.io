@@ -1,0 +1,4 @@
+# Citation counts for bibliography entries, optionally fetched from external
+# services. Used in _layouts/bib.liquid for citation badges. Empty by default;
+# the bib layout's badge logic short-circuits when this file has no `papers`
+# entry for a given key.

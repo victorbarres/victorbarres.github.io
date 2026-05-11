@@ -1,0 +1,8 @@
+# Venue styling for bibliography entries (color/url for the abbr badge).
+# Used in _layouts/bib.liquid. Add entries keyed on the bibtex `abbr` value, e.g.:
+#
+#   "NAACL":
+#     url: https://aclanthology.org/venues/naacl/
+#     color: "#1f7ae0"
+#
+# Empty for now — the abbr badge falls back to the default styling.

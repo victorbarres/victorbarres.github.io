@@ -1,0 +1,45 @@
+# TODO: fill in CV data, then re-enable the CV page by setting `nav: true` in _pages/cv.md.
+# This file uses the rendercv schema (see _pages/cv.md frontmatter `cv_format`).
+# Sections you don't need can be deleted — al-folio renders only what's defined here.
+
+cv:
+  name: Victor Barres
+  label: AI Researcher # TODO: confirm preferred title
+  email: # TODO: add contact email
+  location: # TODO: e.g. San Francisco, CA
+  image: ""
+  summary: # TODO: 1–2 sentences for the CV summary block
+
+  social_networks:
+    - network: GitHub
+      username: victorbarres
+    # TODO: add LinkedIn / X / etc. once handles are confirmed
+    # - network: LinkedIn
+    #   username: victorbarres
+
+  sections:
+    # TODO: add Education / Experience / Publications / Awards sections.
+    # Example structure (remove the leading "#" to enable):
+    #
+    # Experience:
+    #   - company: Sierra
+    #     position: AI Researcher
+    #     location: # TODO
+    #     url: https://sierra.ai
+    #     start_date: # TODO
+    #     end_date: present
+    #     summary: # TODO
+    #     highlights:
+    #       - # TODO
+    #
+    # Education:
+    #   - institution: # TODO
+    #     location: # TODO
+    #     url: # TODO
+    #     area: # TODO
+    #     studyType: # TODO (PhD / MS / BS)
+    #     start_date: # TODO
+    #     end_date: # TODO
+    Placeholder:
+      - title: This CV page is not yet filled in
+        description: "Edit _data/cv.yml and re-enable the page in _pages/cv.md (set nav: true)."

@@ -1,0 +1,23 @@
+# this file contains the social media links and usernames of the author
+# the socials will be displayed in the order they are defined here
+# for more information, please refer to the documentation of jekyll-socials plugin: https://github.com/george-gca/jekyll-socials
+
+# TODO: drop your CV PDF in assets/pdf/ and update the path below (or comment this line to hide the CV link)
+# cv_pdf: /assets/pdf/victor_barres_cv.pdf
+
+# TODO: confirm preferred contact email — work (victor@sierra.ai) vs personal
+# email: victor@sierra.ai
+
+github_username: victorbarres # GitHub (uses the future username; rename of the account is planned separately)
+
+scholar_userid: RpPIx5AAAAAJ # Google Scholar ID from https://scholar.google.com/citations?user=RpPIx5AAAAAJ
+
+linkedin_username: victor-barres # https://www.linkedin.com/in/victor-barres/
+
+# TODO: add X / Twitter handle if desired
+# x_username: victorbarres
+
+# TODO: add ORCID ID if available
+# orcid_id: 0000-0000-0000-0000
+
+rss_icon: true # comment this line to hide the RSS icon

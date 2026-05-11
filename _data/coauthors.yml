@@ -1,0 +1,5 @@
+# Author hover-link annotations for jekyll-scholar.
+# Format: lowercase last name → list of {firstname: [...], url: ...} entries.
+# Used in _layouts/bib.liquid to add hyperlinks to specific co-authors on the
+# publications page. Empty for now — add entries if you want to link out to
+# co-authors' pages.

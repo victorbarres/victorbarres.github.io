@@ -1,0 +1,193 @@
+% ============================================================================
+% Victor Barres — Curriculum Vitae
+% ============================================================================
+%
+% Build (from this directory):
+%   latexmk -xelatex barres_cv.tex
+%
+% Or one-shot:
+%   xelatex barres_cv.tex
+%
+% Then copy/publish the resulting PDF to ../assets/pdf/barres_cv.pdf
+% (or run ../bin/build_cv.sh).
+% ============================================================================
+
+\documentclass[10.5pt,a4paper]{article}
+
+% ---- Page geometry ---------------------------------------------------------
+\usepackage[a4paper,left=0.7in,right=0.7in,top=0.6in,bottom=0.6in]{geometry}
+\usepackage[parfill]{parskip}
+
+% ---- Fonts -----------------------------------------------------------------
+\usepackage{fontspec}
+\setmainfont{Palatino}                % macOS system Palatino (.ttc)
+\usepackage{microtype}
+
+% ---- Color + links ---------------------------------------------------------
+\usepackage[dvipsnames,svgnames]{xcolor}
+\definecolor{accent}{HTML}{1f3a5f}   % deep slate-blue, understated
+\definecolor{muted}{HTML}{555555}
+
+\usepackage[hidelinks,colorlinks=true,urlcolor=accent,linkcolor=accent]{hyperref}
+
+% ---- Typography helpers ----------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\section}
+  {\large\bfseries\color{accent}}
+  {}{0pt}{}
+  [\vspace{-3pt}\color{accent}\hrule height 0.5pt\vspace{2pt}]
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+
+% Compact lists
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=1.1em, topsep=2pt, parsep=0pt, itemsep=2pt, label=\textcolor{accent}{\textbullet}}
+
+% Header band
+\newcommand{\name}[1]{{\Huge\bfseries\color{accent}#1}}
+\newcommand{\role}[1]{{\large\color{muted}#1}}
+
+% Role / org entry
+% \position{employer}{location}{start--end}
+%          {title}{notes (optional)}
+\newcommand{\position}[5]{%
+  \noindent
+  \textbf{#1}\hfill\textcolor{muted}{#3}\\
+  \textit{#4}\ifx&#5&\else, #5\fi\hfill\textcolor{muted}{#2}\par
+  \vspace{2pt}
+}
+
+% Education entry: same shape, slightly compressed
+\newcommand{\edu}[5]{%
+  \noindent
+  \textbf{#1}\hfill\textcolor{muted}{#3}\\
+  \textit{#4}\ifx&#5&\else, #5\fi\hfill\textcolor{muted}{#2}\par
+  \vspace{2pt}
+}
+
+% Inline reference to a paper in Selected Publications
+\newcommand{\paper}[3]{%
+  \noindent
+  \textbf{#1}\par
+  \textcolor{muted}{\small #2.\hfill #3}\par
+  \vspace{4pt}
+}
+
+\pagestyle{empty}
+
+% ============================================================================
+\begin{document}
+% ============================================================================
+
+% ---- Header ----------------------------------------------------------------
+\begin{minipage}{\textwidth}
+\name{Victor Barres, PhD}\\[2pt]
+\role{AI Researcher \textperiodcentered\ Conversational Agents \& Evaluation}\\[4pt]
+\textcolor{muted}{%
+  \href{mailto:victor.barres@gmail.com}{victor.barres@gmail.com}
+  \ \textperiodcentered\
+  \href{https://victorbarres.github.io}{victorbarres.github.io}
+  \ \textperiodcentered\
+  \href{https://www.linkedin.com/in/victor-barres/}{linkedin.com/in/victor-barres}
+  \ \textperiodcentered\
+  \href{https://scholar.google.com/citations?user=RpPIx5AAAAAJ}{Google Scholar}%
+}
+\end{minipage}
+
+% ============================================================================
+\section*{Experience}
+% ============================================================================
+
+\position{Sierra}{San Francisco, CA}{Sep 2024 – Present}
+  {AI Researcher}{}
+\begin{itemize}
+  \item Lead the \textbf{$\tau$-Bench family} of agent benchmarks --- research direction, codebase, public leaderboard (\href{https://taubench.com}{taubench.com}), and ecosystem of extensions: $\tau^2$-Bench (dual control), $\tau$-Knowledge (knowledge retrieval), $\tau$-Voice (full-duplex voice), and $\tau^3$-Bench (the combined release with community-contributed task and code improvements). Three papers from the family accepted to \textbf{ICML 2026}.
+  \item Kickstarted Sierra's internal \textbf{agent evaluation system}: set up the proof of concept and did the original work on user-simulation-driven stress testing for pre-release agent hardening across deployed customer-service domains.
+  \item Organizer \& judge of the Sierra $\tau^2$-Bench Custom Track at the \href{https://rdi.berkeley.edu/agentx-agentbeats.html}{AgentX–AgentBeats} competition (Berkeley RDI, Fall 2025 – Spring 2026).
+\end{itemize}
+
+\position{Elemental Cognition}{Remote}{Jun 2023 – Jul 2024}
+  {Senior Researcher (NLP)}{}
+\begin{itemize}
+  \item Developed core algorithms for EC's hybrid AI architecture, integrating LLMs with formal reasoning engines.
+  \item Led the integration of multi-round RAG with formal models of causation for knowledge-intensive multi-hop QA, published as \emph{From Generating Answers to Building Explanations} at NAACL 2025 (Industry).
+  \item Built conversational agents for two reasoning-heavy settings: a logic-programming assistant that elicits and translates user requirements into a logic program, and an ASP-reasoner-backed constraint-solving agent.
+\end{itemize}
+
+\position{Uniphore.ai}{Palo Alto, CA}{Dec 2019 – Jun 2023}
+  {Principal NLP Scientist \& NLP Research Lead}{previously Senior NLP Scientist (2019–2021)}
+\begin{itemize}
+  \item Built and led Uniphore's NLP Lab (7+ scientists). Set short-, mid-, and long-term research strategy for understanding human–human spoken conversation in the contact-center domain.
+  \item Shipped foundational and applied work across LLM benchmarking, prompt engineering, structured knowledge grounding, summarization, semantic parsing, dialogue-act and dialogue-flow modeling, and real-time caller-intent recognition.
+  \item Kickstarted the team, deployed first NER / redaction / call-driver models, and stood up cloud infrastructure and CI/CD for production NLP.
+\end{itemize}
+
+\position{Astound.ai}{Menlo Park, CA}{Sep 2017 – Dec 2019}
+  {AI Scientist (NLP)}{}
+\begin{itemize}
+  \item Core member of the team that built, from the ground up, Astound's domain-expert conversational agent for IT / HR / Finance enterprise self-service.
+  \item Led the neuro-symbolic side of the agent's NLP stack — word/sentence embeddings, semantic parsing, knowledge-graph embeddings, and semantic inference — integrated with a modular dialogue manager (domain classification, intent recognition, search, small talk, sub-flows).
+  \item Built NLP-side APIs over Astound's ontology and extended it to support inference-driven multi-turn clarification, establishing a separation of concerns between knowledge, lexicon, and grammar engineers.
+\end{itemize}
+
+% ============================================================================
+\section*{Education}
+% ============================================================================
+
+\edu{University of Southern California}{Los Angeles, CA}{Sep 2010 – Aug 2017}
+  {PhD, Computational Cognitive Neuroscience}{}
+Dissertation: \emph{Schema Architecture for Language–Vision Interactions: A Computational Cognitive Neuroscience Model of Language Use.} Advisor: Michael A. Arbib.
+\vspace{4pt}
+
+\edu{École Normale Supérieure}{Paris, France}{Jun 2008 – Jun 2010}
+  {MS, Cognitive Science}{}
+\vspace{2pt}
+
+\edu{École Polytechnique}{Palaiseau, France}{Jun 2003 – Jun 2006}
+  {MS, Physics}{}
+\vspace{2pt}
+
+\edu{Lycée Louis-le-Grand}{Paris, France}{Jun 2001 – Jun 2003}
+  {Classes Préparatoires – Mathematics \& Physics}{}
+
+% ============================================================================
+\section*{Selected Publications}
+% ============================================================================
+
+\paper{$\tau$-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains}
+  {V. Barres*, S. Ray*, V. Dhandhania*, K. Narasimhan}
+  {arXiv:2603.13686, 2026. Accepted to ICML 2026.}
+
+\paper{$\tau$-Knowledge: Evaluating Conversational Agents over Unstructured Knowledge}
+  {Q. Shi, A. Zytek, P. Razavi, K. Narasimhan, V. Barres}
+  {arXiv:2603.04370, 2026. Accepted to ICML 2026.}
+
+\paper{$\tau^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment}
+  {V. Barres*, H. Dong*, S. Ray, X. Si, K. Narasimhan}
+  {arXiv:2506.07982, 2025. Accepted to ICML 2026.}
+
+\paper{From Generating Answers to Building Explanations: Integrating Multi-Round RAG and Causal Modeling for Scientific QA}
+  {V. Barres, C. McFate, A. Kalyanpur, K. K. Saravanakumar, L. Moon, N. Seifu, A. Bautista-Castillo}
+  {NAACL 2025 (Industry)}
+
+\paper{LLM-ARC: Enhancing LLMs with an Automated Reasoning Critic}
+  {A. Kalyanpur, K. Saravanakumar, V. Barres, J. Chu-Carroll, D. Melville, D. Ferrucci}
+  {arXiv:2406.17663, 2024}
+
+\paper{Template Construction Grammar: From Visual Scene Description to Language Comprehension and Agrammatism}
+  {V. Barres, J. Lee}
+  {Neuroinformatics 12(1), 2014}
+
+\paper{Synthetic Event-Related Potentials: A Computational Bridge between Neurolinguistic Models and Experiments}
+  {V. Barres, A. Simons, M. Arbib}
+  {Neural Networks 37, 2013}
+
+\vspace{4pt}
+\textcolor{muted}{\small * Equal contribution. Full list: \href{https://victorbarres.github.io/publications/}{victorbarres.github.io/publications/}}
+
+% ============================================================================
+\section*{Languages}
+% ============================================================================
+
+\textbf{English} (fluent) \textperiodcentered\ \textbf{French} (native) \textperiodcentered\ \textbf{Spanish} (conversational)
+
+\end{document}
