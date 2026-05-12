@@ -7,6 +7,27 @@ nav: true
 nav_order: 2
 ---
 
+<figure class="hero-banner" role="presentation" aria-hidden="true">
+  <img
+    class="hero-banner__light"
+    src="{{ '/assets/img/phrenology_banner.jpg' | relative_url }}"
+    alt=""
+    loading="eager"
+    decoding="async"
+    width="1600"
+    height="625"
+  >
+  <img
+    class="hero-banner__dark"
+    src="{{ '/assets/img/phrenology_banner_dark.png' | relative_url }}"
+    alt=""
+    loading="eager"
+    decoding="async"
+    width="1600"
+    height="625"
+  >
+</figure>
+
 I'm a researcher at [Sierra](https://sierra.ai), where I build and study
 **conversational AI agents** and the benchmarks that tell us when they
 actually work — the τ-Bench family (live leaderboard at
