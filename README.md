@@ -15,7 +15,7 @@ Runs at `http://127.0.0.1:4000/`. Live-reloads on most file edits; `_config.yml`
 ## Layout
 
 - `_pages/about.md` — landing page (`/`); short bio, current work, news, selected publications.
-- `_pages/research.md` — long-form research statement (`/research/`).
+- `_drafts/research.md` — long-form research statement, **currently hidden**. The `_drafts/` directory is in `_config.yml`'s `exclude:` list so it isn't rendered. To bring it back, move the file to `_pages/research.md` and remove the `_drafts/` entry from `exclude:`.
 - `_pages/publications.md` — `/publications/`, year-grouped list driven by `_bibliography/papers.bib`.
 - `_pages/service.md` — currently `nav: false`; re-enable once it has 3+ entries.
 - `_pages/cv.md` — `/cv/`, embeds the PDF compiled from `cv-src/barres_cv.tex` (see CV workflow below).
