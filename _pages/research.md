@@ -1,7 +1,4 @@
 ---
-# Currently hidden — see _config.yml `exclude:` entry for _drafts/.
-# To bring back: move this file to _pages/research.md and remove the
-# _drafts/ entry from exclude.
 layout: page
 title: research
 permalink: /research/

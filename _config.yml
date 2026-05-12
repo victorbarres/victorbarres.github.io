@@ -172,7 +172,6 @@ exclude:
   - CONTRIBUTING.md
   - CUSTOMIZE.md
   - cv-src/
-  - _drafts/ # source for pages that are intentionally not rendered yet
   - Dockerfile
   - docker-compose.yml
   - docker-compose-slim.yml

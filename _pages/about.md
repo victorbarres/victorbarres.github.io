@@ -33,6 +33,11 @@ execute complex tool-using tasks while sustaining long, coherent
 conversational interactions — the two things real-world deployments
 demand at once.
 
+My background is in computational cognitive science and cognitive
+linguistics, and I've spent years building real-world conversational
+systems across several startups.
+[More on how I think about the work →](/research/)
+
 ## current work
 
 I lead the current work on the [**τ-Bench family**](https://taubench.com) of
