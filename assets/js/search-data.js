@@ -45,8 +45,8 @@ ninja.data = [{
           section: "News",},{id: "news-τ-voice-first-benchmark-to-measure-full-duplex-voice-agents-on-realistic-grounded-customer-service-tasks-voice-agents-have-closed-most-of-the-gap-to-non-reasoning-text-models-in-8-months",
           title: 'τ-Voice — first benchmark to measure full-duplex voice agents on realistic, grounded customer-service...',
           description: "",
-          section: "News",},{id: "news-three-τ-bench-family-papers-accepted-to-icml-2026-τ-bench-dual-control-evaluation-τ-knowledge-knowledge-retrieval-and-τ-voice-full-duplex-voice-agents-see-you-in-july",
-          title: 'Three τ-Bench family papers accepted to ICML 2026: τ²-Bench (dual-control evaluation), τ-Knowledge (knowledge...',
+          section: "News",},{id: "news-three-τ-bench-family-papers-accepted-to-icml-2026-including-τ-bench-as-a-spotlight-τ-bench-dual-control-evaluation-τ-knowledge-knowledge-retrieval-and-τ-voice-full-duplex-voice-agents-see-you-in-july",
+          title: 'Three τ-Bench family papers accepted to ICML 2026 — including τ²-Bench as a...',
           description: "",
           section: "News",},{
         id: 'social-email',
@@ -77,11 +77,11 @@ ninja.data = [{
           window.open("https://www.linkedin.com/in/victor-barres", "_blank");
         },
       },{
-        id: 'social-rss',
-        title: 'RSS Feed',
+        id: 'social-x',
+        title: 'X',
         section: 'Socials',
         handler: () => {
-          window.open("/feed.xml", "_blank");
+          window.open("https://twitter.com/VBarres86633", "_blank");
         },
       },{
       id: 'light-theme',
