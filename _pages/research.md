@@ -1,10 +1,10 @@
 ---
 layout: page
-title: research
+title: how I think about the work
 permalink: /research/
-description: how I think about the work, and the threads that run through it.
-nav: true
-nav_order: 2
+# Intentionally unlisted: not in the top nav; reachable only via the
+# "More on how I think about the work →" link in _pages/about.md.
+nav: false
 ---
 
 <figure class="hero-banner" role="presentation" aria-hidden="true">
