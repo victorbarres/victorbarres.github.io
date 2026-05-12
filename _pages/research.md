@@ -1,10 +1,25 @@
 ---
 layout: page
-title: how I think about the work
+title: how I think about the work, and the threads that run through it.
 permalink: /research/
 # Intentionally unlisted: not in the top nav; reachable only via the
 # "More on how I think about the work →" link in _pages/about.md.
 nav: false
+# The page's only "title" element is the description-style sentence
+# above the banner — it reads as an epigraph rather than a category
+# label, which suits an unlisted positional essay. We render the H1
+# in description size (so the visible page is the sentence + banner
+# + prose), while keeping the H1 in the DOM for SEO + a11y.
+_styles: |
+  .post-header .post-title {
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: var(--global-text-color-light);
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+  }
+  .post-header .post-description:empty { display: none; }
 ---
 
 <figure class="hero-banner" role="presentation" aria-hidden="true">
