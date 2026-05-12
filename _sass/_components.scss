@@ -170,28 +170,31 @@ ul.task-list input[type="checkbox"] {
 }
 
 // Social (bottom)
+// Sized for footer use: ~40px (2.5rem) glyphs. Smaller than the al-folio
+// default 4rem so the icons read as utility chrome rather than a banner,
+// but still large enough to be tappable on mobile.
 
 .social {
   text-align: center;
 
   .contact-icons {
-    font-size: 4rem;
+    font-size: 2.5rem;
 
     a {
       img {
-        width: 3.2rem;
-        height: 3.2rem;
-        margin-bottom: 1rem;
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 0.625rem;
       }
 
       svg {
-        width: 3.5rem;
-        height: 4rem;
-        margin-bottom: 0.5rem;
+        width: 2.2rem;
+        height: 2.5rem;
+        margin-bottom: 0.3rem;
 
         image {
-          width: 3.5rem;
-          height: 3.5rem;
+          width: 2.2rem;
+          height: 2.2rem;
         }
       }
 
