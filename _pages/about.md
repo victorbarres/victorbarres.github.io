@@ -45,6 +45,6 @@ agent benchmarks (originally introduced at Sierra in 2024) — code, repo,
 public leaderboard, and a sequence of extensions:
 
 - **[τ²-Bench](https://sierra.ai/blog/benchmarking-agents-in-collaborative-real-world-scenarios)** — extends τ-Bench to a *dual-control* setting where both the agent and the user can act on the world.
-- **[τ-Knowledge](https://sierra.ai/blog/bench-advancing-agent-benchmarking-to-knowledge-and-voice)** — knowledge-retrieval domain.
+- **[τ-Knowledge](https://sierra.ai/blog/tau-knowledge)** — knowledge-retrieval domain.
 - **[τ-Voice](https://sierra.ai/blog/tau-voice-benchmarking-real-time-voice-agents-on-real-world-tasks)** — first benchmark to measure full-duplex voice agents on realistic, grounded customer-service tasks.
 - **[τ³-Bench](https://sierra.ai/blog/bench-advancing-agent-benchmarking-to-knowledge-and-voice)** — combines τ-Knowledge and τ-Voice with community-contributed task fixes and code improvements.
