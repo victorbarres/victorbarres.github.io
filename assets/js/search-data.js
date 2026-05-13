@@ -41,6 +41,9 @@ ninja.data = [{
           section: "News",},{id: "news-three-τ-bench-family-papers-accepted-to-icml-2026-including-τ-bench-as-a-spotlight-τ-bench-dual-control-evaluation-τ-knowledge-knowledge-retrieval-and-τ-voice-full-duplex-voice-agents-see-you-in-july",
           title: 'Three τ-Bench family papers accepted to ICML 2026 — including τ²-Bench as a...',
           description: "",
+          section: "News",},{id: "news-new-blog-post-τ-knowledge-benchmarking-agents-on-realistic-knowledge-frontier-has-moved-from-25-5-37-4-pass-1-since-the-march-release-with-63-pp-of-headroom-still-left-includes-a-behavioral-analysis-of-what-separates-the-strong-agents-from-the-rest",
+          title: 'New blog post — τ-Knowledge: benchmarking agents on realistic knowledge. Frontier has moved...',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',
