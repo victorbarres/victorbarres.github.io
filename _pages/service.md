@@ -12,7 +12,7 @@ nav_order: 3
 ## Competitions & shared evaluations
 
 **Organizer & judge, Sierra τ²-Bench Custom Track — [AgentX–AgentBeats Competition](https://rdi.berkeley.edu/agentx-agentbeats.html)**
-*Berkeley RDI · Fall 2025 – Spring 2026*
+_Berkeley RDI · Fall 2025 – Spring 2026_
 
 A two-phase, public competition hosted by Berkeley RDI in conjunction with the
 Agentic AI MOOC, aimed at building shared, reproducible benchmarks for agentic

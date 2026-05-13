@@ -55,7 +55,7 @@ language models in customer-facing settings.
 I came up through **computational cognitive science**, studying how humans
 use language as part of the continuous action–perception cycles that ground
 them in their environment. That work is rooted in **cognitive linguistics**
-— the view of language as an *activity*, embodied and situated, rather than
+— the view of language as an _activity_, embodied and situated, rather than
 a disembodied symbol system — and that lens still shapes how I think about
 agents today. Since then I've spent years building conversational systems
 deployed in the real world across several startups. My research view is
@@ -73,7 +73,7 @@ for years: how do we let language models do what they do well while still
 honoring the kinds of structured, accountable reasoning that real
 understanding seems to require? I don't have a clean answer. The latest
 iteration of this thread is
-[*From Generating Answers to Building Explanations*](https://aclanthology.org/2025.naacl-industry.42/),
+[_From Generating Answers to Building Explanations_](https://aclanthology.org/2025.naacl-industry.42/),
 from my time at Elemental Cognition.
 
 A third thing cognitive science taught me, and one I think the field of AI
@@ -82,7 +82,7 @@ underweights: cognitive systems are **systems of systems**, organized for
 system isn't a clever algorithm — it's something that exists through time,
 adapts to its environment, and keeps learning from it. I've found, perhaps
 surprisingly, that modern MLOps is one of the clearest illustrations of
-this: what *learns*, in any production setting, isn't a model on its own;
+this: what _learns_, in any production setting, isn't a model on its own;
 it's the whole pipeline of data, evaluation, deployment, monitoring, and
 iteration around it. And in fact it doesn't stop at the pipeline — the
 real "learning system" is the whole organization around it: the people
@@ -90,7 +90,7 @@ gathering requirements, the QA teams catching regressions, support and
 ops closing the loop with users. Maintenance is the substrate of
 intelligence, not an afterthought, and it is irreducibly sociotechnical.
 
-The throughline is *verum factum*: **we know what we make**. Theories of
+The throughline is _verum factum_: **we know what we make**. Theories of
 language, cognition, and intelligence are most trustworthy when you can
 build them, run them, maintain them, and watch them fail in informative
 ways. Benchmarks are the same idea pointed at agents — a discipline for

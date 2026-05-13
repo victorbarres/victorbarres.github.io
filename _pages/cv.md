@@ -32,33 +32,33 @@ nav_order: 4
 
 ### experience
 
-- **Sierra** — *AI Researcher* · Sep 2024 – Present · San Francisco, CA. Lead the
+- **Sierra** — _AI Researcher_ · Sep 2024 – Present · San Francisco, CA. Lead the
   τ-Bench family of agent benchmarks (research direction, codebase, public
   leaderboard at [taubench.com](https://taubench.com), and a sequence of
   extensions: τ²-Bench, τ-Knowledge, τ-Voice, τ³-Bench — three papers accepted
   to ICML 2026). Kickstarted Sierra's internal agent evaluation system and the
   user-simulation-driven stress testing used to harden agents pre-release.
-- **Elemental Cognition** — *Senior Researcher (NLP)* · Jun 2023 – Jul 2024 ·
+- **Elemental Cognition** — _Senior Researcher (NLP)_ · Jun 2023 – Jul 2024 ·
   Remote. Core algorithms for EC's hybrid AI architecture integrating LLMs
   with formal reasoning. Led the multi-round-RAG + causal-modeling work
-  published as *From Generating Answers to Building Explanations* at NAACL
+  published as _From Generating Answers to Building Explanations_ at NAACL
   2025 (Industry).
-- **Uniphore.ai** — *Principal NLP Scientist & NLP Research Lead* (previously
+- **Uniphore.ai** — _Principal NLP Scientist & NLP Research Lead_ (previously
   Senior NLP Scientist) · Dec 2019 – Jun 2023 · Palo Alto, CA. Built and led
   Uniphore's NLP Lab (7+ scientists); set short-, mid-, and long-term
   research strategy for understanding human–human spoken conversation in the
   contact-center domain.
-- **Astound.ai** — *AI Scientist (NLP)* · Sep 2017 – Dec 2019 · Menlo Park, CA.
+- **Astound.ai** — _AI Scientist (NLP)_ · Sep 2017 – Dec 2019 · Menlo Park, CA.
   Core member of the team that built Astound's domain-expert conversational
   agent for IT / HR / Finance enterprise self-service from the ground up.
 
 ### education
 
-- **University of Southern California** — *PhD, Computational Cognitive
-  Neuroscience* · 2010 – 2017. Dissertation: *Schema Architecture for
-  Language–Vision Interactions*. Advisor: Michael A. Arbib.
-- **École Normale Supérieure**, Paris — *MS, Cognitive Science* · 2008 – 2010.
-- **École Polytechnique**, Palaiseau — *MS, Physics* · 2003 – 2006.
+- **University of Southern California** — _PhD, Computational Cognitive
+  Neuroscience_ · 2010 – 2017. Dissertation: _Schema Architecture for
+  Language–Vision Interactions_. Advisor: Michael A. Arbib.
+- **École Normale Supérieure**, Paris — _MS, Cognitive Science_ · 2008 – 2010.
+- **École Polytechnique**, Palaiseau — _MS, Physics_ · 2003 – 2006.
 - **Lycée Louis-le-Grand**, Paris — Classes Préparatoires, Mathematics &
   Physics · 2001 – 2003.
 

@@ -56,18 +56,8 @@ body.sticky-bottom-footer {
   position: relative;
   // A short fade at the very bottom dissolves the engraving's collar fragment
   // into the page bg; the heads and faces above stay fully visible.
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 0,
-    rgba(0, 0, 0, 1) 85%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 0,
-    rgba(0, 0, 0, 1) 85%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
 
   img {
     display: block;

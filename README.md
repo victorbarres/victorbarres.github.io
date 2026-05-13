@@ -21,8 +21,8 @@ Runs at `http://127.0.0.1:4000/`. Live-reloads on most file edits; `_config.yml`
 - `_pages/cv.md` — `/cv/`, embeds the PDF compiled from `cv-src/barres_cv.tex` (see CV workflow below).
 - `_news/` — homepage news bullets. Filenames are numbered most-recent-first
   (`announcement_1.md` = newest), so the filename order mirrors the on-page
-  order. When adding a new item, rename the existing files up (shift _1 → _2,
-  _2 → _3, …) and drop the new entry into `announcement_1.md`.
+  order. When adding a new item, rename the existing files up (shift \_1 → \_2,
+  \_2 → \_3, …) and drop the new entry into `announcement_1.md`.
 - `_bibliography/papers.bib` — all publications. Mark papers with `selected = {true}` to surface them on the homepage. See `_bibliography/README.md` for the curation conventions.
 - `_data/socials.yml` — socials shown in the page footer.
 - `_config.yml` — site-wide identity and Jekyll plugin config.
