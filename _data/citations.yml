@@ -1,4 +1,87 @@
-# Citation counts for bibliography entries, optionally fetched from external
-# services. Used in _layouts/bib.liquid for citation badges. Empty by default;
-# the bib layout's badge logic short-circuits when this file has no `papers`
-# entry for a given key.
+metadata:
+  last_updated: '2026-05-20'
+papers:
+  RpPIx5AAAAAJ:2osOgNQ5qMEC:
+    citations: 0
+    title: 'Hearing lips and (not) seeing voices: Audiovisual integration with the suppressed percept'
+    year: '2012'
+  RpPIx5AAAAAJ:5nxA0vEk-isC:
+    citations: 0
+    title: Conference Links
+    year: Unknown Year
+  RpPIx5AAAAAJ:9yKSN-GCB0IC:
+    citations: 89
+    title: Language is handy but is it embodied?
+    year: '2014'
+  RpPIx5AAAAAJ:KlAtU1dfN6UC:
+    citations: 4
+    title: Method and apparatus for redacting sensitive information from audio
+    year: '2023'
+  RpPIx5AAAAAJ:LkGwnXOMwfcC:
+    citations: 5
+    title: Multi-step Inference over Unstructured Data
+    year: '2024'
+  RpPIx5AAAAAJ:MXK_kJrjxJIC:
+    citations: 1
+    title: '-Knowledge: Evaluating Conversational Agents over Unstructured Knowledge'
+    year: '2026'
+  RpPIx5AAAAAJ:Se3iqnhoufwC:
+    citations: 218
+    title: '-Bench: Evaluating Conversational Agents in a Dual-Control Environment'
+    year: '2025'
+  RpPIx5AAAAAJ:ULOm3_A8WrAC:
+    citations: 5
+    title: Soham Ray, Xujie Si, and Karthik Narasimhan
+    year: '2025'
+  RpPIx5AAAAAJ:UeHWp8X0CEIC:
+    citations: 23
+    title: 'Hearing (rivaling) lips and seeing voices: how audiovisual interactions modulate perceptual stabilization in binocular rivalry'
+    year: '2014'
+  RpPIx5AAAAAJ:WF5omc3nYNoC:
+    citations: 0
+    title: 'Controllable Discovery of Intents: Incremental Deep Clustering Using Semi-Supervised Contrastive Learning'
+    year: '2023'
+  RpPIx5AAAAAJ:Y0pCki6q_DkC:
+    citations: 5
+    title: 'Template construction Grammar: A schema-theoretic computational construction grammar'
+    year: '2017'
+  RpPIx5AAAAAJ:YsMSGLbcyi4C:
+    citations: 3
+    title: Real-time caller intent detection in human-human customer support spoken conversations
+    year: '2022'
+  RpPIx5AAAAAJ:Zph67rFs4hoC:
+    citations: 0
+    title: Method and apparatus for active learning based call categorization
+    year: '2023'
+  RpPIx5AAAAAJ:_FxGoFyzp5QC:
+    citations: 37
+    title: 'Llm-arc: Enhancing llms with an automated reasoning critic'
+    year: '2024'
+  RpPIx5AAAAAJ:d1gkVwhDpl0C:
+    citations: 0
+    title: 'How Auditory Information Influences Volitional Control in Binocular Rivalry: Modulation of a Top-Down Attentional Effect'
+    year: '2011'
+  RpPIx5AAAAAJ:hqOjcs7Dif8C:
+    citations: 1
+    title: Causal reasoning system
+    year: '2025'
+  RpPIx5AAAAAJ:kNdYIx-mwKoC:
+    citations: 2
+    title: '-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains'
+    year: '2026'
+  RpPIx5AAAAAJ:roLk4NBRz8UC:
+    citations: 2
+    title: 'From generating answers to building explanations: integrating multi-round rag and causal modeling for scientific qa'
+    year: '2025'
+  RpPIx5AAAAAJ:u-x6o8ySG0sC:
+    citations: 42
+    title: 'Template construction grammar: From visual scene description to language comprehension and agrammatism'
+    year: '2014'
+  RpPIx5AAAAAJ:u5HHmVD_uO8C:
+    citations: 35
+    title: 'Synthetic event-related potentials: a computational bridge between neurolinguistic models and experiments'
+    year: '2013'
+  RpPIx5AAAAAJ:zYLM7Y9cAGgC:
+    citations: 1
+    title: Can We Already Conceive of a Computational Construction Grammar that is Adequate to Address the Data of Neurolinguistics?
+    year: '2017'
