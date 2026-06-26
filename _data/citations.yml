@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-22'
+  last_updated: '2026-06-26'
 papers:
   RpPIx5AAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -26,7 +26,7 @@ papers:
     title: '-Knowledge: Evaluating Conversational Agents over Unstructured Knowledge'
     year: '2026'
   RpPIx5AAAAAJ:Se3iqnhoufwC:
-    citations: 292
+    citations: 295
     title: '-Bench: Evaluating Conversational Agents in a Dual-Control Environment'
     year: '2025'
   RpPIx5AAAAAJ:UeHWp8X0CEIC:
