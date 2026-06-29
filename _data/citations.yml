@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-26'
+  last_updated: '2026-06-29'
 papers:
   RpPIx5AAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -22,11 +22,11 @@ papers:
     title: Multi-step Inference over Unstructured Data
     year: '2024'
   RpPIx5AAAAAJ:MXK_kJrjxJIC:
-    citations: 3
+    citations: 5
     title: '-Knowledge: Evaluating Conversational Agents over Unstructured Knowledge'
     year: '2026'
   RpPIx5AAAAAJ:Se3iqnhoufwC:
-    citations: 295
+    citations: 310
     title: '-Bench: Evaluating Conversational Agents in a Dual-Control Environment'
     year: '2025'
   RpPIx5AAAAAJ:UeHWp8X0CEIC:
