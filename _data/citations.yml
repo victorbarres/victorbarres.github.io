@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-29'
+  last_updated: '2026-07-15'
 papers:
   RpPIx5AAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -22,11 +22,11 @@ papers:
     title: Multi-step Inference over Unstructured Data
     year: '2024'
   RpPIx5AAAAAJ:MXK_kJrjxJIC:
-    citations: 5
+    citations: 8
     title: '-Knowledge: Evaluating Conversational Agents over Unstructured Knowledge'
     year: '2026'
   RpPIx5AAAAAJ:Se3iqnhoufwC:
-    citations: 310
+    citations: 343
     title: '-Bench: Evaluating Conversational Agents in a Dual-Control Environment'
     year: '2025'
   RpPIx5AAAAAJ:UeHWp8X0CEIC:
@@ -41,6 +41,10 @@ papers:
     citations: 5
     title: 'Template construction Grammar: A schema-theoretic computational construction grammar'
     year: '2017'
+  RpPIx5AAAAAJ:YOwf2qJgpHMC:
+    citations: 0
+    title: 'AgentBeats: Agentifying Agent Assessment for Openness, Standardization, and Reproducibility'
+    year: '2026'
   RpPIx5AAAAAJ:YsMSGLbcyi4C:
     citations: 3
     title: Real-time caller intent detection in human-human customer support spoken conversations
@@ -50,7 +54,7 @@ papers:
     title: Method and apparatus for active learning based call categorization
     year: '2023'
   RpPIx5AAAAAJ:_FxGoFyzp5QC:
-    citations: 38
+    citations: 39
     title: 'Llm-arc: Enhancing llms with an automated reasoning critic'
     year: '2024'
   RpPIx5AAAAAJ:d1gkVwhDpl0C:
@@ -62,7 +66,7 @@ papers:
     title: Causal reasoning system
     year: '2025'
   RpPIx5AAAAAJ:kNdYIx-mwKoC:
-    citations: 4
+    citations: 6
     title: '-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains'
     year: '2026'
   RpPIx5AAAAAJ:roLk4NBRz8UC:
