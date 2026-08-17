@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-07-24'
+  last_updated: '2026-08-17'
 papers:
   RpPIx5AAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -18,15 +18,15 @@ papers:
     title: Method and apparatus for redacting sensitive information from audio
     year: '2023'
   RpPIx5AAAAAJ:LkGwnXOMwfcC:
-    citations: 5
+    citations: 7
     title: Multi-step Inference over Unstructured Data
     year: '2024'
   RpPIx5AAAAAJ:MXK_kJrjxJIC:
-    citations: 10
+    citations: 12
     title: '-Knowledge: Evaluating Conversational Agents over Unstructured Knowledge'
     year: '2026'
   RpPIx5AAAAAJ:Se3iqnhoufwC:
-    citations: 355
+    citations: 422
     title: '-Bench: Evaluating Conversational Agents in a Dual-Control Environment'
     year: '2025'
   RpPIx5AAAAAJ:UeHWp8X0CEIC:
@@ -34,7 +34,7 @@ papers:
     title: 'Hearing (rivaling) lips and seeing voices: how audiovisual interactions modulate perceptual stabilization in binocular rivalry'
     year: '2014'
   RpPIx5AAAAAJ:WF5omc3nYNoC:
-    citations: 0
+    citations: 1
     title: 'Controllable Discovery of Intents: Incremental Deep Clustering Using Semi-Supervised Contrastive Learning'
     year: '2023'
   RpPIx5AAAAAJ:Y0pCki6q_DkC:
@@ -54,7 +54,7 @@ papers:
     title: Method and apparatus for active learning based call categorization
     year: '2023'
   RpPIx5AAAAAJ:_FxGoFyzp5QC:
-    citations: 40
+    citations: 41
     title: 'Llm-arc: Enhancing llms with an automated reasoning critic'
     year: '2024'
   RpPIx5AAAAAJ:d1gkVwhDpl0C:
@@ -66,7 +66,7 @@ papers:
     title: Causal reasoning system
     year: '2025'
   RpPIx5AAAAAJ:kNdYIx-mwKoC:
-    citations: 6
+    citations: 7
     title: '-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains'
     year: '2026'
   RpPIx5AAAAAJ:roLk4NBRz8UC:
@@ -78,7 +78,7 @@ papers:
     title: 'Template construction grammar: From visual scene description to language comprehension and agrammatism'
     year: '2014'
   RpPIx5AAAAAJ:u5HHmVD_uO8C:
-    citations: 35
+    citations: 36
     title: 'Synthetic event-related potentials: a computational bridge between neurolinguistic models and experiments'
     year: '2013'
   RpPIx5AAAAAJ:zYLM7Y9cAGgC:
