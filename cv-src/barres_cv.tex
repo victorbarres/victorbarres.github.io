@@ -31,9 +31,10 @@
 \usepackage[hidelinks,colorlinks=true,urlcolor=accent,linkcolor=accent]{hyperref}
 
 % ---- Typography helpers ----------------------------------------------------
+\usepackage{needspace}
 \usepackage{titlesec}
 \titleformat{\section}
-  {\large\bfseries\color{accent}}
+  {\needspace{6\baselineskip}\large\bfseries\color{accent}}
   {}{0pt}{}
   [\vspace{-3pt}\color{accent}\hrule height 0.5pt\vspace{2pt}]
 \titlespacing*{\section}{0pt}{10pt}{4pt}
@@ -81,7 +82,7 @@
 % ---- Header ----------------------------------------------------------------
 \begin{minipage}{\textwidth}
 \name{Victor Barres, PhD}\\[2pt]
-\role{AI Researcher \textperiodcentered\ Conversational Agents \& Evaluation}\\[4pt]
+\role{Research Scientist \textperiodcentered\ Conversational Agents \& Evaluation}\\[4pt]
 \textcolor{muted}{%
   \href{mailto:victor.barres@gmail.com}{victor.barres@gmail.com}
   \ \textperiodcentered\
@@ -97,12 +98,18 @@
 \section*{Experience}
 % ============================================================================
 
-\position{Sierra}{San Francisco, CA}{Sep 2024 – Present}
+\position{Mercor}{San Francisco, CA}{Jun 2026 – Present}
+  {Research Scientist}{}
+\begin{itemize}
+  \item Founding member of the \textbf{APEX research team} (\href{https://www.mercor.com/blog/why-mercor-is-building-a-research-team/}{AI Productivity Index}), measuring how capable AI is at economically valuable work.
+  \item Research on conversational AI agents inside organizations --- how they work with people, how they are transforming work itself, and how to measure that well enough to understand it.
+\end{itemize}
+
+\position{Sierra}{San Francisco, CA}{Sep 2024 – May 2026}
   {AI Researcher}{}
 \begin{itemize}
-  \item Lead the \textbf{$\tau$-Bench family} of agent benchmarks --- research direction, codebase, public leaderboard (\href{https://taubench.com}{taubench.com}), and ecosystem of extensions: $\tau^2$-Bench (dual control), $\tau$-Knowledge (knowledge retrieval), $\tau$-Voice (full-duplex voice), and $\tau^3$-Bench (the combined release with community-contributed task and code improvements). Three papers from the family accepted to \textbf{ICML 2026}.
+  \item Led the \textbf{$\tau$-Bench family} of agent benchmarks --- research direction, codebase, public leaderboard (\href{https://taubench.com}{taubench.com}), and ecosystem of extensions: $\tau^2$-Bench (dual control), $\tau$-Knowledge (knowledge retrieval), $\tau$-Voice (full-duplex voice), and $\tau^3$-Bench (the combined release with community-contributed task and code improvements). Three papers from the family accepted to \textbf{ICML 2026}, with $\tau^2$-Bench as an \textbf{oral}. Continued contributing to the line after leaving: Hyper-$\tau$-Bench (agents that build agents), $\tau$-Multilingual, and $\tau$-Elicitation (2026).
   \item Kickstarted Sierra's internal \textbf{agent evaluation system}: set up the proof of concept and did the original work on user-simulation-driven stress testing for pre-release agent hardening across deployed customer-service domains.
-  \item Organizer \& judge of the Sierra $\tau^2$-Bench Custom Track at the \href{https://rdi.berkeley.edu/agentx-agentbeats.html}{AgentX–AgentBeats} competition (Berkeley RDI, Fall 2025 – Spring 2026).
 \end{itemize}
 
 \position{Elemental Cognition}{Remote}{Jun 2023 – Jul 2024}
@@ -130,6 +137,15 @@
 \end{itemize}
 
 % ============================================================================
+\section*{Service}
+% ============================================================================
+
+\begin{itemize}
+  \item Co-organizer, \href{https://usersim-workshop.github.io/}{Grounded User Simulation for Model Evaluation and Training}, NeurIPS 2026 Workshop (Paris, Dec 2026).
+  \item Organizer \& judge, Sierra $\tau^2$-Bench Custom Track, \href{https://rdi.berkeley.edu/agentx-agentbeats.html}{AgentX–AgentBeats} competition (Berkeley RDI, 2025–2026).
+\end{itemize}
+
+% ============================================================================
 \section*{Education}
 % ============================================================================
 
@@ -153,8 +169,16 @@ Dissertation: \emph{Schema Architecture for Language–Vision Interactions: A Co
 \section*{Selected Publications}
 % ============================================================================
 
+\paper{$\tau^\tau$-Bench (Hyper-$\tau$-Bench): An Environment for End-To-End, Realistic Agent Construction}
+  {Q. Shi, K. Dhandhania, K. Narasimhan, V. Barres}
+  {arXiv:2609.04611, 2026}
+
+\paper{$\tau$-Multilingual: Benchmarking Voice Agents Across Languages}
+  {S. Ray, E. dos Santos Paiva, R. Valenzuela, K. Narasimhan, K. Dhandhania, V. Barres}
+  {arXiv:2609.35820, 2026}
+
 \paper{$\tau$-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains}
-  {V. Barres*, S. Ray*, V. Dhandhania*, K. Narasimhan}
+  {V. Barres*, S. Ray*, K. Dhandhania*, K. Narasimhan}
   {arXiv:2603.13686, 2026. Accepted to ICML 2026.}
 
 \paper{$\tau$-Knowledge: Evaluating Conversational Agents over Unstructured Knowledge}
@@ -163,7 +187,7 @@ Dissertation: \emph{Schema Architecture for Language–Vision Interactions: A Co
 
 \paper{$\tau^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment}
   {V. Barres*, H. Dong*, S. Ray, X. Si, K. Narasimhan}
-  {arXiv:2506.07982, 2025. Accepted to ICML 2026.}
+  {arXiv:2506.07982, 2025. ICML 2026 (Oral).}
 
 \paper{From Generating Answers to Building Explanations: Integrating Multi-Round RAG and Causal Modeling for Scientific QA}
   {V. Barres, C. McFate, A. Kalyanpur, K. K. Saravanakumar, L. Moon, N. Seifu, A. Bautista-Castillo}

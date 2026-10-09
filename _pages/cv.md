@@ -2,7 +2,7 @@
 layout: page
 permalink: /cv/
 title: cv
-description: current as of May 2026.
+description: current as of October 2026.
 nav: true
 nav_order: 4
 ---
@@ -32,12 +32,18 @@ nav_order: 4
 
 ### experience
 
-- **Sierra** — _AI Researcher_ · Sep 2024 – Present · San Francisco, CA. Lead the
+- **Mercor** — _Research Scientist_ · Jun 2026 – Present · San Francisco, CA.
+  Founding member of the APEX research team (AI Productivity Index). Research
+  on conversational AI agents inside organizations: how they work with
+  people, how they are transforming work itself, and how to measure it.
+- **Sierra** — _AI Researcher_ · Sep 2024 – May 2026 · San Francisco, CA. Led the
   τ-Bench family of agent benchmarks (research direction, codebase, public
   leaderboard at [taubench.com](https://taubench.com), and a sequence of
   extensions: τ²-Bench, τ-Knowledge, τ-Voice, τ³-Bench — three papers accepted
-  to ICML 2026). Kickstarted Sierra's internal agent evaluation system and the
-  user-simulation-driven stress testing used to harden agents pre-release.
+  to ICML 2026, τ²-Bench as an oral). Still contributing to the line:
+  Hyper-τ-Bench, τ-Multilingual, τ-Elicitation. Kickstarted Sierra's internal
+  agent evaluation system and the user-simulation-driven stress testing used
+  to harden agents pre-release.
 - **Elemental Cognition** — _Senior Researcher (NLP)_ · Jun 2023 – Jul 2024 ·
   Remote. Core algorithms for EC's hybrid AI architecture integrating LLMs
   with formal reasoning. Led the multi-round-RAG + causal-modeling work
@@ -51,6 +57,15 @@ nav_order: 4
 - **Astound.ai** — _AI Scientist (NLP)_ · Sep 2017 – Dec 2019 · Menlo Park, CA.
   Core member of the team that built Astound's domain-expert conversational
   agent for IT / HR / Finance enterprise self-service from the ground up.
+
+### service
+
+- Co-organizer, [Grounded User Simulation for Model Evaluation and
+  Training](https://usersim-workshop.github.io/), NeurIPS 2026 Workshop ·
+  Paris, Dec 2026.
+- Organizer & judge, Sierra τ²-Bench Custom Track,
+  [AgentX–AgentBeats](https://rdi.berkeley.edu/agentx-agentbeats.html)
+  competition · Berkeley RDI, 2025 – 2026.
 
 ### education
 
