@@ -43,14 +43,16 @@ _styles: |
   >
 </figure>
 
-I'm a researcher at [Sierra](https://sierra.ai), where I build and study
-**conversational AI agents** and the benchmarks that tell us when they
-actually work — the τ-Bench family (live leaderboard at
-[taubench.com](https://taubench.com)). My focus is on agents that must
+I build and study **conversational AI agents** — systems that must
 execute complex tool-using tasks while sustaining long, coherent
-conversational interactions — the two things real-world deployments
-demand at once, and the source of most of what's hard about deploying
-language models in customer-facing settings.
+conversational interactions, the two things real-world deployments demand
+at once. I did that work at [Sierra](https://sierra.ai), leading the
+τ-Bench family of benchmarks (live leaderboard at
+[taubench.com](https://taubench.com)). At
+[Mercor](https://www.mercor.com/blog/why-mercor-is-building-a-research-team/),
+as a founding member of the APEX research team, I'm taking it beyond the
+single conversation — to agents inside organizations, working with people,
+and changing the work itself.
 
 I came up through **computational cognitive science**, studying how humans
 use language as part of the continuous action–perception cycles that ground

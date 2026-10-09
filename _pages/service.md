@@ -9,6 +9,15 @@ nav_order: 3
 
 <!-- _pages/service.md — list service / activities entries below, most recent first. -->
 
+## Organizing
+
+**Co-organizer — [Grounded User Simulation for Model Evaluation and Training](https://usersim-workshop.github.io/)**
+_NeurIPS 2026 Workshop · Paris, December 12, 2026_
+
+A workshop on simulating users — and other humans — grounded enough to trust
+for evaluating and training models. Co-organized with Yev Meyer (NVIDIA),
+Flora Salim (UNSW), Krisztian Balog (University of Stavanger) and Preethi S. (UC Irvine).
+
 ## Competitions & shared evaluations
 
 **Organizer & judge, Sierra τ²-Bench Custom Track — [AgentX–AgentBeats Competition](https://rdi.berkeley.edu/agentx-agentbeats.html)**
