@@ -2,9 +2,9 @@
 layout: page
 permalink: /service/
 title: service
-description: community involvement, organizing, and reviewing.
-nav: false # hidden — single bullet doesn't justify a top-nav slot. Re-enable when there are 3+ entries.
-nav_order: 3
+description: talks, organizing, and community involvement.
+nav: true
+nav_order: 5
 ---
 
 <!-- _pages/service.md — list service / activities entries below, most recent first. -->
@@ -17,6 +17,27 @@ _NeurIPS 2026 Workshop · Paris, December 12, 2026_
 A workshop on simulating users — and other humans — grounded enough to trust
 for evaluating and training models. Co-organized with Yev Meyer (NVIDIA),
 Flora Salim (UNSW), Krisztian Balog (University of Stavanger) and Preethi S. (UC Irvine).
+
+## Talks
+
+**[Fit for Purpose: Environments, benchmarks, and the metrology of AI agents](/assets/html/fit-for-purpose-training-agents-irl-2026.html)**
+_Training Agents IRL · GitHub, San Francisco · October 22, 2026_ · [video](https://youtu.be/CKFUx7COIwQ?t=1170)
+
+Hosted by Hugging Face / OpenEnv. Attach a task and a grader, and an
+environment produces a number. You can judge it by what it does to the model,
+or by what it tells you about the model: a reward is not a measurement.
+
+**[τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment](/assets/html/tau2-bench-icml2026-oral.html)**
+_ICML 2026 · Oral · Seoul, July 2026_
+
+## Committees
+
+**Mercor representative — [OpenEnv Technical Committee](https://github.com/openenv/OpenEnv/blob/main/GOVERNANCE.md)**
+_2026 – present_
+
+OpenEnv is an open hub for building, sharing, and running agentic
+environments. A multi-company technical committee coordinates its direction,
+RFCs, and releases in public.
 
 ## Competitions & shared evaluations
 

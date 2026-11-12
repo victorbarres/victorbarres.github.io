@@ -1,5 +1,122 @@
 # Author hover-link annotations for jekyll-scholar.
 # Format: lowercase last name → list of {firstname: [...], url: ...} entries.
-# Used in _layouts/bib.liquid to add hyperlinks to specific co-authors on the
-# publications page. Empty for now — add entries if you want to link out to
-# co-authors' pages.
+# Used in _layouts/bib.liquid to link co-authors on the publications page.
+# firstname must match the BibTeX first name exactly (e.g. "Nicolai J.").
+# Every URL was checked to load and name the person (Nov 2026). Preference:
+# personal homepage > institutional/company page > Google Scholar.
+
+"foss":
+  - firstname: ["Nicolai J."]
+    url: https://www.cbs.dk/en/research/departments/department-strategy-and-innovation/nicolai-j-foss
+
+"nielsen":
+  - firstname: ["Henrik M."]
+    url: https://www.cbs.dk/en/research/departments/department-strategy-and-innovation/henrik-moller-nielsen
+
+"narasimhan":
+  - firstname: ["Karthik"]
+    url: https://karthiknarasimhan.com/
+
+"ray":
+  - firstname: ["Soham"]
+    url: https://sierra.ai/author/soham-ray
+
+"dhandhania":
+  - firstname: ["Keshav"]
+    url: https://sierra.ai/author/keshav-dhandhania
+
+"shi":
+  - firstname: ["Quan"]
+    url: https://benshi34.github.io/
+
+"dong":
+  - firstname: ["Honghua"]
+    url: https://dhh1995.github.io/
+
+"si":
+  - firstname: ["Xujie"]
+    url: https://www.cs.toronto.edu/~six/
+
+"razavi":
+  - firstname: ["Pedram"]
+    url: https://sierra.ai/author/pedram-razavi
+
+"zytek":
+  - firstname: ["Alexandra"]
+    url: https://sierra.ai/author/ola-zytek
+
+"song":
+  - firstname: ["Dawn"]
+    url: https://dawnsong.io/
+
+"arbib":
+  - firstname: ["Michael A."]
+    url: https://viterbi.usc.edu/directory/faculty/Arbib/Michael
+
+"dominey":
+  - firstname: ["Peter Ford"]
+    url: https://sites.google.com/view/peter-ford-dominey/home
+
+"spranger":
+  - firstname: ["Michael"]
+    url: https://ai.sony/people/Michael-Spranger
+
+"kalyanpur":
+  - firstname: ["Aditya"]
+    url: https://scholar.google.com/citations?user=c2DvKxcAAAAJ
+
+"ferrucci":
+  - firstname: ["David"]
+    url: https://www.iaeai.ai/team/david
+
+"chu-carroll":
+  - firstname: ["Jennifer"]
+    url: https://scholar.google.com/citations?user=xjpCT2QAAAAJ
+
+"mcfate":
+  - firstname: ["Clifton James"]
+    url: https://scholar.google.com/citations?user=BaDvQhwAAAAJ
+
+"saravanakumar":
+  - firstname: ["Kailash Karthik"]
+    url: https://scholar.google.com/citations?user=jVzsK4EAAAAJ
+
+"reddy":
+  - firstname: ["Siva"]
+    url: https://sivareddy.in/
+
+"su":
+  - firstname: ["Yu"]
+    url: https://ysu1989.github.io/
+
+"lacoste":
+  - firstname: ["Alexandre"]
+    url: https://scholar.google.com/citations?user=71a2-WMAAAAJ
+
+"drouin":
+  - firstname: ["Alexandre"]
+    url: https://www.alexdrouin.com/
+
+"tabassi":
+  - firstname: ["Elham"]
+    url: https://www.brookings.edu/people/elham-tabassi/
+
+"rawat":
+  - firstname: ["Mrinal"]
+    url: https://scholar.google.com/citations?user=yG10EJMAAAAJ
+
+"moon":
+  - firstname: ["Lori"]
+    url: https://scholar.google.com/citations?user=2eTRV3wAAAAJ
+
+"sankararaman":
+  - firstname: ["Hithesh"]
+    url: https://scholar.google.com/citations?user=eRbldbcAAAAJ
+
+"eremeev":
+  - firstname: ["Maksim"]
+    url: https://scholar.google.com/citations?user=P8XvFLYAAAAJ
+
+"bautista-castillo":
+  - firstname: ["Abraham"]
+    url: https://scholar.google.com/citations?user=dqAd_5cAAAAJ

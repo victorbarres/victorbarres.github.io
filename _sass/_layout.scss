@@ -72,6 +72,25 @@ body.sticky-bottom-footer {
   }
 }
 
+// Home-page variant: a shorter strip of the same frieze (crowns, wiring and
+// eyes), linking through to /research/.
+.hero-banner--strip {
+  margin: 1.5rem 0 1rem;
+
+  img {
+    aspect-ratio: 1600 / 430;
+  }
+}
+
+.hero-banner-link {
+  display: block;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
 // Show the right asset for each theme. Default state is light.
 // Note: these need to use `img.hero-banner__*` selectors so they have
 // higher specificity than the generic `.hero-banner img` rule above.

@@ -34,7 +34,10 @@ I'm a founding member of the APEX research team at
 [Mercor](https://www.mercor.com/blog/why-mercor-is-building-a-research-team/),
 where I'm taking that beyond the single conversation: agents inside real
 organizations, working with people, and transforming the work itself — and
-how we measure that well enough to understand it, and help shape it. Before
+how we measure that well enough to understand it, and help shape it. With
+Aden Barton, [Nicolai Foss](https://www.cbs.dk/en/research/departments/department-strategy-and-innovation/nicolai-j-foss) and [Henrik Nielsen](https://www.cbs.dk/en/research/departments/department-strategy-and-innovation/henrik-moller-nielsen), I'm building a bridge between
+organization theory and AI evaluation
+([_Harder Than the Task_](https://arxiv.org/abs/2611.03494)). Before
 that, I led the τ-Bench family of agent benchmarks at
 [Sierra](https://sierra.ai) (live leaderboard at
 [taubench.com](https://taubench.com)).
@@ -43,6 +46,31 @@ My background is in computational cognitive science and cognitive
 linguistics, and I've spent years building real-world conversational
 systems across several startups.
 [More on how I think about the work →](/research/)
+
+<div markdown="0">
+<a class="hero-banner-link" href="{{ '/research/' | relative_url }}" aria-label="More on how I think about the work">
+  <figure class="hero-banner hero-banner--strip" role="presentation" aria-hidden="true">
+    <img
+      class="hero-banner__light"
+      src="{{ '/assets/img/phrenology_banner.jpg' | relative_url }}"
+      alt=""
+      loading="lazy"
+      decoding="async"
+      width="1600"
+      height="625"
+    >
+    <img
+      class="hero-banner__dark"
+      src="{{ '/assets/img/phrenology_banner_dark.png' | relative_url }}"
+      alt=""
+      loading="lazy"
+      decoding="async"
+      width="1600"
+      height="625"
+    >
+  </figure>
+</a>
+</div>
 
 ## the τ-Bench family
 
@@ -54,7 +82,8 @@ leaderboard, and a sequence of extensions, a line I still contribute to:
 - **[τ-Knowledge](https://sierra.ai/blog/tau-knowledge)** — knowledge-retrieval domain.
 - **[τ-Voice](https://sierra.ai/blog/tau-voice-benchmarking-real-time-voice-agents-on-real-world-tasks)** — first benchmark to measure full-duplex voice agents on realistic, grounded customer-service tasks.
 - **[τ³-Bench](https://sierra.ai/blog/bench-advancing-agent-benchmarking-to-knowledge-and-voice)** — combines τ-Knowledge and τ-Voice with community-contributed task fixes and code improvements.
-- **[τ-Multilingual](https://arxiv.org/abs/2609.35820)** — extends voice-agent evaluation across languages.
+- **[τ-i18n](https://sierra.ai/blog/tau-i18n)** — extends voice-agent evaluation across languages: Spanish, Brazilian Portuguese, Hindi, Korean and Mandarin.
+- **[τ-Entity](https://sierra.ai/blog/tau-entity-can-voice-agents-get-the-details-right)** — can voice agents get the details right? Someone's name, phone number or email, over the phone.
 - **[Hyper-τ-Bench](https://sierra.ai/blog/hyper-t-bench-evaluating-agents-that-build-agents)** — flips τ-Bench around: the agent has to _build_ the agent, from scattered requirements and a client who holds the rest, and we grade what it ships.
 
 **User simulation** runs through all of it — to build and evaluate agents

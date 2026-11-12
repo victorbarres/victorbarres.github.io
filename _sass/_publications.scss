@@ -41,6 +41,12 @@
 
       .preview {
         display: inline-block;
+
+        // On phones the abbr column stacks above the entry at full width;
+        // keep the thumbnail a thumbnail.
+        @media (max-width: 575.98px) {
+          max-width: 220px;
+        }
       }
 
       .abbr {
@@ -51,6 +57,12 @@
           background-color: var(--global-theme-color);
           margin-bottom: 0.5rem;
           color: var(--global-card-bg-color) !important;
+
+          // Venue badges with a color from _data/venues.yml (rendered as an
+          // inline background-color) keep white text in both themes.
+          &[style] {
+            color: white !important;
+          }
 
           a {
             color: white;

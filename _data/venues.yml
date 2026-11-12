@@ -5,4 +5,31 @@
 #     url: https://aclanthology.org/venues/naacl/
 #     color: "#1f7ae0"
 #
-# Empty for now — the abbr badge falls back to the default styling.
+# Venues not listed here fall back to the default theme-colored badge.
+#
+# Palette: preprints neutral (warm gray), conferences and journals colored.
+# All five colors keep white badge text at >= 5.9:1 (WCAG AA). The white text
+# itself is set in _sass/_publications.scss (`abbr[style]`).
+
+"arXiv":
+  color: "#6e6259"
+"ICML":
+  color: "#1f4e8c"
+"NAACL":
+  color: "#9c4f16"
+"IJCNLP":
+  color: "#9c4f16"
+"AAAI-SS":
+  color: "#3d6a38"
+"Neuroinformatics":
+  color: "#7b3f61"
+"Neural Networks":
+  color: "#7b3f61"
+"Neuropsychologia":
+  color: "#7b3f61"
+"Front. Hum. Neurosci.":
+  color: "#7b3f61"
+"Perception":
+  color: "#7b3f61"
+"i-Perception":
+  color: "#7b3f61"

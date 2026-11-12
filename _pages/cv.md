@@ -2,7 +2,7 @@
 layout: page
 permalink: /cv/
 title: cv
-description: current as of October 2026.
+description: current as of November 2026.
 nav: true
 nav_order: 4
 ---
@@ -36,12 +36,15 @@ nav_order: 4
   Founding member of the APEX research team (AI Productivity Index). Research
   on conversational AI agents inside organizations: how they work with
   people, how they are transforming work itself, and how to measure it.
+  Building a bridge between organization theory and AI evaluation with
+  Copenhagen Business School:
+  [_Harder Than the Task_](https://arxiv.org/abs/2611.03494) (2026).
 - **Sierra** — _AI Researcher_ · Sep 2024 – May 2026 · San Francisco, CA. Led the
   τ-Bench family of agent benchmarks (research direction, codebase, public
   leaderboard at [taubench.com](https://taubench.com), and a sequence of
   extensions: τ²-Bench, τ-Knowledge, τ-Voice, τ³-Bench — three papers accepted
   to ICML 2026, τ²-Bench as an oral). Still contributing to the line:
-  Hyper-τ-Bench, τ-Multilingual, τ-Elicitation. Kickstarted Sierra's internal
+  Hyper-τ-Bench, τ-i18n, τ-Entity. Kickstarted Sierra's internal
   agent evaluation system and the user-simulation-driven stress testing used
   to harden agents pre-release.
 - **Elemental Cognition** — _Senior Researcher (NLP)_ · Jun 2023 – Jul 2024 ·
@@ -63,9 +66,21 @@ nav_order: 4
 - Co-organizer, [Grounded User Simulation for Model Evaluation and
   Training](https://usersim-workshop.github.io/), NeurIPS 2026 Workshop ·
   Paris, Dec 2026.
+- Mercor representative, [OpenEnv Technical
+  Committee](https://github.com/openenv/OpenEnv/blob/main/GOVERNANCE.md) ·
+  2026 – present.
 - Organizer & judge, Sierra τ²-Bench Custom Track,
   [AgentX–AgentBeats](https://rdi.berkeley.edu/agentx-agentbeats.html)
   competition · Berkeley RDI, 2025 – 2026.
+
+### talks
+
+- [_Fit for Purpose: Environments, benchmarks, and the metrology of AI
+  agents_](/assets/html/fit-for-purpose-training-agents-irl-2026.html) ·
+  Training Agents IRL, GitHub, San Francisco · Oct 2026 · [video](https://youtu.be/CKFUx7COIwQ?t=1170).
+- [_τ²-Bench: Evaluating Conversational Agents in a Dual-Control
+  Environment_](/assets/html/tau2-bench-icml2026-oral.html) · ICML 2026
+  Oral, Seoul · Jul 2026.
 
 ### education
 
