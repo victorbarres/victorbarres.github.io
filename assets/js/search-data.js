@@ -18,10 +18,17 @@ ninja.data = [{
           },
         },{id: "nav-cv",
           title: "cv",
-          description: "current as of October 2026.",
+          description: "current as of November 2026.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/cv/";
+          },
+        },{id: "nav-service",
+          title: "service",
+          description: "talks, organizing, and community involvement.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/service/";
           },
         },{id: "news-τ-bench-released-a-benchmark-for-evaluating-conversational-agents-in-a-dual-control-environment-where-both-the-agent-and-the-user-can-take-actions-on-the-world",
           title: 'τ²-Bench released — a benchmark for evaluating conversational agents in a dual-control environment,...',
@@ -52,6 +59,15 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "news-hyper-τ-bench-released-do-agents-have-what-it-takes-to-build-agents-the-best-developer-agent-ships-23-9-an-engineer-s-hand-built-reference-reaches-82-2-open-source-with-a-leaderboard-that-takes-submissions-by-pull-request",
           title: 'Hyper-τ-Bench released — do agents have what it takes to build agents? The...',
+          description: "",
+          section: "News",},{id: "news-two-new-voice-agent-benchmarks-with-soham-ray-and-the-sierra-team-with-leaderboards-on-taubench-com-τ-entity-starts-from-something-that-sounds-trivial-getting-someone-s-name-phone-number-or-email-right-over-the-phone-when-agents-do-check-a-wrong-value-only-24-37-get-repaired-τ-i18n-takes-the-τ-bench-airline-retail-and-telecom-tasks-into-spanish-brazilian-portuguese-hindi-korean-and-mandarin-and-scores-task-completion-interaction-and-generation-separately-they-don-t-line-up",
+          title: 'Two new voice-agent benchmarks with Soham Ray and the Sierra team, with leaderboards...',
+          description: "",
+          section: "News",},{id: "news-talk-at-training-agents-irl-github-san-francisco-hosted-by-hugging-face-openenv-fit-for-purpose-environments-benchmarks-and-the-metrology-of-ai-agents-slides-video-attach-a-task-and-a-grader-and-an-environment-produces-a-number-you-can-judge-it-by-what-it-does-to-the-model-or-by-what-it-tells-you-about-the-model-a-reward-is-not-a-measurement",
+          title: 'Talk at Training Agents IRL (GitHub, San Francisco; hosted by Hugging Face /...',
+          description: "",
+          section: "News",},{id: "news-new-paper-with-aden-barton-and-with-nicolai-j-foss-and-henrik-m-nielsen-of-copenhagen-business-school-building-a-bridge-between-organization-theory-and-ai-evaluation-harder-than-the-task-blog-benchmarks-are-made-of-tasks-but-a-job-is-done-with-others-who-hold-information-make-decisions-and-depend-on-you-only-16-of-benchmarks-measure-any-organizational-dimension-though-attention-is-growing-fast-from-14-claiming-one-in-2023-to-33-in-2026",
+          title: 'New paper with Aden Barton, and with Nicolai J. Foss and Henrik M....',
           description: "",
           section: "News",},{
         id: 'social-email',
@@ -86,7 +102,7 @@ ninja.data = [{
         title: 'X',
         section: 'Socials',
         handler: () => {
-          window.open("https://twitter.com/VBarres86633", "_blank");
+          window.open("https://twitter.com/victorbarres_", "_blank");
         },
       },{
       id: 'light-theme',

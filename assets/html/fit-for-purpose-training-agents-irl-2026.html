@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fit for Purpose: Environments, Benchmarks, and the Metrology of AI Agents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f1f5f9;
+  --surface: #ffffff;
+  --ink: #020817;
+  --ink2: #334155;
+  --muted: #62748e;
+  --faint: #a3b1c4;
+  --line: #e2e8f0;
+  --soft: #f1f5f9;
+  --acc: #4f46e5;
+  --wash: #eef2ff;
+  --wash2: #e0e7ff;
+  --onacc: #ffffff;
+  --shadow: 0 1px 2px 0 rgba(0,0,0,0.05), 0 12px 32px -12px rgba(15,23,42,0.12);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+body {
+  margin: 0; height: 100%; overflow: hidden;
+  background: var(--page); color: var(--ink);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+#viewport { position: relative; width: 100%; height: 100%; }
+#stage {
+  position: absolute; left: 50%; top: 0;
+  width: 1600px; height: 900px;
+  transform-origin: 0 0;
+  background: var(--surface);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.slide {
+  position: absolute; inset: 0;
+  padding: 88px 96px 0;
+  opacity: 0; visibility: hidden;
+  transition: opacity 220ms ease-out, visibility 0s linear 220ms;
+}
+.slide.active { opacity: 1; visibility: visible; transition: opacity 260ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .slide, .slide.active { transition: none; } }
+
+h2 {
+  margin: 0; font-size: 60px; line-height: 1.06; font-weight: 700;
+  letter-spacing: -0.028em; color: var(--ink); max-width: 1180px;
+}
+.msg {
+  margin: 22px 0 0; font-size: 26px; line-height: 1.42; font-weight: 400;
+  color: var(--muted); max-width: 1080px; letter-spacing: -0.006em;
+}
+.art { position: absolute; left: 96px; }
+.art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.foot {
+  position: absolute; left: 96px; right: 96px; bottom: 38px;
+  display: flex; justify-content: space-between;
+  font-size: 15px; color: var(--faint); font-weight: 500; letter-spacing: 0;
+}
+
+/* SVG paint classes */
+svg { fill: none; stroke-linecap: round; stroke-linejoin: round; font-family: inherit; }
+.s-ink { stroke: var(--ink); } .s-ink2 { stroke: var(--ink2); }
+.s-mut { stroke: var(--muted); } .s-faint { stroke: var(--faint); }
+.s-line { stroke: var(--line); } .s-acc { stroke: var(--acc); }
+.s-onacc { stroke: var(--onacc); } .s-surf { stroke: var(--surface); }
+.f-ink { fill: var(--ink); } .f-mut { fill: var(--muted); } .f-faint { fill: var(--faint); }
+.f-acc { fill: var(--acc); } .f-wash { fill: var(--wash); } .f-wash2 { fill: var(--wash2); }
+.f-surf { fill: var(--surface); } .f-soft { fill: var(--soft); } .f-line { fill: var(--line); }
+.f-onacc { fill: var(--onacc); }
+text { stroke: none; }
+.t-ink { fill: var(--ink); } .t-ink2 { fill: var(--ink2); } .t-mut { fill: var(--muted); }
+.t-acc { fill: var(--acc); } .t-onacc { fill: var(--onacc); } .t-faint { fill: var(--faint); }
+
+/* Slide 1 */
+.cover-word {
+  position: absolute; left: 88px; top: 118px;
+  font-size: 300px; line-height: 1; font-weight: 800; letter-spacing: -0.06em;
+  color: var(--ink); white-space: nowrap;
+}
+.cover-word .dim { color: var(--line); }
+.cover-word .env { position: relative; display: inline-block; }
+.cover-word .env::after {
+  content: ""; position: absolute; left: 14px; right: 6px; bottom: -34px; height: 26px;
+  border: 4px solid var(--acc); border-top: 0; border-radius: 0 0 6px 6px;
+}
+.cover-q {
+  position: absolute; left: 96px; top: 520px; font-size: 44px; font-weight: 600;
+  letter-spacing: -0.02em; color: var(--ink); max-width: 1100px; line-height: 1.2;
+}
+.cover-q span { color: var(--muted); font-weight: 500; }
+.cover-title { position: absolute; left: 96px; top: 500px; }
+.cover-title h1 {
+  margin: 0; font-size: 88px; line-height: 1; font-weight: 800;
+  letter-spacing: -0.04em; color: var(--ink);
+}
+.cover-title p { margin: 20px 0 0; font-size: 30px; line-height: 1.3; color: var(--muted); letter-spacing: -0.01em; }
+.cover-hook {
+  position: absolute; right: 96px; bottom: 88px; text-align: right;
+  font-size: 22px; line-height: 1.45; font-weight: 600; color: var(--ink);
+}
+.cover-hook span { color: var(--muted); font-weight: 500; }
+.byline {
+  position: absolute; left: 96px; bottom: 84px; display: flex; align-items: center; gap: 18px;
+}
+.byline .who { font-size: 20px; font-weight: 600; color: var(--ink); }
+.byline .org { font-size: 17px; color: var(--muted); margin-top: 3px; }
+.talk-title {
+  position: absolute; right: 96px; bottom: 90px; text-align: right;
+  font-size: 18px; color: var(--muted); line-height: 1.5; max-width: 640px;
+}
+.talk-title b { color: var(--ink); font-weight: 600; }
+
+/* Slide 2 */
+.thesis-title { font-size: 96px; line-height: 1; letter-spacing: -0.045em; font-weight: 800; margin: 18px 0 0; }
+.thesis {
+  margin: 44px 0 0; font-size: 42px; line-height: 1.22; font-weight: 600;
+  letter-spacing: -0.02em; color: var(--ink); max-width: 780px;
+}
+.thesis-sub {
+  margin: 30px 0 0; font-size: 23px; line-height: 1.5; color: var(--muted); max-width: 700px;
+}
+.thesis-sub strong { color: var(--ink2); font-weight: 600; }
+
+/* Slide 7 */
+.night {
+  position: absolute; top: 0; right: 0; width: 860px; height: 900px;
+  background: #f1f5f9;
+}
+.s7 .col { max-width: 560px; }
+.s7 h2 { font-size: 64px; }
+.pull { position: absolute; left: 96px; bottom: 120px; max-width: 560px; }
+.pull .a { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+.pull .b { font-size: 24px; color: var(--muted); margin-top: 10px; }
+
+/* Slide 13 */
+.qs { list-style: none; margin: 56px 0 0; padding: 0; counter-reset: q; }
+.qs li {
+  counter-increment: q; display: grid; grid-template-columns: 84px 1fr; align-items: baseline;
+  padding: 22px 0; border-top: 1px solid var(--line);
+  font-size: 40px; line-height: 1.2; font-weight: 600; letter-spacing: -0.02em; color: var(--ink);
+}
+.qs li:last-child { border-bottom: 1px solid var(--line); }
+.qs li::before { content: counter(q); color: var(--acc); font-weight: 700; font-size: 40px; }
+.qs li span { color: var(--muted); font-weight: 500; }
+.closing { margin-top: 48px; font-size: 28px; color: var(--muted); }
+.closing b { color: var(--ink); font-weight: 600; }
+
+/* Slide 14 */
+.thanks { position: absolute; left: 96px; top: 250px; }
+.thanks .big { font-size: 150px; line-height: 1; letter-spacing: -0.05em; font-weight: 800; }
+.thanks .sub { font-size: 40px; color: var(--muted); margin-top: 28px; font-weight: 500; letter-spacing: -0.02em; }
+
+
+/* Backup table */
+.ftable { margin-top: 44px; width: 100%; border-collapse: collapse; font-size: 22px; }
+.ftable th { text-align: left; font-size: 16px; font-weight: 600; color: var(--muted); padding: 0 16px 12px 0; border-bottom: 1px solid var(--line); }
+.ftable td { padding: 17px 16px 17px 0; border-bottom: 1px solid var(--line); color: var(--ink2); vertical-align: top; }
+.ftable td.fn { color: var(--acc); font-weight: 700; width: 200px; }
+.ftable td:nth-child(2) { width: 380px; color: var(--ink); font-weight: 500; }
+
+
+/* Section transitions */
+.part-k { margin-top: 150px; font-size: 26px; font-weight: 600; color: var(--acc); }
+.part-title { margin-top: 18px; font-size: 96px; line-height: 1.02; letter-spacing: -0.04em; font-weight: 800; max-width: 1300px; }
+.parts {
+  position: absolute; left: 96px; right: 96px; bottom: 120px; margin: 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+}
+.parts li { border-top: 4px solid var(--line); padding-top: 16px; font-size: 20px; line-height: 1.35; font-weight: 600; color: var(--faint); }
+.parts li .pn { display: block; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.parts li.done { color: var(--muted); border-top-color: var(--faint); }
+.parts li.now { color: var(--ink); border-top-color: var(--acc); }
+.parts li.now .pn { color: var(--acc); }
+
+/* Controls and notes */
+#controls {
+  position: fixed; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  display: flex; gap: 6px; align-items: center; z-index: 5;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 4px;
+}
+#controls button {
+  font: inherit; font-size: 14px; font-weight: 500; color: var(--ink);
+  background: transparent; border: 0; border-radius: 6px; height: 32px; min-width: 32px; padding: 0 10px; cursor: pointer;
+}
+#controls button:hover { background: var(--soft); }
+#controls button:focus-visible { outline: 2px solid var(--acc); outline-offset: 1px; }
+#controls button[aria-pressed="true"] { background: var(--wash); color: var(--acc); }
+#count { font-size: 13px; color: var(--muted); padding: 0 8px; font-variant-numeric: tabular-nums; }
+#progress { position: fixed; left: 0; top: env(safe-area-inset-top, 0px); height: 3px; background: var(--acc); width: 0; transition: width 260ms ease-out; z-index: 6; }
+#notes {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 4;
+  background: var(--surface); border-top: 1px solid var(--line);
+  padding: 18px 24px calc(64px + env(safe-area-inset-bottom, 0px));
+  font-size: 17px; line-height: 1.6; color: var(--ink2);
+  display: none; max-height: 34vh; overflow-y: auto;
+}
+#notes.open { display: block; }
+#notes .lbl { font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+#notes p { margin: 0; max-width: 980px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="viewport">
+<div id="stage" role="region" aria-roledescription="slide deck" aria-label="Fit for Purpose">
+
+<!-- 1 -->
+<section class="slide" id="s1" aria-label="Slide 1" data-notes="Env is in the name. Most of you build environments, host them, or pull them down by the dozen to train on, and most of today is about that: environments as a source of reward. I’m going to come at it from the other side. I’m the tau-bench guy. I’ve spent years building environments whose job isn’t to train models but to measure them. And I want to argue that those two jobs are more different than they look, and that mixing them up is where a lot of trouble starts.">
+  <div class="cover-word" aria-label="OpenEnv"><span class="dim">Open</span><span class="env">Env</span></div>
+  <div class="cover-title"><h1>Fit for Purpose</h1><p>Environments, benchmarks, and the metrology of AI agents</p></div>
+  <div class="byline"><svg width="40" height="35" aria-hidden="true" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo0OTAwNGQxNS0zMmM3LTRhNDAtODg5MS1mODYyNDg4ZTg4YWMAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaMYWr7BfB5BIc/Z1KHnZmSYAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpjNjE1MmJhMC03Yzk4LTQ0ZmEtYmUzNi0yZmE5ZGI1ZjY1N2ZscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoUkwQzybw2zdiNuklHy9WtgAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggO/jfCMbZnfk1r1bZfVGBXNmTDUeBfIZj+wJ3UfReRkekZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaJBvfXiCwRnMtmxm8IZESHMAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCDUYZq1S/90wnZToCh3RVlW/GYPOorSedOi4+iyYvrkKGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBieZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjQ5MDA0ZDE1LTMyYzctNGE0MC04ODkxLWY4NjI0ODhlODhhYy9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjAzZjQ2N2MwLTU2MzMtNDZkZC1iMTQxLTIxNTZmNjAzYzI0NnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCA7+N8Ixtmd+TWvVtl9UYFc2ZMNR4F8hmP7AndR9F5GR6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggxIxjoKdgTjqTfk3QHEqA6uFEgCQ+f4c3teEOJ+ExYoSiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggZ+FBuXyx0yqbS5uO/4doB4+FNblCfdpcNEuajWPklXt0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQBMx2MGq3S780U245mPnWyo7GC1FzbYyAuE+OkSNnLFytNdLpiGAre4G3i53fnC3bG8adDSHs9aX8NAvyvQf67s=</c2pa:manifest></metadata>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M25.1123 12.9868L24.9672 24.7141C24.9672 24.7141 24.8296 25.7669 25.8636 26.1589C26.8976 26.551 30.7022 27.9976 30.7022 27.9976C30.7022 27.9976 31.1645 28.0565 31.5845 27.5943C32.0028 27.133 31.9476 26.6979 31.9476 26.158V8.26246C31.9476 8.26246 32.4819 1.47285 26.9808 0.108583C26.9808 0.108583 23.9782 -0.622159 21.6566 1.70772C22.5792 2.18215 23.4672 3.01305 24.0895 4.42597C25.3817 7.35667 25.1113 12.9878 25.1113 12.9878H25.1123V12.9868ZM21.6173 1.74707C21.5958 1.76949 21.5743 1.79103 21.5527 1.81345C21.5743 1.79103 21.5958 1.76861 21.6173 1.74707Z" fill="url(#lapaint0_linear_4_34)"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0.0200614 25.8848C0.0200614 25.8848 -0.252204 27.9208 1.25901 27.9499L6.04514 25.9512C6.04514 25.9512 7.02015 25.6349 6.96679 24.6431C6.91353 23.6502 6.63657 12.8493 6.63657 12.8493C6.63657 12.8493 4.57798 3.15629 1.32079 2.37122C0.71722 3.22551 0.39532 4.1547 0.22311 4.85088C0.0500199 5.5498 0.0191799 5.93534 0.0126204 6.63152C-0.0191977 10.2041 0.01918 25.8848 0.01918 25.8848H0.0200614Z" fill="url(#lapaint1_linear_4_34)"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.63658 12.8484C6.63658 12.8484 10.0164 20.6429 11.624 21.8219C11.624 21.8219 15.2077 18.5142 15.9956 14.893L12.1901 5.53296C12.1901 5.53296 9.98737 -0.4284 5.2592 0.100271C3.30919 0.318299 2.08718 1.28391 1.3208 2.36935C4.578 3.15443 6.63658 12.8475 6.63658 12.8475V12.8484Z" fill="url(#lapaint2_linear_4_34)"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.6235 21.8219C13.232 23.0009 15.2475 24.0732 18.0135 23.1085C20.7794 22.1439 21.7657 19.9991 22.0876 19.3347C22.4095 18.6705 25.1109 12.9879 25.1109 12.9879C25.1109 12.9879 25.3813 7.3576 24.0891 4.42602C23.4658 3.01309 22.5789 2.1822 21.6562 1.70776C21.5158 1.84913 21.3773 2.00069 21.2417 2.16536C21.2417 2.16536 20.6475 2.86996 20.1955 4.08727C19.7436 5.30371 15.9951 14.8929 15.9951 14.8929C15.2072 18.5141 11.6235 21.8219 11.6235 21.8219Z" fill="url(#lapaint3_linear_4_34)"></path>
+<defs>
+<linearGradient id="lapaint0_linear_4_34" x1="33.9826" y1="19.4376" x2="19.0593" y2="6.17649" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A4AFC"></stop>
+<stop offset="1" stop-color="#8C8FFF"></stop>
+</linearGradient>
+<linearGradient id="lapaint1_linear_4_34" x1="5.26105" y1="2.37856" x2="1.88488" y2="27.2681" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A4AFC"></stop>
+<stop offset="1" stop-color="#8C8FFF"></stop>
+</linearGradient>
+<linearGradient id="lapaint2_linear_4_34" x1="15.0085" y1="16.9785" x2="2.82817" y2="2.44016" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A4AFC"></stop>
+<stop offset="1" stop-color="#8C8FFF"></stop>
+</linearGradient>
+<linearGradient id="lapaint3_linear_4_34" x1="25.3381" y1="6.4569" x2="13.4937" y2="20.9528" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A4AFC"></stop>
+<stop offset="1" stop-color="#8C8FFF"></stop>
+</linearGradient>
+</defs>
+</svg><div><div class="who">Victor Barres</div><div class="org">Mercor Research Lab</div></div></div>
+  <div class="cover-hook">Env is in the name.<br><span>But what is an environment for?</span></div>
+</section>
+
+
+
+
+
+
+<!-- 2 -->
+<section class="slide" id="s2" aria-label="Slide 2" data-notes="Part one: what an environment is, and what its number is for.">
+  <div class="part-k">Part 1 of 4</div>
+  <h2 class="part-title">An environment and its number</h2>
+  <ol class="parts"><li class="now"><span class="pn">1</span>An environment and its number</li><li class=""><span class="pn">2</span>Building the instrument</li><li class=""><span class="pn">3</span>Reading the measurement</li><li class=""><span class="pn">4</span>Living with an eval</li></ol>
+  <footer class="foot"><span>Fit for Purpose</span><span>2 / 19</span></footer>
+</section>
+
+
+<!-- 3 -->
+<section class="slide" id="s3" aria-label="Slide 3" data-notes="Before asking what an environment is for, what is it? The biologist Jakob von Uexküll had a lovely answer, with an oak tree. The same oak, one piece of the world, is a different environment for each creature that lives in it. For the fox, it’s a roof over its den. For the owl, a lookout. For the squirrel, a ladder. For the ant, a hunting ground in the furrows of the bark. For the bark beetle, food. For the forester, timber. What each creature can sense and do decides what the tree is: Uexküll called this the functional circle, from sensors to effectors and back. An environment is the world seen through an actor’s body. Same for agents: the body is what the agent can observe and what it can act on. One customer-support operation is a different environment for a chat agent, a voice agent, and a back-office agent. That’s roughly the difference between tau-bench and tau-voice. Keep that in mind: an environment is the world seen through an actor. Next, once you attach a task and a grader, it’s seen through a purpose too.">
+  <h2>One world, many environments</h2>
+  <p class="msg">An environment is the world seen through an actor’s body: what it can sense, and what it can do.</p>
+  <div class="art" style="top:290px; width:1408px; height:530px">
+    <svg viewBox="0 0 1408 530" role="img" aria-label="An oak tree that is a different world for the owl, squirrel, bark beetle, ant, fox, and forester; and one customer-support operation that is a different environment for chat, voice, and back-office agents.">
+
+      <ellipse class="f-soft" cx="300" cy="494" rx="70" ry="22"/>
+      <line class="s-faint" stroke-width="2" x1="40" y1="470" x2="780" y2="470"/>
+      <path class="f-surf s-ink2" stroke-width="2.5" d="M368 470 C378 400 380 330 386 250 L414 250 C420 330 422 400 432 470 Z"/>
+      <path class="s-ink2" stroke-width="2.5" d="M368 470 C352 462 334 466 316 476 M432 470 C448 462 470 466 486 476 M388 290 C370 270 345 250 318 236 M410 276 C440 252 470 236 500 222"/>
+      <g class="s-faint" stroke-width="3" style="fill:var(--soft)"><circle cx="300" cy="196" r="78"/><circle cx="502" cy="190" r="82"/><circle cx="355" cy="112" r="72"/><circle cx="455" cy="104" r="76"/><circle cx="402" cy="170" r="112"/><circle cx="244" cy="236" r="50"/><circle cx="560" cy="236" r="52"/><circle cx="296" cy="104" r="54"/><circle cx="516" cy="112" r="58"/><circle cx="400" cy="58" r="56"/><circle cx="350" cy="250" r="56"/><circle cx="452" cy="250" r="56"/></g>
+      <g style="fill:var(--soft)"><circle cx="300" cy="196" r="78"/><circle cx="502" cy="190" r="82"/><circle cx="355" cy="112" r="72"/><circle cx="455" cy="104" r="76"/><circle cx="402" cy="170" r="112"/><circle cx="244" cy="236" r="50"/><circle cx="560" cy="236" r="52"/><circle cx="296" cy="104" r="54"/><circle cx="516" cy="112" r="58"/><circle cx="400" cy="58" r="56"/><circle cx="350" cy="250" r="56"/><circle cx="452" cy="250" r="56"/></g>
+      <g class="f-wash" opacity="0.7"><circle cx="360" cy="120" r="34"/><circle cx="470" cy="150" r="26"/><circle cx="290" cy="210" r="22"/><circle cx="520" cy="220" r="20"/></g>
+      <!-- owl -->
+      <path class="s-ink2" stroke-width="3" d="M300 238 H346"/>
+      <ellipse cx="322" cy="218" rx="14" ry="19" style="fill:var(--ink2)"/>
+      <path style="fill:var(--ink2)" d="M310 204 L312 194 L317 202 Z M334 204 L332 194 L327 202 Z"/>
+      <circle class="f-surf" cx="317" cy="212" r="4.5"/><circle class="f-surf" cx="327" cy="212" r="4.5"/>
+      <circle class="f-ink" cx="317" cy="212" r="2"/><circle class="f-ink" cx="327" cy="212" r="2"/>
+      <!-- squirrel -->
+      <ellipse cx="438" cy="336" rx="9" ry="14" style="fill:var(--ink2)" transform="rotate(-20 438 336)"/>
+      <circle cx="434" cy="320" r="6" style="fill:var(--ink2)"/>
+      <path class="s-ink2" stroke-width="5" d="M444 346 C462 344 468 326 458 316 C450 308 440 316 448 322"/>
+      <!-- beetle under bark -->
+      <rect class="f-wash" x="384" y="360" width="30" height="34" rx="6"/>
+      <ellipse class="f-ink" cx="399" cy="377" rx="6" ry="9"/>
+      <path class="s-surf" stroke-width="1" d="M399 369 V386"/>
+      <path class="s-ink" stroke-width="1.2" d="M393 373 l-4 -3 M393 379 l-5 0 M393 384 l-4 3 M405 373 l4 -3 M405 379 l5 0 M405 384 l4 3"/>
+      <!-- ants -->
+      <g class="f-ink"><circle cx="404" cy="424" r="2.2"/><circle cx="408" cy="428" r="2.6"/><circle cx="413" cy="433" r="3"/></g>
+      <g class="f-ink"><circle cx="394" cy="440" r="2.2"/><circle cx="397" cy="445" r="2.6"/><circle cx="401" cy="450" r="3"/></g>
+      <!-- fox in the den -->
+      <ellipse cx="298" cy="498" rx="24" ry="9" style="fill:var(--ink2)"/>
+      <path style="fill:var(--ink2)" d="M318 492 L338 497 L320 504 Z M320 492 L322 484 L327 492 Z"/>
+      <path class="s-ink2" stroke-width="7" d="M276 498 C262 500 256 492 262 486"/>
+      <!-- forester -->
+      <circle cx="610" cy="398" r="11" style="fill:var(--ink2)"/>
+      <path class="s-ink2" stroke-width="6" d="M610 410 V446 M610 446 L598 470 M610 446 L622 470 M610 420 L632 432"/>
+      <path class="s-ink2" stroke-width="3" d="M632 432 L646 410"/>
+      <path style="fill:var(--ink2)" d="M640 404 L654 408 L648 418 Z"/>
+
+      <circle class="f-acc" cx="304" cy="216" r="4"/><path class="s-faint" stroke-width="1.5" d="M298 216 H210"/><text class="t-ink2" x="204" y="222" font-size="18" text-anchor="end"><tspan font-weight="700" class="t-ink">owl</tspan> a lookout</text>
+      <circle class="f-acc" cx="456" cy="318" r="4"/><path class="s-faint" stroke-width="1.5" d="M462 318 H560"/><text class="t-ink2" x="566" y="324" font-size="18" text-anchor="start"><tspan font-weight="700" class="t-ink">squirrel</tspan> a ladder</text>
+      <circle class="f-acc" cx="384" cy="372" r="4"/><path class="s-faint" stroke-width="1.5" d="M380 372 H230"/><text class="t-ink2" x="224" y="378" font-size="18" text-anchor="end"><tspan font-weight="700" class="t-ink">bark beetle</tspan> food</text>
+      <circle class="f-acc" cx="398" cy="436" r="4"/><path class="s-faint" stroke-width="1.5" d="M392 436 H260"/><text class="t-ink2" x="254" y="442" font-size="18" text-anchor="end"><tspan font-weight="700" class="t-ink">ant</tspan> a hunting ground</text>
+      <circle class="f-acc" cx="258" cy="500" r="4"/><path class="s-faint" stroke-width="1.5" d="M252 500 H214"/><text class="t-ink2" x="208" y="506" font-size="18" text-anchor="end"><tspan font-weight="700" class="t-ink">fox</tspan> a roof over its den</text>
+      <circle class="f-acc" cx="662" cy="398" r="4"/><path class="s-faint" stroke-width="1.5" d="M668 398 H688"/><text class="t-ink2" x="694" y="404" font-size="18" text-anchor="start"><tspan font-weight="700" class="t-ink">forester</tspan> timber</text>
+
+
+      <text class="t-ink" x="880" y="28" font-size="26" font-weight="700">Same for agents</text>
+      <text class="t-mut" x="880" y="60" font-size="18">One customer-support operation, three environments.</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="880" y="88" width="528" height="104" rx="14"/>
+      <path class="f-wash s-acc" stroke-width="2" d="M904 118 h36 a6 6 0 0 1 6 6 v20 a6 6 0 0 1 -6 6 h-22 l-10 9 v-9 h-4 a6 6 0 0 1 -6 -6 v-20 a6 6 0 0 1 6 -6 Z"/>
+      <text class="t-ink" x="964" y="132" font-size="22" font-weight="700">Chat agent</text>
+      <text class="t-mut" x="964" y="162" font-size="17">sees text; acts with tools and messages</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="880" y="208" width="528" height="104" rx="14"/>
+      <path class="s-acc" stroke-width="3.5" d="M904 256 V264 M910 251 V269 M916 245 V275 M922 253 V267 M928 242 V278 M934 249 V271 M940 255 V265"/>
+      <text class="t-ink" x="964" y="252" font-size="22" font-weight="700">Voice agent</text>
+      <text class="t-mut" x="964" y="282" font-size="17">hears audio, timing, interruptions, noise</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="880" y="328" width="528" height="104" rx="14"/>
+      <g class="s-acc" stroke-width="2"><ellipse class="f-wash" cx="924" cy="362" rx="18" ry="6"/><path d="M906 362 V394 A18 6 0 0 0 942 394 V362 M906 378 A18 6 0 0 0 942 378"/></g>
+      <text class="t-ink" x="964" y="372" font-size="22" font-weight="700">Back-office agent</text>
+      <text class="t-mut" x="964" y="402" font-size="17">sees records and policies; acts on databases</text>
+      <text class="t-faint" x="880" y="472" font-size="15">After Jakob von Uexküll’s oak and its inhabitants (1934).</text>
+      <text class="t-ink" x="880" y="510" font-size="19" font-weight="600">In both, the body decides what the environment is.</text>
+
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>3 / 19</span></footer>
+</section>
+
+
+
+
+<!-- 4 -->
+<section class="slide" id="s4" aria-label="Slide 4" data-notes="Here’s the whole talk. Strictly, an environment produces trajectories. Attach a task and a grader, and you get a number: run the task, grade the trajectory, get a score. That grader is a design choice, and which choice is right depends on what the number is for. In training, that number is a reward, and it’s judged by what it does to the model. Is it learnable? Does it have variance at the right difficulty? Is it hard to hack? A reward can be noisy and tailored to today’s model, as long as the model gets better. In evaluation, the same number is a measurement, and it’s judged by what it tells you about the model. Is it reliable? Is it valid? Does it predict what happens in deployment? Metrology calls this fitness for purpose: a method is never valid in general, only for a stated purpose. Same machinery, two purposes. Think of a gym and a benchmark. In a gym, you pick the exercises that make you stronger, and you change them as you improve. A benchmark, originally, is a surveyor’s mark cut into stone: a fixed reference height that everything else is measured against. You don’t move it to suit whoever is being measured. And a reward curve going up is not the same thing as a measurement going up.">
+  <h2>A reward is not a measurement</h2>
+  <p class="msg">Attach a task and a grader, and an environment produces a number. You can judge it by what it does to the model, or by what it tells you about the model.</p>
+  <div class="art" style="top:284px; width:1408px; height:530px">
+    <svg viewBox="0 0 1408 530" role="img" aria-label="One environment emits a number. As a reward, it loops back into the model. As a measurement, it goes into a gauge.">
+      <defs>
+        <marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M1 1 L9 5 L1 9" class="s-faint" stroke-width="1.8" fill="none"/>
+        </marker>
+        <marker id="ah3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M1 1 L9 5 L1 9" class="s-acc" stroke-width="1.8" fill="none"/>
+        </marker>
+      </defs>
+      <rect class="f-surf s-ink" stroke-width="2" x="494" y="0" width="420" height="112" rx="14"/>
+      <text class="t-mut" x="518" y="32" font-size="16" font-weight="500">environment, with a task and a grader attached</text>
+      <rect class="f-soft" x="518" y="50" width="84" height="40" rx="20"/><text class="t-ink" x="560" y="76" font-size="17" font-weight="600" text-anchor="middle">task</text>
+      <path class="s-faint" stroke-width="2" d="M610 70 H640 M632 63 L640 70 L632 77"/>
+      <rect class="f-soft" x="648" y="50" width="96" height="40" rx="20"/><text class="t-ink" x="696" y="76" font-size="17" font-weight="600" text-anchor="middle">agent</text>
+      <path class="s-faint" stroke-width="2" d="M752 70 H782 M774 63 L782 70 L774 77"/>
+      <rect class="f-soft" x="790" y="50" width="100" height="40" rx="20"/><text class="t-ink" x="840" y="76" font-size="17" font-weight="600" text-anchor="middle">grader</text>
+      <path class="s-faint" stroke-width="2" d="M704 114 V146"/>
+      <rect class="f-acc" x="640" y="148" width="128" height="62" rx="14"/>
+      <text class="t-onacc" x="704" y="190" font-size="32" font-weight="700" text-anchor="middle">0.73</text>
+      <text class="t-mut" x="786" y="186" font-size="17">one number, two jobs</text>
+      <path class="s-faint" stroke-width="2" marker-end="url(#ah2)" d="M670 212 C640 262, 120 240, 104 292"/>
+      <path class="s-faint" stroke-width="2" marker-end="url(#ah2)" d="M738 212 C768 262, 840 240, 852 292"/>
+
+      <rect class="f-surf s-line" stroke-width="1.5" x="40" y="300" width="560" height="196" rx="14"/>
+      <path class="s-acc" stroke-width="3" d="M100 324 A26 26 0 1 1 74 350"/>
+      <path class="s-acc" stroke-width="3" d="M92 317 L100 324 L92 331"/>
+      <path class="f-acc" d="M86 348 L100 341 L114 348 L100 355 Z"/>
+      <path class="s-acc" stroke-width="2" d="M92 351 V358 C92 362 108 362 108 358 V351"/>
+      <path class="s-acc" stroke-width="1.5" d="M114 348 V357"/>
+      <text class="t-ink" x="152" y="342" font-size="32" font-weight="700">Reward</text>
+      <rect class="f-wash" x="420" y="314" width="160" height="40" rx="20"/>
+      <path class="s-acc" stroke-width="3" d="M440 334 H466"/>
+      <rect class="f-acc" x="435" y="323" width="6" height="22" rx="2"/><rect class="f-acc" x="443" y="327" width="4" height="14" rx="1.5"/>
+      <rect class="f-acc" x="459" y="327" width="4" height="14" rx="1.5"/><rect class="f-acc" x="465" y="323" width="6" height="22" rx="2"/>
+      <text class="t-acc" x="484" y="340" font-size="17" font-weight="600">a gym</text>
+      <text class="t-mut" x="152" y="372" font-size="19">judged by what it does to the model</text>
+      <g font-size="20" font-weight="500">
+        <circle class="f-acc" cx="158" cy="410" r="4"/><text class="t-ink2" x="174" y="417">learnable</text>
+        <circle class="f-acc" cx="158" cy="444" r="4"/><text class="t-ink2" x="174" y="451">variance at the right difficulty</text>
+        <circle class="f-acc" cx="158" cy="478" r="4"/><text class="t-ink2" x="174" y="485">hard to hack</text>
+      </g>
+
+      <rect class="f-surf s-ink" stroke-width="2" x="808" y="300" width="560" height="196" rx="14"/>
+      <path class="s-ink" stroke-width="3" d="M826 352 A26 26 0 0 1 878 352"/>
+      <path class="s-faint" stroke-width="2" d="M832 340 l5 3 M852 328 v6 M872 340 l-5 3"/>
+      <path class="s-acc" stroke-width="3" d="M852 352 L866 334"/>
+      <circle class="f-acc" cx="852" cy="352" r="4"/>
+      <text class="t-ink" x="904" y="342" font-size="32" font-weight="700">Measurement</text>
+      <rect class="f-soft" x="1176" y="314" width="180" height="40" rx="20"/>
+      <path class="s-ink" stroke-width="2.5" d="M1190 322 H1218 M1204 327 V346 M1204 327 L1195 346 M1204 327 L1213 346"/>
+      <text class="t-ink" x="1228" y="340" font-size="17" font-weight="600">a benchmark</text>
+      <text class="t-mut" x="904" y="372" font-size="19">judged by what it tells you about the model</text>
+      <g font-size="20" font-weight="500">
+        <circle class="f-ink" cx="910" cy="410" r="4"/><text class="t-ink2" x="926" y="417">reliable</text>
+        <circle class="f-ink" cx="910" cy="444" r="4"/><text class="t-ink2" x="926" y="451">valid for a stated purpose</text>
+        <circle class="f-ink" cx="910" cy="478" r="4"/><text class="t-ink2" x="926" y="485">predicts deployment</text>
+      </g>
+      <text class="t-mut" x="704" y="528" font-size="18" text-anchor="middle">Fitness for purpose: a method is never valid in general, only for a stated purpose.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>4 / 19</span></footer>
+</section>
+
+
+
+
+
+
+<!-- 5 -->
+<section class="slide" id="s5" aria-label="Slide 5" data-notes="Everyone here knows the difference from school. Homework and exams are made of the same stuff. But a good teacher picks homework for the student, repeats what didn’t stick, drops what’s mastered. None of that is allowed on the exam. All the recipe work you do on training data, filtering by pass rate, reweighting toward the right difficulty, is legitimate craft for a reward. Do the same thing to an eval and it’s a sampling violation: you’ve built a measurement that flatters today’s models and will saturate tomorrow. And the exam doesn’t care how you studied.">
+  <h2>Homework and exams</h2>
+  <p class="msg">Same materials, two assemblies. Homework adapts to the student. The exam can’t.</p>
+  <div class="art" style="top:276px; width:1408px; height:545px">
+    <svg viewBox="0 0 1408 545" role="img" aria-label="The same raw materials become a curriculum, homework, or an instrument, an exam.">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M1 1 L9 5 L1 9" class="s-faint" stroke-width="1.8" fill="none"/>
+        </marker>
+      </defs>
+      <rect class="f-surf s-line" stroke-width="1.5" x="444" y="0" width="520" height="118" rx="12"/>
+      <text class="t-mut" x="704" y="34" font-size="18" font-weight="500" text-anchor="middle">Same raw materials</text>
+      <rect class="f-soft" x="471" y="56" width="140" height="40" rx="20"/><text class="t-ink" x="541" y="82" font-size="17" font-weight="600" text-anchor="middle">environment</text>
+      <rect class="f-soft" x="623" y="56" width="80" height="40" rx="20"/><text class="t-ink" x="663" y="82" font-size="17" font-weight="600" text-anchor="middle">task</text>
+      <rect class="f-soft" x="715" y="56" width="110" height="40" rx="20"/><text class="t-ink" x="770" y="82" font-size="17" font-weight="600" text-anchor="middle">task set</text>
+      <rect class="f-soft" x="837" y="56" width="100" height="40" rx="20"/><text class="t-ink" x="887" y="82" font-size="17" font-weight="600" text-anchor="middle">scorer</text>
+      <path class="s-faint" stroke-width="2" marker-end="url(#ah)" d="M600 120 C600 170, 330 150, 330 196"/>
+      <path class="s-faint" stroke-width="2" marker-end="url(#ah)" d="M808 120 C808 170, 1078 150, 1078 196"/>
+
+      <!-- curriculum -->
+      <rect class="f-surf s-line" stroke-width="1.5" x="60" y="204" width="540" height="336" rx="12"/>
+      <text class="t-ink" x="96" y="252" font-size="30" font-weight="700">Curriculum</text>
+      <text class="t-mut" x="96" y="282" font-size="19">homework</text>
+      <g transform="translate(112 300)">
+        <rect class="f-soft s-faint" stroke-width="1.5" x="24" y="0" width="150" height="150" rx="6" transform="rotate(6 99 75)"/>
+        <rect class="f-surf s-faint" stroke-width="1.5" x="12" y="6" width="150" height="150" rx="6" transform="rotate(-4 87 81)"/>
+        <rect class="f-surf s-ink" stroke-width="2" x="0" y="12" width="150" height="150" rx="6"/>
+        <path class="s-faint" stroke-width="3" d="M22 46 H120 M22 72 H128 M22 98 H96 M22 124 H112"/>
+        <circle class="s-acc" stroke-width="2.5" cx="118" cy="98" r="11"/>
+      </g>
+      <path class="s-acc" stroke-width="3" d="M440 316 A64 64 0 1 1 384 344"/>
+      <path class="s-acc" stroke-width="3" d="M430 306 L441 316 L430 326"/>
+      <rect class="f-acc" x="408" y="382" width="12" height="22" rx="2" opacity="0.35"/>
+      <rect class="f-acc" x="426" y="368" width="12" height="36" rx="2" opacity="0.65"/>
+      <rect class="f-acc" x="444" y="354" width="12" height="50" rx="2"/>
+      <text class="t-mut" x="432" y="476" font-size="17" text-anchor="middle">adapts to the learner</text>
+      <text class="t-acc" x="96" y="516" font-size="20" font-weight="600">Score = learning signal</text>
+
+      <!-- instrument -->
+      <rect class="f-surf s-line" stroke-width="1.5" x="808" y="204" width="540" height="336" rx="12"/>
+      <text class="t-ink" x="844" y="252" font-size="30" font-weight="700">Instrument</text>
+      <text class="t-mut" x="844" y="282" font-size="19">exam</text>
+      <g transform="translate(860 308)">
+        <rect class="f-surf s-ink" stroke-width="2" x="0" y="0" width="150" height="150" rx="6"/>
+        <path class="s-faint" stroke-width="3" d="M22 34 H120 M22 60 H128 M22 86 H96 M22 112 H80"/>
+        <circle class="f-acc" cx="124" cy="126" r="24"/>
+        <path class="s-onacc" stroke-width="3" d="M113 126 l8 8 l14 -15"/>
+      </g>
+      <g transform="translate(1110 316)">
+        <path class="s-ink" stroke-width="3" d="M22 38 V24 A22 22 0 0 1 66 24 V38"/>
+        <rect class="f-ink" x="10" y="38" width="68" height="54" rx="8"/>
+        <circle class="f-surf" cx="44" cy="62" r="6"/>
+        <rect class="f-surf" x="41" y="64" width="6" height="14" rx="2"/>
+      </g>
+      <g transform="translate(1100 432)">
+        <rect class="f-wash s-acc" stroke-width="1.5" x="0" y="0" width="200" height="26" rx="4"/>
+        <path class="s-acc" stroke-width="1.5" d="M20 0 V12 M40 0 V8 M60 0 V12 M80 0 V8 M100 0 V16 M120 0 V8 M140 0 V12 M160 0 V8 M180 0 V12"/>
+      </g>
+      <text class="t-mut" x="1200" y="482" font-size="17" text-anchor="middle">fixed in advance</text>
+      <text class="t-acc" x="844" y="516" font-size="20" font-weight="600">Score = reading</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>5 / 19</span></footer>
+</section>
+
+
+
+
+
+
+<!-- 6 -->
+<section class="slide" id="s6" aria-label="Slide 6" data-notes="Part two: building the instrument. What it measures, and what has to be true for it to measure anything.">
+  <div class="part-k">Part 2 of 4</div>
+  <h2 class="part-title">Building the instrument</h2>
+  <ol class="parts"><li class="done"><span class="pn">1</span>An environment and its number</li><li class="now"><span class="pn">2</span>Building the instrument</li><li class=""><span class="pn">3</span>Reading the measurement</li><li class=""><span class="pn">4</span>Living with an eval</li></ol>
+  <footer class="foot"><span>Fit for Purpose</span><span>6 / 19</span></footer>
+</section>
+
+
+<!-- 7 -->
+<section class="slide" id="s7" aria-label="Slide 7" data-notes="What we actually want from a measurement is a prediction: how will this agent do out there, once it’s deployed? We can’t measure that directly before deploying, so every environment makes a bet about why its score should carry over to the world. A reward doesn’t need any such bet; it only has to make the model better. The most tempting bet is realism: make the environment look as much like the world as you can. Be careful with it. Realism is rarely defined, it hides design choices, and pushed to its limit it asks for an isometry, the one-to-one map. Think of a wind tunnel. It predicts flight not because it looks like the sky, but because it preserves the relation between a wing’s shape and the forces on it, and drops the passengers and the catering. That’s a homomorphism: keep the relations that matter for your question. So the question is never ‘is this realistic?’ It’s ‘realistic with respect to what?’ And realism is only one of the bets you can make.">
+  <h2>What bet are we making?</h2>
+  <p class="msg">We want to predict what will happen in the world. Every environment bets on how its score carries over. Realism is the tempting bet.</p>
+  <div class="art" style="top:296px; width:1408px; height:530px">
+    <svg viewBox="0 0 1408 530" role="img" aria-label="A wind tunnel around a wing, and a large graph mapped onto a small one that keeps only the highlighted relations.">
+      <line class="s-line" stroke-width="2" x1="0" y1="30" x2="640" y2="30"/>
+      <line class="s-line" stroke-width="2" x1="0" y1="370" x2="640" y2="370"/>
+      <path class="s-faint" stroke-width="1.5" d="M20 50 C170 50, 220 42.8, 320 42.8 S470 50, 620 50"/>
+<path class="s-faint" stroke-width="1.5" d="M612 45 L620 50 L612 55"/>
+<path class="s-faint" stroke-width="1.5" d="M20 88 C170 88, 220 74.0, 320 74.0 S470 88, 620 88"/>
+<path class="s-faint" stroke-width="1.5" d="M612 83 L620 88 L612 93"/>
+<path class="s-faint" stroke-width="1.5" d="M20 124 C170 124, 220 103.6, 320 103.6 S470 124, 620 124"/>
+<path class="s-faint" stroke-width="1.5" d="M612 119 L620 124 L612 129"/>
+<path class="s-acc" stroke-width="2" d="M20 158 C170 158, 220 131.5, 320 131.5 S470 158, 620 158"/>
+<path class="s-acc" stroke-width="2" d="M612 153 L620 158 L612 163"/>
+<path class="s-acc" stroke-width="2" d="M20 234 C170 234, 220 247.1, 320 247.1 S470 234, 620 234"/>
+<path class="s-acc" stroke-width="2" d="M612 229 L620 234 L612 239"/>
+<path class="s-faint" stroke-width="1.5" d="M20 268 C170 268, 220 278.3, 320 278.3 S470 268, 620 268"/>
+<path class="s-faint" stroke-width="1.5" d="M612 263 L620 268 L612 273"/>
+<path class="s-faint" stroke-width="1.5" d="M20 304 C170 304, 220 311.2, 320 311.2 S470 304, 620 304"/>
+<path class="s-faint" stroke-width="1.5" d="M612 299 L620 304 L612 309"/>
+<path class="s-faint" stroke-width="1.5" d="M20 342 C170 342, 220 346.0, 320 346.0 S470 342, 620 342"/>
+<path class="s-faint" stroke-width="1.5" d="M612 337 L620 342 L612 347"/>
+      <path class="f-ink" d="M200 205 C232 168, 360 166, 452 198 C372 214, 262 222, 200 205 Z"/>
+      <path class="s-acc" stroke-width="3" d="M318 160 V96 M308 108 L318 96 L328 108"/>
+      <text class="t-acc" x="334" y="110" font-size="18" font-weight="600">lift</text>
+      <text class="t-ink" x="0" y="420" font-size="21" font-weight="600">Keeps: wing shape and the forces on it</text>
+      <text class="t-mut" x="0" y="452" font-size="19">Drops: passengers, catering, the weather at the destination</text>
+
+      <line class="s-line" stroke-width="1.5" x1="770" y1="70" x2="850" y2="50"/>
+<line class="s-line" stroke-width="1.5" x1="850" y1="50" x2="930" y2="95"/>
+<line class="s-line" stroke-width="1.5" x1="930" y1="95" x2="990" y2="60"/>
+<line class="s-line" stroke-width="1.5" x1="770" y1="70" x2="760" y2="170"/>
+<line class="s-line" stroke-width="1.5" x1="850" y1="50" x2="840" y2="150"/>
+<line class="s-line" stroke-width="1.5" x1="930" y1="95" x2="915" y2="190"/>
+<line class="s-line" stroke-width="1.5" x1="990" y1="60" x2="995" y2="160"/>
+<line class="s-line" stroke-width="1.5" x1="760" y1="170" x2="840" y2="150"/>
+<line class="s-line" stroke-width="1.5" x1="840" y1="150" x2="915" y2="190"/>
+<line class="s-line" stroke-width="1.5" x1="915" y1="190" x2="995" y2="160"/>
+<line class="s-line" stroke-width="1.5" x1="760" y1="170" x2="780" y2="270"/>
+<line class="s-line" stroke-width="1.5" x1="840" y1="150" x2="860" y2="250"/>
+<line class="s-line" stroke-width="1.5" x1="915" y1="190" x2="940" y2="290"/>
+<line class="s-line" stroke-width="1.5" x1="995" y1="160" x2="1000" y2="250"/>
+<line class="s-line" stroke-width="1.5" x1="780" y1="270" x2="860" y2="250"/>
+<line class="s-line" stroke-width="1.5" x1="860" y1="250" x2="940" y2="290"/>
+<line class="s-line" stroke-width="1.5" x1="940" y1="290" x2="1000" y2="250"/>
+<line class="s-line" stroke-width="1.5" x1="780" y1="270" x2="820" y2="340"/>
+<line class="s-line" stroke-width="1.5" x1="860" y1="250" x2="820" y2="340"/>
+<line class="s-line" stroke-width="1.5" x1="940" y1="290" x2="930" y2="350"/>
+<line class="s-line" stroke-width="1.5" x1="1000" y1="250" x2="930" y2="350"/>
+<line class="s-line" stroke-width="1.5" x1="820" y1="340" x2="930" y2="350"/>
+<line class="s-line" stroke-width="1.5" x1="850" y1="50" x2="915" y2="190"/>
+<line class="s-line" stroke-width="1.5" x1="840" y1="150" x2="780" y2="270"/>
+<line class="s-line" stroke-width="1.5" x1="930" y1="95" x2="995" y2="160"/>
+<line class="s-line" stroke-width="1.5" x1="860" y1="250" x2="930" y2="350"/>
+<line class="s-line" stroke-width="1.5" x1="770" y1="70" x2="930" y2="95"/>
+<line class="s-line" stroke-width="1.5" x1="915" y1="190" x2="1000" y2="250"/>
+<line class="s-acc" stroke-width="3" x1="770" y1="70" x2="840" y2="150"/>
+<line class="s-acc" stroke-width="3" x1="840" y1="150" x2="940" y2="290"/>
+<line class="s-acc" stroke-width="3" x1="940" y1="290" x2="990" y2="60"/>
+<circle class="f-acc" stroke-width="1.5" cx="770" cy="70" r="8"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="850" cy="50" r="6"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="930" cy="95" r="6"/>
+<circle class="f-acc" stroke-width="1.5" cx="990" cy="60" r="8"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="760" cy="170" r="6"/>
+<circle class="f-acc" stroke-width="1.5" cx="840" cy="150" r="8"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="915" cy="190" r="6"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="995" cy="160" r="6"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="780" cy="270" r="6"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="860" cy="250" r="6"/>
+<circle class="f-acc" stroke-width="1.5" cx="940" cy="290" r="8"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="1000" cy="250" r="6"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="820" cy="340" r="6"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="930" cy="350" r="6"/>
+<line class="s-acc" stroke-width="3" x1="1196" y1="110" x2="1250" y2="180"/>
+<line class="s-acc" stroke-width="3" x1="1250" y1="180" x2="1314" y2="290"/>
+<line class="s-acc" stroke-width="3" x1="1314" y1="290" x2="1350" y2="96"/>
+<circle class="f-acc" cx="1196" cy="110" r="9"/>
+<circle class="f-acc" cx="1250" cy="180" r="9"/>
+<circle class="f-acc" cx="1314" cy="290" r="9"/>
+<circle class="f-acc" cx="1350" cy="96" r="9"/>
+      <text class="t-mut" x="740" y="404" font-size="18" font-weight="500">the world</text>
+      <text class="t-mut" x="1196" y="404" font-size="18" font-weight="500">the environment</text>
+      <path class="s-ink" stroke-width="2" d="M1040 200 H1150 M1138 190 L1150 200 L1138 210"/>
+      <text class="t-ink" x="1095" y="184" font-size="17" font-weight="600" text-anchor="middle">homomorphism</text>
+      <text class="t-mut" x="740" y="452" font-size="19"><tspan font-weight="600">Realism, pushed to the limit:</tspan> an isometry. Keep everything.</text>
+      <text class="t-ink" x="740" y="484" font-size="19"><tspan font-weight="700" class="t-acc">Homomorphism:</tspan> keep the relations you chose.</text>
+      <text class="t-ink" x="0" y="520" font-size="30" font-weight="700" letter-spacing="-0.5">Realistic with respect to what?</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>7 / 19</span></footer>
+</section>
+
+
+
+
+
+
+<!-- 8 -->
+<section class="slide" id="s8" aria-label="Slide 8" data-notes="Those bets come in a few kinds, and naming them tells you how to read a benchmark. Some borrow validity from a theory: ARC-AGI rests on a theory of what intelligence is, and if the theory is wrong, it measures something else. Some simulate a setting, like tau-bench, and rest on preserving the relations that matter; their failure is the simulacrum. Some sample real work, like SWE-bench or GDPval, and get validity through identity, so the question becomes whether the sample is right. And some give up replay for real users, like LMArena, which is closest to an A/B test. This isn’t a full typology. The point is that different evaluations make different bets, and you should judge each by its own.">
+  <h2>Four validity bets</h2>
+  <p class="msg">Not a full typology. Different evaluations make different bets, and fail in different ways.</p>
+  <div class="art" style="top:290px; width:1408px; height:520px">
+    <svg viewBox="0 0 1408 520" role="img" aria-label="Four kinds of validity bets with examples: theory, simulation, real work, and real users.">
+      <rect class="f-surf s-line" stroke-width="1.5" x="0" y="0" width="330" height="456" rx="14"/><circle class="s-acc" stroke-width="2.5" cx="46" cy="52" r="22"/><circle class="s-acc" stroke-width="2.5" cx="46" cy="52" r="12"/><circle class="f-acc" cx="46" cy="52" r="4"/><text class="t-ink" x="84" y="61" font-size="24" font-weight="700">Theory</text><text class="t-mut" x="24" y="122" font-size="16" font-weight="500">Validity rests on</text><text class="t-ink2" x="24" y="150" font-size="19" font-weight="600">a theory of</text><text class="t-ink2" x="24" y="176" font-size="19" font-weight="600">what matters</text><text class="t-mut" x="24" y="226" font-size="16" font-weight="500">Examples</text><rect class="f-wash" x="24" y="240" width="110" height="34" rx="17"/><text class="t-acc" x="40" y="262" font-size="16" font-weight="600">ARC-AGI</text><line class="s-line" stroke-width="1.5" x1="24" y1="380" x2="306" y2="380"/><text class="t-mut" x="24" y="406" font-size="16" font-weight="500">Fails when</text><text class="t-ink" x="24" y="430" font-size="18" font-weight="600">the theory is wrong</text><rect class="f-surf s-line" stroke-width="1.5" x="352" y="0" width="330" height="456" rx="14"/><path class="s-faint" stroke-width="2" d="M372 38 C390 38 394 30 424 38 M372 66 C390 66 394 72 424 66"/><path class="f-acc" d="M382 52 C390 43 406 43 416 51 C404 55 390 56 382 52 Z"/><text class="t-ink" x="436" y="61" font-size="24" font-weight="700">Simulation</text><text class="t-mut" x="376" y="122" font-size="16" font-weight="500">Validity rests on</text><text class="t-ink2" x="376" y="150" font-size="19" font-weight="600">preserving the relations</text><text class="t-ink2" x="376" y="176" font-size="19" font-weight="600">that matter</text><text class="t-mut" x="376" y="226" font-size="16" font-weight="500">Examples</text><rect class="f-wash" x="376" y="240" width="140" height="34" rx="17"/><text class="t-acc" x="392" y="262" font-size="16" font-weight="600">tau-bench*</text><rect class="f-wash" x="376" y="284" width="118" height="34" rx="17"/><text class="t-acc" x="392" y="306" font-size="16" font-weight="600">WebArena</text><rect class="f-wash" x="376" y="328" width="110" height="34" rx="17"/><text class="t-acc" x="392" y="350" font-size="16" font-weight="600">OSWorld</text><line class="s-line" stroke-width="1.5" x1="376" y1="380" x2="658" y2="380"/><text class="t-mut" x="376" y="406" font-size="16" font-weight="500">Fails when</text><text class="t-ink" x="376" y="430" font-size="18" font-weight="600">it’s only a simulacrum</text><rect class="f-surf s-line" stroke-width="1.5" x="704" y="0" width="330" height="456" rx="14"/><rect class="f-soft s-faint" stroke-width="1.2" x="726" y="28" width="13" height="13" rx="3"/><rect class="f-acc" stroke-width="1.2" x="743" y="28" width="13" height="13" rx="3"/><rect class="f-soft s-faint" stroke-width="1.2" x="760" y="28" width="13" height="13" rx="3"/><rect class="f-soft s-faint" stroke-width="1.2" x="726" y="45" width="13" height="13" rx="3"/><rect class="f-soft s-faint" stroke-width="1.2" x="743" y="45" width="13" height="13" rx="3"/><rect class="f-acc" stroke-width="1.2" x="760" y="45" width="13" height="13" rx="3"/><rect class="f-acc" stroke-width="1.2" x="726" y="62" width="13" height="13" rx="3"/><rect class="f-soft s-faint" stroke-width="1.2" x="743" y="62" width="13" height="13" rx="3"/><rect class="f-soft s-faint" stroke-width="1.2" x="760" y="62" width="13" height="13" rx="3"/><text class="t-ink" x="788" y="61" font-size="24" font-weight="700">Real work</text><text class="t-mut" x="728" y="122" font-size="16" font-weight="500">Validity rests on</text><text class="t-ink2" x="728" y="150" font-size="19" font-weight="600">drawing the right</text><text class="t-ink2" x="728" y="176" font-size="19" font-weight="600">pieces of the world</text><text class="t-mut" x="728" y="226" font-size="16" font-weight="500">Examples</text><rect class="f-wash" x="728" y="240" width="129" height="34" rx="17"/><text class="t-acc" x="744" y="262" font-size="16" font-weight="600">SWE-bench</text><rect class="f-wash" x="728" y="284" width="110" height="34" rx="17"/><text class="t-acc" x="744" y="306" font-size="16" font-weight="600">GDPval</text><rect class="f-wash" x="728" y="328" width="206" height="34" rx="17"/><text class="t-acc" x="744" y="350" font-size="16" font-weight="600">APEX-Enterprise*</text><line class="s-line" stroke-width="1.5" x1="728" y1="380" x2="1010" y2="380"/><text class="t-mut" x="728" y="406" font-size="16" font-weight="500">Fails when</text><text class="t-ink" x="728" y="430" font-size="18" font-weight="600">the sample is skewed or stale</text><rect class="f-surf s-line" stroke-width="1.5" x="1056" y="0" width="330" height="456" rx="14"/><circle class="f-surf s-ink" stroke-width="2.5" cx="1102" cy="52" r="22"/><text class="t-ink" x="1102" y="58" font-size="14" font-weight="700" text-anchor="middle">A/B</text><text class="t-ink" x="1140" y="61" font-size="24" font-weight="700">Real users</text><text class="t-mut" x="1080" y="122" font-size="16" font-weight="500">Validity rests on</text><text class="t-ink2" x="1080" y="150" font-size="19" font-weight="600">splitting real users</text><text class="t-ink2" x="1080" y="176" font-size="19" font-weight="600">at random</text><text class="t-mut" x="1080" y="226" font-size="16" font-weight="500">Examples</text><rect class="f-wash" x="1080" y="240" width="110" height="34" rx="17"/><text class="t-acc" x="1096" y="262" font-size="16" font-weight="600">LMArena</text><line class="s-line" stroke-width="1.5" x1="1080" y1="380" x2="1362" y2="380"/><text class="t-mut" x="1080" y="406" font-size="16" font-weight="500">Fails when</text><text class="t-ink" x="1080" y="430" font-size="18" font-weight="600">the crowd isn’t your users</text>
+      <text class="t-mut" x="0" y="512" font-size="15">* Disclosure: I built tau-bench at Sierra, and APEX-Enterprise is from Mercor, where I work now. Examples are illustrations, not a survey.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>8 / 19</span></footer>
+</section>
+
+
+
+
+<!-- 9 -->
+<section class="slide" id="s9" aria-label="Slide 9" data-notes="Here’s the thing this room should keep in mind: we evaluate agents, not models. We train models, but what gets deployed and measured is a model with a harness, and the harness is part and parcel of how a model is adapted to the environment it has to deal with: its prompts, its loop, its memory, its tools. And every environment makes assumptions about what a good interface for agents is: tools over MCP, or a screen through computer use. That’s a matter of normalization across the industry, not a law of nature. So every agent evaluation has to answer a few questions. Are you allowed to change the tools? Can you build a better interface, or switch from MCP to computer use? Is it fair to test a model on a harness it wasn’t trained with? There’s no single right answer, but the answer changes what the score means. And notice what the evaluation shouldn’t care about: how you got there. More training, a better harness, a new interface: that’s your call and your budget. What it can’t be agnostic to is what’s in the box and what it cost, so report both.">
+  <h2>We evaluate agents, not models</h2>
+  <p class="msg">We train models, but we deploy and measure agents. The harness is how a model is adapted to the environment it has to deal with.</p>
+  <div class="art" style="top:296px; width:1408px; height:510px">
+    <svg viewBox="0 0 1408 510" role="img" aria-label="A model inside a harness inside an agent, connected through an interface to an environment; and three questions about tools, interfaces, and harnesses.">
+
+      <rect class="f-surf s-ink" stroke-width="2" x="0" y="20" width="380" height="290" rx="20"/>
+      <text class="t-ink" x="24" y="56" font-size="22" font-weight="700">agent</text>
+      <rect class="f-wash s-acc" stroke-width="2" x="28" y="78" width="324" height="208" rx="16"/>
+      <text class="t-acc" x="50" y="110" font-size="18" font-weight="700">harness</text>
+      <text class="t-mut" x="50" y="134" font-size="15">prompts, loop, memory, tools</text>
+      <rect class="f-acc" x="110" y="164" width="160" height="84" rx="12"/>
+      <text class="t-onacc" x="190" y="214" font-size="24" font-weight="700" text-anchor="middle">model</text>
+      <path class="s-ink2" stroke-width="3" d="M380 166 H530"/>
+      <rect class="f-surf s-ink2" stroke-width="2.5" x="433" y="152" width="44" height="28" rx="6"/>
+      <text class="t-mut" x="455" y="136" font-size="16" font-weight="600" text-anchor="middle">interface</text>
+      <text class="t-faint" x="455" y="206" font-size="14" text-anchor="middle">MCP, or</text><text class="t-faint" x="455" y="224" font-size="14" text-anchor="middle">computer use?</text>
+      <rect class="f-soft s-faint" stroke-width="1.5" x="530" y="20" width="150" height="290" rx="16"/>
+      <text class="t-ink2" x="605" y="172" font-size="17" font-weight="700" text-anchor="middle">environment</text>
+      <text class="t-ink" x="0" y="356" font-size="20" font-weight="600">The harness adapts the model to the environment it faces.</text>
+      <text class="t-mut" x="0" y="386" font-size="18">Environments assume what a good agent interface is:</text>
+      <text class="t-mut" x="0" y="412" font-size="18">a matter of normalization across the industry.</text>
+
+      <text class="t-mut" x="720" y="40" font-size="18" font-weight="600">Questions every agent evaluation has to answer</text>
+      <circle class="f-acc" cx="744" cy="96" r="18"/><text class="t-onacc" x="744" y="103" font-size="18" font-weight="700" text-anchor="middle">1</text>
+      <text class="t-ink" x="780" y="104" font-size="24" font-weight="700">Can you change the tools?</text>
+      <text class="t-mut" x="780" y="134" font-size="18">Bring your own, or only use the ones provided?</text>
+      <circle class="f-acc" cx="744" cy="196" r="18"/><text class="t-onacc" x="744" y="203" font-size="18" font-weight="700" text-anchor="middle">2</text>
+      <text class="t-ink" x="780" y="204" font-size="24" font-weight="700">Can you build a better interface?</text>
+      <text class="t-mut" x="780" y="234" font-size="18">Switch from MCP to computer use, or the reverse?</text>
+      <circle class="f-acc" cx="744" cy="296" r="18"/><text class="t-onacc" x="744" y="303" font-size="18" font-weight="700" text-anchor="middle">3</text>
+      <text class="t-ink" x="780" y="304" font-size="24" font-weight="700">Is it fair to swap the harness?</text>
+      <text class="t-mut" x="780" y="334" font-size="18">Testing a model on a harness it wasn’t trained with.</text>
+
+      <rect class="f-wash" x="0" y="436" width="1408" height="68" rx="12"/>
+      <text class="t-acc" x="24" y="478" font-size="21" font-weight="600">The eval doesn’t care how you got there. Say what’s in the box, and what it cost.</text>
+
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>9 / 19</span></footer>
+</section>
+
+<!-- 10 -->
+<section class="slide s7" id="s10" aria-label="Slide 10" data-notes="Here’s the requirement people underrate the most. A measurement has to be something we can grade: a clear right or wrong, or at least an outcome people agree on. In tau-bench, a task is acceptable only if we can grade it fairly. That means a reliable user simulator, consistent grading, no ambiguity in the rubric, and enough control to say whose fault a failure was. Training can live with some noise in the reward; it averages out over episodes. A measurement can’t. And the light has edges. A customer who changes their mind, we can simulate. De-escalating an emotional customer, an outbound sales call, a negotiation, an upsell: those need models of people’s emotions and preferences we don’t have yet, so we can’t grade them fairly. Reliability bounds validity. So the ways tau-bench is cleaner than the world aren’t failures of realism. They’re the price of measuring at all. The cost is a streetlight effect: we measure where the light is. And the same constraint bounds how far we can extend an environment: every new dimension we add, like the user acting on the world in tau2 or audio in tau-voice, has to stay gradeable.">
+  <div class="col">
+    <h2>Only what can be graded</h2>
+    <p class="msg">A measurement must be a situation we can grade. A reward can tolerate noise; a measurement can’t.</p>
+  </div>
+  <div class="pull"><div class="a">Reliability bounds validity.</div><div class="b">We measure where the light is.</div></div>
+  <div class="night">
+    <svg viewBox="0 0 860 900" width="860" height="900" role="img" aria-label="A streetlight. Gradeable properties sit in the light; ambiguous situations sit in the dark.">
+      <path d="M452 176 L508 176 L760 720 L200 720 Z" fill="#6366f1" opacity="0.12"/>
+      <ellipse cx="480" cy="722" rx="282" ry="44" fill="#6366f1" opacity="0.2"/>
+      <line x1="0" y1="722" x2="860" y2="722" stroke="#cbd5e1" stroke-width="2"/>
+      <path d="M150 722 V186 C150 150, 180 140, 230 140 H470" stroke="#475569" stroke-width="10"/>
+      <rect x="132" y="712" width="36" height="12" rx="3" fill="#475569"/>
+      <path d="M440 140 H520 L540 178 H420 Z" fill="#334155"/>
+      <ellipse cx="480" cy="180" rx="40" ry="7" fill="#a5b4fc"/>
+      <g font-size="23" font-weight="700" fill="#020817" text-anchor="middle">
+        <text x="480" y="446">unambiguous policy</text>
+        <text x="480" y="494">reliable user simulator</text>
+        <text x="480" y="542">consistent grader</text>
+        <text x="480" y="590">clear blame</text>
+        <text x="480" y="638">expert judgment</text>
+      </g>
+      <g font-size="20" font-weight="500" fill="#94a3b8">
+        <text x="200" y="300">ambiguous</text><text x="200" y="328">requests</text>
+        <text x="22" y="470">experts</text><text x="22" y="498">who</text><text x="22" y="526">disagree</text>
+        <text x="590" y="250">de-escalating an</text><text x="590" y="278">emotional customer</text>
+        <text x="712" y="430">upselling</text>
+        <text x="716" y="560">negotiation</text>
+        <text x="22" y="640">outbound</text><text x="22" y="668">sales calls</text>
+        <text x="40" y="806">policies open to interpretation</text>
+      </g>
+    </svg>
+  </div>
+  <footer class="foot" style="right:auto; width:600px"><span>Fit for Purpose</span><span>10 / 19</span></footer>
+</section>
+
+
+
+
+
+
+<!-- 11 -->
+<section class="slide" id="s11" aria-label="Slide 11" data-notes="Nobody who ships agents only measures averages. We stress-test. We keep regression suites of the worst cases we’ve seen, and must-pass tests for things that are rare but that we never want to see. Engineering has always done this: bridges get proof-loaded. That isn’t sloppy sampling. It measures a different quantity. A predictive eval makes frequency claims. A must-pass suite makes conformity claims. Red-teaming makes existence claims: one counterexample refutes ‘the agent never does X.’ The rule isn’t ‘sample representatively.’ It’s ‘state your conditions of measurement in advance.’ And failures don’t all cost the same.">
+  <h2>Beyond the average</h2>
+  <p class="msg">Stress tests, must-pass cases, and counterexample search are measurements too, under stated conditions.</p>
+  <div class="art" style="top:300px; width:1408px; height:510px">
+    <svg viewBox="0 0 1408 510" role="img" aria-label="A bridge under a proof load, and three kinds of claims: frequency, conformity, existence.">
+      <rect class="f-ink" x="246" y="148" width="128" height="70" rx="6"/>
+      <text x="310" y="190" font-size="18" font-weight="700" text-anchor="middle" style="fill:var(--surface)">proof load</text>
+      <path class="s-acc" stroke-width="2.5" d="M270 92 V132 M262 124 L270 132 L278 124 M310 84 V132 M302 124 L310 132 L318 124 M350 92 V132 M342 124 L350 132 L358 124"/>
+      <path class="s-ink" stroke-width="2.5" d="M130 220 H490"/>
+      <path class="s-ink" stroke-width="2" d="M90 300 L130 220 M530 300 L490 220 M130 220 V300 M190 220 V300 M250 220 V300 M310 220 V300 M370 220 V300 M430 220 V300 M490 220 V300 M130 220 L190 300 M190 220 L250 300 M250 220 L310 300 M490 220 L430 300 M430 220 L370 300 M370 220 L310 300"/>
+      <path class="s-ink" stroke-width="4" d="M40 300 H580"/>
+      <rect class="f-soft s-faint" stroke-width="1.5" x="30" y="300" width="60" height="70" rx="4"/>
+      <rect class="f-soft s-faint" stroke-width="1.5" x="530" y="300" width="60" height="70" rx="4"/>
+      <path class="s-acc" stroke-width="2" stroke-dasharray="6 6" d="M90 304 Q310 344 530 304"/>
+      <text class="t-acc" x="310" y="350" font-size="18" font-weight="600" text-anchor="middle">deflection, measured</text>
+      <text class="t-ink" x="30" y="428" font-size="22" font-weight="600">Not representative. Still a measurement.</text>
+      <text class="t-mut" x="30" y="460" font-size="19">It measures a different quantity: margin, failure load.</text>
+
+      <rect class="f-soft" x="700" y="20" width="124" height="120" rx="12"/>
+      <rect class="f-faint" x="724" y="92" width="14" height="28" rx="2"/>
+      <rect class="f-faint" x="744" y="64" width="14" height="56" rx="2"/>
+      <rect class="f-acc" x="764" y="48" width="14" height="72" rx="2"/>
+      <rect class="f-faint" x="784" y="72" width="14" height="48" rx="2"/>
+      <text class="t-ink" x="860" y="66" font-size="26" font-weight="700">Frequency</text>
+      <text class="t-mut" x="860" y="100" font-size="20">How often does it succeed?</text>
+
+      <rect class="f-soft" x="700" y="164" width="124" height="120" rx="12"/>
+      <g transform="translate(722 188)">
+        <rect class="f-surf s-faint" stroke-width="1.5" x="0" y="0" width="18" height="18" rx="4"/><path class="s-mut" stroke-width="2" d="M4 9 l4 4 l7 -8"/><path class="s-faint" stroke-width="3" d="M30 9 H76"/>
+        <rect class="f-acc" x="0" y="28" width="18" height="18" rx="4"/><path class="s-onacc" stroke-width="2" d="M4 37 l4 4 l7 -8"/><path class="s-acc" stroke-width="3" d="M30 37 H80"/>
+        <rect class="f-surf s-faint" stroke-width="1.5" x="0" y="56" width="18" height="18" rx="4"/><path class="s-mut" stroke-width="2" d="M4 65 l4 4 l7 -8"/><path class="s-faint" stroke-width="3" d="M30 65 H66"/>
+      </g>
+      <text class="t-ink" x="860" y="210" font-size="26" font-weight="700">Conformity</text>
+      <text class="t-mut" x="860" y="244" font-size="20">Does it pass the cases we decided are critical?</text>
+
+      <rect class="f-soft" x="700" y="308" width="124" height="120" rx="12"/>
+      <circle class="f-surf s-faint" stroke-width="1.5" cx="744" cy="336" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="718" cy="371" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="719" cy="331" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="754" cy="401" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="775" cy="413" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="810" cy="326" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="767" cy="328" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="743" cy="378" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="757" cy="351" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="791" cy="389" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="796" cy="413" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="718" cy="389" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="764" cy="381" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="737" cy="355" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="714" cy="413" r="5"/>
+<circle class="f-surf s-faint" stroke-width="1.5" cx="715" cy="349" r="5"/>
+<circle class="s-acc" stroke-width="2" cx="790" cy="350" r="15"/><circle class="f-acc" cx="790" cy="350" r="7"/>
+      <text class="t-ink" x="860" y="354" font-size="26" font-weight="700">Existence</text>
+      <text class="t-mut" x="860" y="388" font-size="20">Here is a situation where it fails.</text>
+      <text class="t-mut" x="860" y="416" font-size="20">One counterexample refutes “never.”</text>
+
+      <text class="t-acc" x="700" y="490" font-size="22" font-weight="600">State the conditions of measurement in advance.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>11 / 19</span></footer>
+</section>
+
+
+
+
+
+
+<!-- 12 -->
+<section class="slide" id="s12" aria-label="Slide 12" data-notes="Part three: reading the measurement. A number is never the whole story.">
+  <div class="part-k">Part 3 of 4</div>
+  <h2 class="part-title">Reading the measurement</h2>
+  <ol class="parts"><li class="done"><span class="pn">1</span>An environment and its number</li><li class="done"><span class="pn">2</span>Building the instrument</li><li class="now"><span class="pn">3</span>Reading the measurement</li><li class=""><span class="pn">4</span>Living with an eval</li></ol>
+  <footer class="foot"><span>Fit for Purpose</span><span>12 / 19</span></footer>
+</section>
+
+
+<!-- 13 -->
+<section class="slide" id="s13" aria-label="Slide 13" data-notes="The question I get most about tau-bench: how well should my customer support agent score? In one sense the benchmark is a ceiling. Nothing in real life is that clean: no ambiguity, simulated users far simpler than real people. So you should ace it. In another sense it’s much harder than production. Real traffic is Zipf: a refund, a password reset, one action. We picked tasks from the tail, to be interesting and to make models fail. That’s the two hats every eval designer wears: showing capabilities that matter, and making sure models fail somewhere useful. So the score isn’t a forecast. Know your own traffic, map it onto the benchmark’s task types, and reweight. And remember who the real arbiter is: deployment. Even an A/B test is only an instrument for consulting it, and it can be miscalibrated.">
+  <h2>“How well should my agent do?”</h2>
+  <p class="msg">A benchmark score is not a forecast. It departs from production in two opposite directions.</p>
+  <div class="art" style="top:300px; width:1408px; height:510px">
+    <svg viewBox="0 0 1408 510" role="img" aria-label="A Zipf-shaped histogram of production traffic. Benchmark tasks come from the tail.">
+      <line class="s-ink" stroke-width="2" x1="40" y1="421" x2="900" y2="421"/>
+      <rect class="f-ink" x="50" y="80.0" width="26" height="340.0" rx="3"/>
+<rect class="f-ink" x="82" y="255.8" width="26" height="164.2" rx="3"/>
+<rect class="f-ink" x="114" y="312.7" width="26" height="107.3" rx="3"/>
+<rect class="f-faint" x="146" y="340.7" width="26" height="79.3" rx="3"/>
+<rect class="f-faint" x="178" y="357.3" width="26" height="62.7" rx="3"/>
+<rect class="f-faint" x="210" y="368.2" width="26" height="51.8" rx="3"/>
+<rect class="f-faint" x="242" y="375.9" width="26" height="44.1" rx="3"/>
+<rect class="f-faint" x="274" y="381.7" width="26" height="38.3" rx="3"/>
+<rect class="f-faint" x="306" y="386.2" width="26" height="33.8" rx="3"/>
+<rect class="f-faint" x="338" y="389.7" width="26" height="30.3" rx="3"/>
+<rect class="f-acc" x="370" y="392.6" width="26" height="27.4" rx="3"/>
+<rect class="f-acc" x="402" y="395.0" width="26" height="25.0" rx="3"/>
+<rect class="f-acc" x="434" y="397.0" width="26" height="23.0" rx="3"/>
+<rect class="f-acc" x="466" y="398.7" width="26" height="21.3" rx="3"/>
+<rect class="f-acc" x="498" y="400.2" width="26" height="19.8" rx="3"/>
+<rect class="f-acc" x="530" y="401.5" width="26" height="18.5" rx="3"/>
+<rect class="f-acc" x="562" y="402.6" width="26" height="17.4" rx="3"/>
+<rect class="f-acc" x="594" y="403.7" width="26" height="16.3" rx="3"/>
+<rect class="f-acc" x="626" y="404.6" width="26" height="15.4" rx="3"/>
+<rect class="f-acc" x="658" y="405.4" width="26" height="14.6" rx="3"/>
+<rect class="f-acc" x="690" y="406.1" width="26" height="13.9" rx="3"/>
+<rect class="f-acc" x="722" y="406.8" width="26" height="13.2" rx="3"/>
+<rect class="f-acc" x="754" y="407.4" width="26" height="12.6" rx="3"/>
+<rect class="f-acc" x="786" y="407.9" width="26" height="12.1" rx="3"/>
+<rect class="f-acc" x="818" y="408.4" width="26" height="11.6" rx="3"/>
+<rect class="f-acc" x="850" y="408.9" width="26" height="11.1" rx="3"/>
+<path class="s-acc" stroke-width="2" d="M370 372 V360 H876 V372"/>
+<text class="t-acc" x="623" y="344" text-anchor="middle" font-size="19" font-weight="600">where the benchmark’s tasks come from</text>
+<text class="t-ink" x="86" y="96" font-size="18" font-weight="500">refund</text>
+<text class="t-ink" x="118" y="272" font-size="18" font-weight="500">password reset</text>
+<text class="t-ink" x="150" y="329" font-size="18" font-weight="500">order status</text>
+      <text class="t-mut" x="50" y="456" font-size="17">production traffic, by kind of case (illustrative)</text>
+
+      <rect class="f-surf s-line" stroke-width="1.5" x="960" y="20" width="448" height="176" rx="12"/>
+      <path class="s-ink" stroke-width="2.5" d="M996 96 V56 M984 68 L996 56 L1008 68"/>
+      <text class="t-ink" x="1028" y="74" font-size="24" font-weight="700">Easier than the world</text>
+      <text class="t-mut" x="1028" y="108" font-size="18">No ambiguity. Simulated users</text>
+      <text class="t-mut" x="1028" y="134" font-size="18">far simpler than real ones.</text>
+      <text class="t-acc" x="1028" y="172" font-size="19" font-weight="600">You should ace it.</text>
+
+      <rect class="f-surf s-line" stroke-width="1.5" x="960" y="216" width="448" height="176" rx="12"/>
+      <path class="s-ink" stroke-width="2.5" d="M996 252 V292 M984 280 L996 292 L1008 280"/>
+      <text class="t-ink" x="1028" y="270" font-size="24" font-weight="700">Harder than production</text>
+      <text class="t-mut" x="1028" y="304" font-size="18">Sampled from the tail, to be</text>
+      <text class="t-mut" x="1028" y="330" font-size="18">interesting and to make models fail.</text>
+      <text class="t-acc" x="1028" y="368" font-size="19" font-weight="600">Below 100% can be fine.</text>
+
+      <text class="t-ink" x="960" y="450" font-size="24" font-weight="700">Know your traffic. Map it. Reweight.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>13 / 19</span></footer>
+</section>
+
+
+
+
+
+
+<!-- 14 -->
+<section class="slide" id="s14" aria-label="Slide 14" data-notes="A score is the least informative thing an eval produces. Every run also leaves trajectories, and that’s where you learn. The number tells you that something changed; the traces tell you what: a policy violated, a question the agent didn’t need to ask, a run abandoned after one tool error. Qualitative analysis isn’t optional. And because environments replay and are parameterized, you can go further than reading: you can experiment. That only works if the environment lets you. A static task set can’t be varied. You need an environment parameterized along the dimensions that matter, so you can easily make variations of a task, hold everything else fixed, and change one thing. That’s what a parameterized environment buys you. So when you choose an environment, choose one where making those task variations is easy, not just a fixed list of tasks. In tau2 we ran the same tasks with the agent acting alone and with the user acting too, which isolates the cost of coordination. In tau-voice we vary noise, accents, and interruptions one at a time. That’s how you get from a score to a mechanism. A reward is consumed by an optimizer as a scalar. A measurement is read by people.">
+  <h2>Read it, then experiment</h2>
+  <p class="msg">The number is the least of what an eval produces. A reward is consumed by an optimizer. A measurement is read by people.</p>
+  <div class="art" style="top:296px; width:1408px; height:520px">
+    <svg viewBox="0 0 1408 520" role="img" aria-label="Left: trajectories annotated with failure modes. Right: a controlled experiment comparing an agent acting alone with an agent coordinating with a user.">
+      <text class="t-ink" x="0" y="26" font-size="28" font-weight="700">Read the trajectories</text>
+      <text class="t-mut" x="0" y="60" font-size="19">The number says something changed. The traces say what.</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="0" y="92" width="600" height="72" rx="12"/>
+      <rect class="f-line" x="22" y="108" width="120" height="10" rx="5"/>
+      <rect class="f-wash2" x="62" y="124" width="160" height="10" rx="5"/>
+      <rect class="f-line" x="22" y="140" width="90" height="10" rx="5"/>
+      <rect class="f-wash" x="262" y="110" width="322" height="36" rx="18"/>
+      <text class="t-acc" x="423" y="134" font-size="15" font-weight="600" text-anchor="middle">violated the refund policy</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="0" y="176" width="600" height="72" rx="12"/>
+      <rect class="f-line" x="22" y="192" width="120" height="10" rx="5"/>
+      <rect class="f-wash2" x="62" y="208" width="160" height="10" rx="5"/>
+      <rect class="f-line" x="22" y="224" width="90" height="10" rx="5"/>
+      <rect class="f-wash" x="262" y="194" width="322" height="36" rx="18"/>
+      <text class="t-acc" x="423" y="218" font-size="15" font-weight="600" text-anchor="middle">asked for information it already had</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="0" y="260" width="600" height="72" rx="12"/>
+      <rect class="f-line" x="22" y="276" width="120" height="10" rx="5"/>
+      <rect class="f-wash2" x="62" y="292" width="160" height="10" rx="5"/>
+      <rect class="f-line" x="22" y="308" width="90" height="10" rx="5"/>
+      <rect class="f-wash" x="262" y="278" width="322" height="36" rx="18"/>
+      <text class="t-acc" x="423" y="302" font-size="15" font-weight="600" text-anchor="middle">gave up after one tool error</text>
+      <text class="t-mut" x="0" y="384" font-size="17" font-weight="500">failure modes across runs (illustrative)</text>
+      <rect class="f-ink2" x="0" y="400" width="300" height="18" rx="4" style="fill:var(--ink2)"/><text class="t-ink2" x="314" y="415" font-size="17">policy errors</text>
+      <rect class="f-faint" x="0" y="430" width="200" height="18" rx="4"/><text class="t-ink2" x="214" y="445" font-size="17">redundant questions</text>
+      <rect class="f-faint" x="0" y="460" width="130" height="18" rx="4"/><text class="t-ink2" x="144" y="475" font-size="17">early stops</text>
+
+      <line class="s-line" stroke-width="1.5" stroke-dasharray="4 8" x1="690" y1="10" x2="690" y2="500"/>
+
+      <text class="t-ink" x="740" y="26" font-size="28" font-weight="700">Run the experiment</text>
+      <text class="t-mut" x="740" y="60" font-size="18">Choose environments where tasks vary easily on the dimensions that matter.</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="740" y="92" width="310" height="150" rx="12"/>
+      <text class="t-ink" x="762" y="126" font-size="20" font-weight="700">Control</text>
+      <text class="t-mut" x="762" y="152" font-size="17">the agent acts alone</text>
+      <circle class="f-acc" cx="790" cy="200" r="16"/>
+      <text class="t-onacc" x="790" y="206" font-size="15" font-weight="700" text-anchor="middle">A</text>
+      <path class="s-faint" stroke-width="2" d="M810 200 H902 M894 193 L902 200 L894 207"/>
+      <rect class="f-soft s-faint" stroke-width="1.5" x="908" y="180" width="110" height="40" rx="8"/>
+      <text class="t-ink2" x="963" y="206" font-size="16" font-weight="600" text-anchor="middle">world</text>
+
+      <rect class="f-surf s-ink" stroke-width="2" x="1090" y="92" width="310" height="150" rx="12"/>
+      <text class="t-ink" x="1112" y="126" font-size="20" font-weight="700">Treatment</text>
+      <text class="t-mut" x="1112" y="152" font-size="17">the user acts on the world too</text>
+      <circle class="f-acc" cx="1140" cy="186" r="14"/>
+      <text class="t-onacc" x="1140" y="191" font-size="13" font-weight="700" text-anchor="middle">A</text>
+      <circle class="f-ink2" cx="1140" cy="222" r="14" style="fill:var(--ink2)"/>
+      <text x="1140" y="227" font-size="13" font-weight="700" text-anchor="middle" style="fill:var(--surface)">U</text>
+      <path class="s-faint" stroke-width="2" d="M1158 186 C1200 186 1210 196 1252 198 M1158 222 C1200 222 1210 208 1252 206 M1244 191 L1252 198 L1244 205"/>
+      <rect class="f-soft s-faint" stroke-width="1.5" x="1258" y="182" width="110" height="40" rx="8"/>
+      <text class="t-ink2" x="1313" y="208" font-size="16" font-weight="600" text-anchor="middle">world</text>
+
+      <line class="s-ink" stroke-width="2" x1="780" y1="452" x2="1360" y2="452"/>
+      <text class="t-mut" x="740" y="282" font-size="16" font-weight="500">tau2: same tasks, one parameter changed</text>
+      <rect class="f-acc" x="840" y="296" width="100" height="156" rx="6"/>
+      <rect class="f-faint" x="1180" y="366" width="100" height="86" rx="6"/>
+      <text class="t-ink2" x="890" y="480" font-size="17" font-weight="500" text-anchor="middle">alone</text>
+      <text class="t-ink2" x="1230" y="480" font-size="17" font-weight="500" text-anchor="middle">coordinating</text>
+      <path class="s-acc" stroke-width="1.5" stroke-dasharray="5 6" d="M944 296 H1300"/>
+      <path class="s-acc" stroke-width="2.5" d="M1300 300 V362 M1292 308 L1300 300 L1308 308 M1292 354 L1300 362 L1308 354"/>
+      <text class="t-acc" x="1312" y="326" font-size="17" font-weight="700">cost of</text>
+      <text class="t-acc" x="1312" y="348" font-size="17" font-weight="700">coordination</text>
+      <text class="t-ink" x="740" y="514" font-size="21" font-weight="600">From a score to a mechanism.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>14 / 19</span></footer>
+</section>
+
+
+
+
+
+<!-- 15 -->
+<section class="slide" id="s15" aria-label="Slide 15" data-notes="Part four: living with an eval. Why it may not be the thing to train on, and why it has to be kept up.">
+  <div class="part-k">Part 4 of 4</div>
+  <h2 class="part-title">Living with an eval</h2>
+  <ol class="parts"><li class="done"><span class="pn">1</span>An environment and its number</li><li class="done"><span class="pn">2</span>Building the instrument</li><li class="done"><span class="pn">3</span>Reading the measurement</li><li class="now"><span class="pn">4</span>Living with an eval</li></ol>
+  <footer class="foot"><span>Fit for Purpose</span><span>15 / 19</span></footer>
+</section>
+
+
+<!-- 16 -->
+<section class="slide" id="s16" aria-label="Slide 16" data-notes="A good eval environment isn’t necessarily a good training environment, for two reasons. First, it can have the wrong shape. I don’t think tau-voice is the right shape for training a voice model, and I built it. It tests full-duplex agents end to end and doesn’t care what’s inside, which is exactly what makes it a good measurement: it can compare a pipeline with a native speech-to-speech model. But training always cares what’s inside. Voice systems are trained in phases: VAD, speaker ID, backchanneling. End-to-end episodes are expensive and credit assignment is murky. Second, the best way to get good at what an eval measures may be to train on something else entirely. Coding is the obvious example: training on code makes models better at a lot of tasks that aren’t coding. So judge a training environment by what it does to the model, not by how much it looks like the eval.">
+  <h2>A good eval may not train well</h2>
+  <p class="msg">It may have the wrong shape for training, or what it measures may be best learned elsewhere.</p>
+  <div class="art" style="top:300px; width:1408px; height:510px">
+    <svg viewBox="0 0 1408 510" role="img" aria-label="Left: tau-voice tests a closed voice agent, while training works on its components. Right: training on coding transfers to many other skills, including the one an eval measures.">
+      <text class="t-ink" x="0" y="26" font-size="28" font-weight="700">The wrong shape</text>
+      <text class="t-mut" x="0" y="60" font-size="19">tau-voice probes the whole agent. Training works on its parts.</text>
+      <rect class="f-surf s-ink" stroke-width="2.5" x="0" y="110" width="220" height="160" rx="18"/>
+      <path class="s-acc" stroke-width="4" d="M46 186 V194 M54 183 V197 M62 178 V202 M70 170 V210 M78 162 V218 M86 173 V207 M94 158 V222 M102 167 V213 M110 177 V203 M118 169 V211 M126 155 V225 M134 165 V215 M142 175 V205 M150 181 V199 M158 173 V207 M166 180 V200 M174 184 V196"/>
+      <text class="t-ink" x="110" y="252" font-size="18" font-weight="700" text-anchor="middle">voice agent</text>
+      <path class="s-faint" stroke-width="2" stroke-dasharray="5 7" d="M234 190 H292"/>
+      <path class="s-faint" stroke-width="2" d="M284 182 L294 190 L284 198"/>
+      <rect class="f-surf s-line" stroke-width="1.5" x="316" y="110" width="106" height="70" rx="10"/><text class="t-ink" x="369" y="151" font-size="14" font-weight="600" text-anchor="middle">VAD</text><path class="s-acc" stroke-width="2" d="M408 120 a7 7 0 1 1 -6 10"/><rect class="f-surf s-line" stroke-width="1.5" x="434" y="110" width="106" height="70" rx="10"/><text class="t-ink" x="487" y="151" font-size="14" font-weight="600" text-anchor="middle">speaker ID</text><path class="s-acc" stroke-width="2" d="M526 120 a7 7 0 1 1 -6 10"/><rect class="f-surf s-line" stroke-width="1.5" x="552" y="110" width="106" height="70" rx="10"/><text class="t-ink" x="605" y="151" font-size="14" font-weight="600" text-anchor="middle">backchannel</text><path class="s-acc" stroke-width="2" d="M644 120 a7 7 0 1 1 -6 10"/><rect class="f-surf s-line" stroke-width="1.5" x="316" y="200" width="106" height="70" rx="10"/><text class="t-ink" x="369" y="241" font-size="14" font-weight="600" text-anchor="middle">encoder</text><path class="s-acc" stroke-width="2" d="M408 210 a7 7 0 1 1 -6 10"/><rect class="f-surf s-line" stroke-width="1.5" x="434" y="200" width="106" height="70" rx="10"/><text class="t-ink" x="487" y="241" font-size="14" font-weight="600" text-anchor="middle">LLM</text><path class="s-acc" stroke-width="2" d="M526 210 a7 7 0 1 1 -6 10"/><rect class="f-surf s-line" stroke-width="1.5" x="552" y="200" width="106" height="70" rx="10"/><text class="t-ink" x="605" y="241" font-size="14" font-weight="600" text-anchor="middle">TTS</text><path class="s-acc" stroke-width="2" d="M644 210 a7 7 0 1 1 -6 10"/>
+      <text class="t-ink" x="0" y="350" font-size="20" font-weight="600">Architecture-agnostic: good for comparing systems,</text>
+      <text class="t-ink" x="0" y="378" font-size="20" font-weight="600">not for training any one of them.</text>
+
+      <line class="s-line" stroke-width="1.5" stroke-dasharray="4 8" x1="690" y1="10" x2="690" y2="400"/>
+
+      <text class="t-ink" x="740" y="26" font-size="28" font-weight="700">Better trained elsewhere</text>
+      <text class="t-mut" x="740" y="60" font-size="19">The fastest way up an eval may not look like the eval.</text>
+      <rect class="f-wash s-acc" stroke-width="2" x="740" y="150" width="190" height="100" rx="14"/>
+      <text class="t-acc" x="835" y="196" font-size="24" font-weight="700" text-anchor="middle">coding</text>
+      <text class="t-ink2" x="835" y="224" font-size="17" text-anchor="middle">environments</text>
+      <path class="s-faint" stroke-width="2" d="M934 200 C1000 200 1010 122 1074 122 M1066 115 L1074 122 L1066 129"/><rect class="f-soft s-line" stroke-width="1.5" x="1080" y="100" width="300" height="44" rx="22"/><text class="t-ink2" x="1104" y="128" font-size="17" font-weight="600">tool use</text><path class="s-faint" stroke-width="2" d="M934 200 C1000 200 1010 182 1074 182 M1066 175 L1074 182 L1066 189"/><rect class="f-soft s-line" stroke-width="1.5" x="1080" y="160" width="300" height="44" rx="22"/><text class="t-ink2" x="1104" y="188" font-size="17" font-weight="600">planning over many steps</text><path class="s-faint" stroke-width="2" d="M934 200 C1000 200 1010 242 1074 242 M1066 235 L1074 242 L1066 249"/><rect class="f-soft s-line" stroke-width="1.5" x="1080" y="220" width="300" height="44" rx="22"/><text class="t-ink2" x="1104" y="248" font-size="17" font-weight="600">structured reasoning</text><path class="s-acc" stroke-width="2" d="M934 200 C1000 200 1010 302 1074 302 M1066 295 L1074 302 L1066 309"/><rect class="f-wash s-acc" stroke-width="1.5" x="1080" y="280" width="300" height="44" rx="22"/><text class="t-acc" x="1104" y="308" font-size="17" font-weight="600">your eval</text>
+      <text class="t-ink" x="740" y="370" font-size="20" font-weight="600">Training on code transfers well beyond code.</text>
+
+      <rect class="f-wash" x="0" y="430" width="1408" height="72" rx="12"/>
+      <text class="t-acc" x="24" y="474" font-size="21" font-weight="600">Judge a training environment by what it does to the model, not by how much it looks like the eval.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>16 / 19</span></footer>
+</section>
+
+
+
+
+<!-- 17 -->
+<section class="slide" id="s17" aria-label="Slide 17" data-notes="Last idea. Measuring instruments drift: models improve and saturate the tasks, real tools change, tasks leak into training data, graders turn out to have bugs. A benchmark released once and frozen is a snapshot of an instrument that was accurate at one moment. We treat benchmarks like papers: publish and move on. They should be treated like software, with versions, changelogs, and maintainers, and like metrology, with calibration. That takes people, funding, and credit. And it’s where open hubs like this one matter most: an environment many people use and fix is one that stays correct.">
+  <h2>A good eval is a maintained eval</h2>
+  <p class="msg">Instruments drift. Benchmarks are software, not papers.</p>
+  <div class="art" style="top:290px; width:1408px; height:520px">
+    <svg viewBox="0 0 1408 520" role="img" aria-label="A benchmark version timeline with changelog notes, and a calibration card.">
+      <line class="s-line" stroke-width="3" x1="40" y1="260" x2="1060" y2="260"/>
+      <path class="s-faint" stroke-width="3" stroke-dasharray="4 10" d="M1060 260 H1110"/>
+      <g>
+        <line class="s-faint" stroke-width="1.5" x1="300" y1="246" x2="300" y2="180"/>
+        <line class="s-faint" stroke-width="1.5" x1="560" y1="274" x2="560" y2="330"/>
+        <line class="s-faint" stroke-width="1.5" x1="820" y1="246" x2="820" y2="180"/>
+      </g>
+      <circle class="f-surf s-faint" stroke-width="3" cx="60" cy="260" r="13"/>
+      <circle class="f-surf s-acc" stroke-width="3" cx="300" cy="260" r="13"/>
+      <circle class="f-surf s-acc" stroke-width="3" cx="560" cy="260" r="13"/>
+      <circle class="f-acc" cx="820" cy="260" r="15"/>
+      <text class="t-mut" x="60" y="304" font-size="20" font-weight="700" text-anchor="middle">v1.0</text>
+      <text class="t-ink" x="330" y="300" font-size="20" font-weight="700">v1.1</text>
+      <text class="t-ink" x="510" y="238" font-size="20" font-weight="700">v1.2</text>
+      <text class="t-acc" x="850" y="300" font-size="20" font-weight="700">v2.0</text>
+      <text class="t-mut" x="60" y="332" font-size="17" text-anchor="middle">released</text>
+
+      <rect class="f-surf s-line" stroke-width="1.5" x="166" y="60" width="290" height="120" rx="12"/>
+      <text class="t-ink" x="190" y="104" font-size="20" font-weight="700">Fixed 14 grader bugs</text>
+      <text class="t-mut" x="190" y="138" font-size="17">found by people</text>
+      <text class="t-mut" x="190" y="160" font-size="17">reading the traces</text>
+
+      <rect class="f-surf s-line" stroke-width="1.5" x="430" y="330" width="260" height="120" rx="12"/>
+      <text class="t-ink" x="454" y="374" font-size="20" font-weight="700">Updated tool APIs</text>
+      <text class="t-mut" x="454" y="408" font-size="17">the real tools</text>
+      <text class="t-mut" x="454" y="430" font-size="17">changed underneath</text>
+
+      <rect class="f-wash s-acc" stroke-width="1.5" x="690" y="40" width="300" height="140" rx="12"/>
+      <text class="t-acc" x="714" y="84" font-size="20" font-weight="700">Retired saturated tasks</text>
+      <text class="t-ink2" x="714" y="118" font-size="17">re-calibrated against</text>
+      <text class="t-ink2" x="714" y="140" font-size="17">deployment traces</text>
+
+      <rect class="f-surf s-ink" stroke-width="2" x="1150" y="40" width="258" height="380" rx="14"/>
+      <text class="t-ink" x="1176" y="88" font-size="24" font-weight="700">Calibration</text>
+      <line class="s-line" stroke-width="1.5" x1="1176" y1="110" x2="1382" y2="110"/>
+      <text class="t-mut" x="1176" y="146" font-size="16">Reference</text>
+      <text class="t-ink" x="1176" y="172" font-size="18" font-weight="600">deployment traces</text>
+      <text class="t-mut" x="1176" y="212" font-size="16">Version</text>
+      <text class="t-ink" x="1176" y="238" font-size="18" font-weight="600">v2.0</text>
+      <text class="t-mut" x="1176" y="278" font-size="16">Maintained by</text>
+      <text class="t-ink" x="1176" y="304" font-size="18" font-weight="600">a named team</text>
+      <circle class="f-acc" cx="1352" cy="368" r="30"/>
+      <circle class="s-onacc" stroke-width="2" cx="1352" cy="368" r="22" stroke-dasharray="3 4"/>
+      <path class="s-onacc" stroke-width="3" d="M1341 368 l8 8 l14 -15"/>
+
+      <text class="t-ink" x="0" y="506" font-size="30" font-weight="700" letter-spacing="-0.5">Who maintains it?</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose</span><span>17 / 19</span></footer>
+</section>
+
+
+
+
+
+
+<!-- 18 -->
+<section class="slide" id="s18" aria-label="Slide 18" data-notes="So, before you trust the next number an environment gives you, ask five questions. Is it a reward or a measurement? If it’s a reward, judge it by what it does to your model. If it’s a measurement, judge it by what it tells you. Realistic with respect to what? What’s in the measurand: the model, or the model and its harness? Can it be graded, and can you easily vary its tasks along the dimensions that matter? And who maintains it? An environment is never good in general. It’s fit for a purpose. The work is to say which.">
+  <h2>Before you trust the number</h2>
+  <ol class="qs">
+    <li>Is this number a reward or a measurement?</li>
+    <li>Realistic with respect to what?</li>
+    <li><div>What’s in the measurand? <span>Model, or model plus harness?</span></div></li>
+    <li><div>Can it be graded? <span>Can you easily vary its tasks?</span></div></li>
+    <li>Who maintains it?</li>
+  </ol>
+  <p class="closing">Never good in general. <b>Fit for a purpose.</b></p>
+  <footer class="foot"><span>Fit for Purpose</span><span>18 / 19</span></footer>
+</section>
+
+
+
+
+
+
+<!-- 19 -->
+<section class="slide" id="s19" aria-label="Slide 19" data-notes="Thank you. Happy to take questions.">
+  <div class="thanks">
+    <div class="big">Thank you</div>
+    <div class="sub">Questions?</div>
+  </div>
+  <div class="byline"><svg width="40" height="35" aria-hidden="true" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo0OTAwNGQxNS0zMmM3LTRhNDAtODg5MS1mODYyNDg4ZTg4YWMAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaMYWr7BfB5BIc/Z1KHnZmSYAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpjNjE1MmJhMC03Yzk4LTQ0ZmEtYmUzNi0yZmE5ZGI1ZjY1N2ZscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoUkwQzybw2zdiNuklHy9WtgAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggO/jfCMbZnfk1r1bZfVGBXNmTDUeBfIZj+wJ3UfReRkekZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaJBvfXiCwRnMtmxm8IZESHMAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCDUYZq1S/90wnZToCh3RVlW/GYPOorSedOi4+iyYvrkKGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBieZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjQ5MDA0ZDE1LTMyYzctNGE0MC04ODkxLWY4NjI0ODhlODhhYy9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjAzZjQ2N2MwLTU2MzMtNDZkZC1iMTQxLTIxNTZmNjAzYzI0NnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCA7+N8Ixtmd+TWvVtl9UYFc2ZMNR4F8hmP7AndR9F5GR6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggxIxjoKdgTjqTfk3QHEqA6uFEgCQ+f4c3teEOJ+ExYoSiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggZ+FBuXyx0yqbS5uO/4doB4+FNblCfdpcNEuajWPklXt0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQBMx2MGq3S780U245mPnWyo7GC1FzbYyAuE+OkSNnLFytNdLpiGAre4G3i53fnC3bG8adDSHs9aX8NAvyvQf67s=</c2pa:manifest></metadata>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M25.1123 12.9868L24.9672 24.7141C24.9672 24.7141 24.8296 25.7669 25.8636 26.1589C26.8976 26.551 30.7022 27.9976 30.7022 27.9976C30.7022 27.9976 31.1645 28.0565 31.5845 27.5943C32.0028 27.133 31.9476 26.6979 31.9476 26.158V8.26246C31.9476 8.26246 32.4819 1.47285 26.9808 0.108583C26.9808 0.108583 23.9782 -0.622159 21.6566 1.70772C22.5792 2.18215 23.4672 3.01305 24.0895 4.42597C25.3817 7.35667 25.1113 12.9878 25.1113 12.9878H25.1123V12.9868ZM21.6173 1.74707C21.5958 1.76949 21.5743 1.79103 21.5527 1.81345C21.5743 1.79103 21.5958 1.76861 21.6173 1.74707Z" fill="url(#lcpaint0_linear_4_34)"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0.0200614 25.8848C0.0200614 25.8848 -0.252204 27.9208 1.25901 27.9499L6.04514 25.9512C6.04514 25.9512 7.02015 25.6349 6.96679 24.6431C6.91353 23.6502 6.63657 12.8493 6.63657 12.8493C6.63657 12.8493 4.57798 3.15629 1.32079 2.37122C0.71722 3.22551 0.39532 4.1547 0.22311 4.85088C0.0500199 5.5498 0.0191799 5.93534 0.0126204 6.63152C-0.0191977 10.2041 0.01918 25.8848 0.01918 25.8848H0.0200614Z" fill="url(#lcpaint1_linear_4_34)"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.63658 12.8484C6.63658 12.8484 10.0164 20.6429 11.624 21.8219C11.624 21.8219 15.2077 18.5142 15.9956 14.893L12.1901 5.53296C12.1901 5.53296 9.98737 -0.4284 5.2592 0.100271C3.30919 0.318299 2.08718 1.28391 1.3208 2.36935C4.578 3.15443 6.63658 12.8475 6.63658 12.8475V12.8484Z" fill="url(#lcpaint2_linear_4_34)"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.6235 21.8219C13.232 23.0009 15.2475 24.0732 18.0135 23.1085C20.7794 22.1439 21.7657 19.9991 22.0876 19.3347C22.4095 18.6705 25.1109 12.9879 25.1109 12.9879C25.1109 12.9879 25.3813 7.3576 24.0891 4.42602C23.4658 3.01309 22.5789 2.1822 21.6562 1.70776C21.5158 1.84913 21.3773 2.00069 21.2417 2.16536C21.2417 2.16536 20.6475 2.86996 20.1955 4.08727C19.7436 5.30371 15.9951 14.8929 15.9951 14.8929C15.2072 18.5141 11.6235 21.8219 11.6235 21.8219Z" fill="url(#lcpaint3_linear_4_34)"></path>
+<defs>
+<linearGradient id="lcpaint0_linear_4_34" x1="33.9826" y1="19.4376" x2="19.0593" y2="6.17649" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A4AFC"></stop>
+<stop offset="1" stop-color="#8C8FFF"></stop>
+</linearGradient>
+<linearGradient id="lcpaint1_linear_4_34" x1="5.26105" y1="2.37856" x2="1.88488" y2="27.2681" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A4AFC"></stop>
+<stop offset="1" stop-color="#8C8FFF"></stop>
+</linearGradient>
+<linearGradient id="lcpaint2_linear_4_34" x1="15.0085" y1="16.9785" x2="2.82817" y2="2.44016" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A4AFC"></stop>
+<stop offset="1" stop-color="#8C8FFF"></stop>
+</linearGradient>
+<linearGradient id="lcpaint3_linear_4_34" x1="25.3381" y1="6.4569" x2="13.4937" y2="20.9528" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A4AFC"></stop>
+<stop offset="1" stop-color="#8C8FFF"></stop>
+</linearGradient>
+</defs>
+</svg><div><div class="who">Victor Barres</div><div class="org">Mercor Research Lab</div></div></div>
+  <div class="talk-title"><b>Fit for Purpose</b><br>Environments, benchmarks, and the metrology of AI agents</div>
+</section>
+
+
+
+
+<!-- 20 -->
+<section class="slide" id="s20" aria-label="Backup slide 1" data-notes="If asked why a simulated environment can predict anything: Mary Hesse’s positive, negative, and neutral analogy. Real tools are identity. Known omissions define the scope. The neutral analogy is the bet. Calibration against deployment moves properties out of the neutral zone.">
+  <h2>Hesse’s analogy</h2>
+  <p class="msg">Why an environment can predict anything at all, and what calibration actually does.</p>
+  <div class="art" style="top:300px; width:1408px; height:500px">
+    <svg viewBox="0 0 1408 500" role="img" aria-label="A bar split into positive, negative, and neutral analogy, with calibration moving properties out of the neutral zone.">
+      <defs>
+        <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" class="s-faint" stroke-width="3"/></pattern>
+      </defs>
+      <text class="t-mut" x="0" y="24" font-size="17" font-weight="500">Properties of the world, as the environment relates to them</text>
+      <rect class="f-acc" x="0" y="44" width="440" height="84" rx="12"/>
+      <rect x="456" y="44" width="380" height="84" rx="12" fill="url(#hatch)"/>
+      <rect class="s-faint" stroke-width="1.5" x="456" y="44" width="380" height="84" rx="12"/>
+      <rect class="f-surf s-ink" stroke-width="2" stroke-dasharray="8 7" x="852" y="44" width="556" height="84" rx="12"/>
+      <text class="t-onacc" x="24" y="94" font-size="24" font-weight="700">Positive analogy</text>
+      <text class="t-ink" x="480" y="94" font-size="24" font-weight="700" style="paint-order:stroke;stroke:var(--surface);stroke-width:6px">Negative analogy</text>
+      <text class="t-ink" x="876" y="94" font-size="24" font-weight="700">Neutral analogy</text>
+
+      <text class="t-ink" x="0" y="172" font-size="20" font-weight="600">Known to be shared.</text>
+      <text class="t-mut" x="0" y="200" font-size="18">Real tools and real APIs are</text>
+      <text class="t-mut" x="0" y="224" font-size="18">identity, not resemblance.</text>
+      <text class="t-acc" x="0" y="262" font-size="19" font-weight="600">The foundation.</text>
+
+      <text class="t-ink" x="456" y="172" font-size="20" font-weight="600">Known to differ.</text>
+      <text class="t-mut" x="456" y="200" font-size="18">No ambiguity, simpler users,</text>
+      <text class="t-mut" x="456" y="224" font-size="18">clean policies.</text>
+      <text class="t-acc" x="456" y="262" font-size="19" font-weight="600">Defines the scope.</text>
+
+      <text class="t-ink" x="852" y="172" font-size="20" font-weight="600">Not yet checked.</text>
+      <text class="t-mut" x="852" y="200" font-size="18">Does success with simulated customers</text>
+      <text class="t-mut" x="852" y="224" font-size="18">carry over to real ones?</text>
+      <text class="t-acc" x="852" y="262" font-size="19" font-weight="600">The predictive bet.</text>
+
+      <path class="s-acc" stroke-width="2.5" d="M1000 300 C1000 360, 300 340, 260 392 M252 380 L260 392 L272 384"/>
+      <path class="s-acc" stroke-width="2.5" d="M1060 300 C1060 360, 700 350, 660 392 M652 380 L660 392 L672 384"/>
+      <rect class="f-wash" x="0" y="408" width="1408" height="72" rx="12"/>
+      <text class="t-acc" x="24" y="452" font-size="21" font-weight="600">Calibration against deployment, through A/B tests or traces, moves properties out of the neutral zone.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose: backup</span><span>B1</span></footer>
+</section>
+
+
+
+
+<!-- 21 -->
+<section class="slide" id="s21" aria-label="Backup slide 2" data-notes="If asked what evaluation is for beyond prediction: six functions, each with its own audience and scorecard. They pull against each other, for example a comparison instrument must stay fixed while a predictive one must be refreshed.">
+  <h2>What evaluation is for</h2>
+  <p class="msg">Six jobs, each judged differently. Training sits beside them, judged on learnability.</p>
+  <table class="ftable">
+    <thead><tr><th>Function</th><th>Who it serves</th><th>Judged on</th></tr></thead>
+    <tbody><tr><td class="fn">Predict</td><td>Deployers</td><td>Does the ranking match deployment outcomes?</td></tr><tr><td class="fn">Compare</td><td>Researchers, regulators</td><td>Fairness, reproducibility, stability over time</td></tr><tr><td class="fn">Prescribe</td><td>The ecosystem</td><td>Does it encode what we actually value?</td></tr><tr><td class="fn">Signal</td><td>Builders, new entrants</td><td>Does it show that a capability or market exists?</td></tr><tr><td class="fn">Expose</td><td>Model builders, data providers</td><td>Are the failures real, reproducible, actionable?</td></tr><tr><td class="fn">Learn</td><td>Practitioners, the curious</td><td>Does it show how agents actually work and fail?</td></tr></tbody>
+  </table>
+  <footer class="foot"><span>Fit for Purpose: backup</span><span>B2</span></footer>
+</section>
+
+
+
+
+<!-- 22 -->
+<section class="slide" id="s22" aria-label="Backup slide 3" data-notes="If asked about incentives, or about working at a data company: everyone who builds a benchmark has an interest. That doesn’t disqualify it. A method that can’t be quietly bent is the protection, because there is no neutral party.">
+  <h2>Everyone has an interest</h2>
+  <p class="msg">Incentives don’t disqualify a benchmark. Methodology, not neutrality, is the protection.</p>
+  <div class="art" style="top:300px; width:1408px; height:500px">
+    <svg viewBox="0 0 1408 500" role="img" aria-label="Labs, startups, academics, and data companies all have interests; methodology is what disciplines them.">
+      <rect class="f-surf s-line" stroke-width="1.5" x="0" y="0" width="460" height="74" rx="12"/><text class="t-ink" x="24" y="32" font-size="21" font-weight="700">Labs</text><text class="t-mut" x="24" y="58" font-size="17">want to look good</text><path class="s-faint" stroke-width="2" d="M468 37 C560 37, 560 180, 640 180"/><rect class="f-surf s-line" stroke-width="1.5" x="0" y="92" width="460" height="74" rx="12"/><text class="t-ink" x="24" y="124" font-size="21" font-weight="700">Startups</text><text class="t-mut" x="24" y="150" font-size="17">want to prove a market exists</text><path class="s-faint" stroke-width="2" d="M468 129 C560 129, 560 180, 640 180"/><rect class="f-surf s-line" stroke-width="1.5" x="0" y="184" width="460" height="74" rx="12"/><text class="t-ink" x="24" y="216" font-size="21" font-weight="700">Academics</text><text class="t-mut" x="24" y="242" font-size="17">want citations</text><path class="s-faint" stroke-width="2" d="M468 221 C560 221, 560 180, 640 180"/><rect class="f-wash s-acc" stroke-width="1.5" x="0" y="276" width="460" height="74" rx="12"/><text class="t-acc" x="24" y="308" font-size="21" font-weight="700">Data companies</text><text class="t-mut" x="24" y="334" font-size="17">want to surface gaps</text><path class="s-faint" stroke-width="2" d="M468 313 C560 313, 560 180, 640 180"/>
+      <path class="s-faint" stroke-width="2" d="M632 172 L642 180 L632 188"/>
+      <rect class="f-surf s-ink" stroke-width="2" x="650" y="40" width="560" height="280" rx="16"/>
+      <text class="t-ink" x="682" y="92" font-size="30" font-weight="700">Methodology</text>
+      <g font-size="20" font-weight="500">
+        <circle class="f-acc" cx="690" cy="142" r="5"/><text class="t-ink2" x="708" y="149">a sampling procedure fixed in advance</text>
+        <circle class="f-acc" cx="690" cy="190" r="5"/><text class="t-ink2" x="708" y="197">held-out sets, treated as held out</text>
+        <circle class="f-acc" cx="690" cy="238" r="5"/><text class="t-ink2" x="708" y="245">transparency about what was excluded</text>
+        <circle class="f-acc" cx="690" cy="286" r="5"/><text class="t-ink2" x="708" y="293">a method that can’t be quietly bent</text>
+      </g>
+      <text class="t-mut" x="650" y="380" font-size="19">I work at a data company. Weigh this accordingly.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose: backup</span><span>B3</span></footer>
+</section>
+
+
+
+
+<!-- 23 -->
+<section class="slide" id="s23" aria-label="Backup slide 4" data-notes="If asked whether A/B tests always win: the real world is the arbiter, and an A/B test is an instrument for consulting it. It can be underpowered, distorted by novelty, built on proxy KPIs, and blind to rare failures. Trust lands on the instrument closest to the world, but it is earned.">
+  <h2>An A/B test is an instrument too</h2>
+  <p class="msg">The real world is the arbiter. An A/B test is how we consult it, and it can be miscalibrated.</p>
+  <div class="art" style="top:300px; width:1408px; height:500px">
+    <svg viewBox="0 0 1408 500" role="img" aria-label="A ladder of instruments from offline eval to A/B test to the world, each with its failure modes.">
+      <rect class="f-surf s-line" stroke-width="1.5" x="0" y="250" width="420" height="200" rx="14"/>
+      <text class="t-ink" x="24" y="290" font-size="24" font-weight="700">Offline eval</text>
+      <text class="t-mut" x="24" y="324" font-size="18">fast, replayable, available early</text>
+      <text class="t-ink2" x="24" y="368" font-size="18" font-weight="600">can miss: the real distribution,</text>
+      <text class="t-ink2" x="24" y="394" font-size="18" font-weight="600">what idealization left out</text>
+
+      <rect class="f-surf s-ink" stroke-width="2" x="470" y="140" width="460" height="310" rx="14"/>
+      <text class="t-ink" x="494" y="180" font-size="24" font-weight="700">A/B test</text>
+      <text class="t-mut" x="494" y="214" font-size="18">randomizes over real users</text>
+      <text class="t-ink2" x="494" y="258" font-size="18" font-weight="600">can be miscalibrated:</text>
+      <g font-size="18" font-weight="500">
+        <circle class="f-ink" cx="502" cy="290" r="4"/><text class="t-ink2" x="516" y="296">underpowered</text>
+        <circle class="f-ink" cx="502" cy="322" r="4"/><text class="t-ink2" x="516" y="328">novelty effects</text>
+        <circle class="f-ink" cx="502" cy="354" r="4"/><text class="t-ink2" x="516" y="360">proxy KPIs: resolution rate, NPS</text>
+        <circle class="f-ink" cx="502" cy="386" r="4"/><text class="t-ink2" x="516" y="392">blind to rare, costly failures</text>
+      </g>
+
+      <rect class="f-acc" x="980" y="30" width="428" height="420" rx="14"/>
+      <circle class="s-onacc" stroke-width="2.5" cx="1194" cy="190" r="86"/>
+      <path class="s-onacc" stroke-width="2" d="M1108 190 H1280 M1194 104 C1150 140 1150 240 1194 276 M1194 104 C1238 140 1238 240 1194 276 M1124 150 H1264 M1124 230 H1264"/>
+      <text class="t-onacc" x="1194" y="330" font-size="26" font-weight="700" text-anchor="middle">The world</text>
+      <text class="t-onacc" x="1194" y="362" font-size="18" text-anchor="middle">the arbiter</text>
+
+      <path class="s-faint" stroke-width="2" d="M420 300 H462 M454 292 L462 300 L454 308 M930 240 H972 M964 232 L972 240 L964 248"/>
+      <text class="t-ink" x="0" y="496" font-size="22" font-weight="600">Trust lands on the instrument closest to the world. It is earned, not automatic.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose: backup</span><span>B4</span></footer>
+</section>
+
+
+
+<!-- 24 -->
+<section class="slide" id="s24" aria-label="Backup slide 5" data-notes="If asked why build environments at all: the world is its own best model, but an environment buys you replay. Training needs a resettable world, since GRPO compares a group of rollouts from the same state. Evaluation needs a fair comparison, which replay gives you offline and an A/B test gives you by randomizing over real users.">
+  <h2>What an environment buys you</h2>
+  <p class="msg">The world is its own best model. An environment buys you replay, and the two jobs need it for different reasons.</p>
+  <div class="art" style="top:316px; width:1408px; height:520px">
+    <svg viewBox="0 0 1408 520" role="img" aria-label="Left: rollouts fanning out from one starting state. Right: real users randomly split between model A and model B.">
+      <text class="t-ink" x="0" y="26" font-size="30" font-weight="700">Replay</text>
+      <text class="t-mut" x="0" y="60" font-size="20">Reset and run again. Training needs a resettable world.</text>
+      <path class="s-ink" stroke-width="2" d="M112 251 C300 251, 340 130, 590 130"/>
+<circle class="f-acc" cx="614" cy="130" r="15"/><path class="s-onacc" stroke-width="3" d="M607 130 l5 5 l9 -10"/>
+<path class="s-ink" stroke-width="2" d="M112 251 C300 251, 340 200, 590 200"/>
+<circle class="f-surf s-faint" stroke-width="2" cx="614" cy="200" r="14"/><path class="s-faint" stroke-width="2.5" d="M608 194 l12 12 M620 194 l-12 12"/>
+<path class="s-ink" stroke-width="2" d="M112 251 C300 251, 340 270, 590 270"/>
+<circle class="f-acc" cx="614" cy="270" r="15"/><path class="s-onacc" stroke-width="3" d="M607 270 l5 5 l9 -10"/>
+<path class="s-ink" stroke-width="2" d="M112 251 C300 251, 340 340, 590 340"/>
+<circle class="f-acc" cx="614" cy="340" r="15"/><path class="s-onacc" stroke-width="3" d="M607 340 l5 5 l9 -10"/>
+<path class="s-ink" stroke-width="2" d="M112 251 C300 251, 340 410, 590 410"/>
+<circle class="f-surf s-faint" stroke-width="2" cx="614" cy="410" r="14"/><path class="s-faint" stroke-width="2.5" d="M608 404 l12 12 M620 404 l-12 12"/>
+      <rect class="f-acc" x="40" y="215" width="72" height="72" rx="16"/>
+      <text class="t-onacc" x="76" y="261" font-size="28" font-weight="700" text-anchor="middle">s₀</text>
+      <rect class="f-wash" x="0" y="446" width="520" height="40" rx="8"/>
+      <text class="t-acc" x="16" y="472" font-size="18" font-weight="600">GRPO compares a group of rollouts from one state</text>
+
+      <line class="s-line" stroke-width="1.5" stroke-dasharray="4 8" x1="706" y1="10" x2="706" y2="500"/>
+
+      <text class="t-ink" x="760" y="26" font-size="30" font-weight="700">Randomize</text>
+      <text class="t-mut" x="760" y="60" font-size="20">The A/B test. Evaluation needs a fair comparison.</text>
+      <circle class="f-acc" cx="800" cy="136" r="9"/>
+<path class="f-acc" d="M785 166 Q785 149 800 149 Q815 149 815 166 Z"/>
+<circle class="f-faint" cx="852" cy="136" r="9"/>
+<path class="f-faint" d="M837 166 Q837 149 852 149 Q867 149 867 166 Z"/>
+<circle class="f-faint" cx="904" cy="136" r="9"/>
+<path class="f-faint" d="M889 166 Q889 149 904 149 Q919 149 919 166 Z"/>
+<circle class="f-acc" cx="800" cy="208" r="9"/>
+<path class="f-acc" d="M785 238 Q785 221 800 221 Q815 221 815 238 Z"/>
+<circle class="f-acc" cx="852" cy="208" r="9"/>
+<path class="f-acc" d="M837 238 Q837 221 852 221 Q867 221 867 238 Z"/>
+<circle class="f-faint" cx="904" cy="208" r="9"/>
+<path class="f-faint" d="M889 238 Q889 221 904 221 Q919 221 919 238 Z"/>
+<circle class="f-acc" cx="800" cy="280" r="9"/>
+<path class="f-acc" d="M785 310 Q785 293 800 293 Q815 293 815 310 Z"/>
+<circle class="f-faint" cx="852" cy="280" r="9"/>
+<path class="f-faint" d="M837 310 Q837 293 852 293 Q867 293 867 310 Z"/>
+<circle class="f-faint" cx="904" cy="280" r="9"/>
+<path class="f-faint" d="M889 310 Q889 293 904 293 Q919 293 919 310 Z"/>
+<circle class="f-acc" cx="800" cy="352" r="9"/>
+<path class="f-acc" d="M785 382 Q785 365 800 365 Q815 365 815 382 Z"/>
+<circle class="f-acc" cx="852" cy="352" r="9"/>
+<path class="f-acc" d="M837 382 Q837 365 852 365 Q867 365 867 382 Z"/>
+<circle class="f-faint" cx="904" cy="352" r="9"/>
+<path class="f-faint" d="M889 382 Q889 365 904 365 Q919 365 919 382 Z"/>
+      <path class="s-faint" stroke-width="2" d="M940 160 C990 160, 990 250, 1030 250 M940 382 C990 382, 990 250, 1030 250"/>
+      <circle class="f-surf s-ink" stroke-width="2.5" cx="1058" cy="250" r="28"/>
+      <text class="t-ink" x="1058" y="257" font-size="18" font-weight="700" text-anchor="middle">A/B</text>
+      <path class="s-acc" stroke-width="2.5" d="M1086 244 C1120 220, 1130 160, 1172 160"/>
+      <path class="s-faint" stroke-width="2.5" d="M1086 256 C1120 280, 1130 340, 1172 340"/>
+      <rect class="f-wash s-acc" stroke-width="2" x="1176" y="116" width="232" height="88" rx="12"/>
+      <text class="t-acc" x="1292" y="168" font-size="24" font-weight="700" text-anchor="middle">Model A</text>
+      <rect class="f-soft s-faint" stroke-width="2" x="1176" y="296" width="232" height="88" rx="12"/>
+      <text class="t-ink2" x="1292" y="348" font-size="24" font-weight="700" text-anchor="middle">Model B</text>
+      <text class="t-mut" x="760" y="472" font-size="18">Slow and needs users, but samples the real distribution.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose: backup</span><span>B5</span></footer>
+</section>
+
+
+
+
+
+<!-- 25 -->
+<section class="slide" id="s25" aria-label="Backup slide 6" data-notes="If asked how environments are structured or extended: an environment is a type, an instance fills in its parameters, and a task sits on an instance. The tau family extended the type: the user acting on the world in tau2, search in tau3, audio in tau-voice. New domains add values on an existing axis; new versions add axes. Every added axis had to stay gradeable.">
+  <h2>Types, instances, and the tau family</h2>
+  <p class="msg">New domains add values. New versions add axes. Every added axis has to stay gradeable.</p>
+  <div class="art" style="top:300px; width:1408px; height:520px">
+    <svg viewBox="0 0 1408 520" role="img" aria-label="Type, instance, task chain; and the tau family as layers of expressiveness over domains.">
+      <rect class="f-surf s-ink" stroke-width="2" x="0" y="0" width="420" height="118" rx="12"/>
+      <text class="t-ink" x="24" y="44" font-size="24" font-weight="700">Type</text>
+      <text class="t-mut" x="24" y="80" font-size="18">entities, tools, policy, open parameters</text>
+      <path class="s-faint" stroke-width="2" d="M210 124 V152 M201 143 L210 152 L219 143"/>
+      <rect class="f-surf s-faint" stroke-width="1.5" x="0" y="160" width="420" height="118" rx="12"/>
+      <text class="t-ink" x="24" y="204" font-size="24" font-weight="700">Instance</text>
+      <text class="t-mut" x="24" y="240" font-size="18">one database, one customer, one request</text>
+      <path class="s-faint" stroke-width="2" d="M210 284 V312 M201 303 L210 312 L219 303"/>
+      <rect class="f-wash s-acc" stroke-width="2" x="0" y="320" width="420" height="118" rx="12"/>
+      <text class="t-acc" x="24" y="364" font-size="24" font-weight="700">Task</text>
+      <text class="t-ink2" x="24" y="400" font-size="18">the instance, plus a goal and a check</text>
+
+      <rect class="f-acc" x="560" y="360" width="800" height="80" opacity="0.07"/>
+      <rect class="f-acc" x="560" y="280" width="800" height="80" opacity="0.13"/>
+      <rect class="f-acc" x="560" y="200" width="800" height="80" opacity="0.19"/>
+      <rect class="f-acc" x="560" y="120" width="800" height="80" opacity="0.26"/>
+      <line class="s-surf" stroke-width="2" x1="560" y1="360" x2="1360" y2="360"/>
+      <line class="s-surf" stroke-width="2" x1="560" y1="280" x2="1360" y2="280"/>
+      <line class="s-surf" stroke-width="2" x1="560" y1="200" x2="1360" y2="200"/>
+      <text class="t-ink" x="584" y="408" font-size="21" font-weight="700">tau-bench</text>
+      <text class="t-ink2" x="720" y="408" font-size="18">an agent with tools and a policy; the user only talks</text>
+      <text class="t-ink" x="584" y="328" font-size="21" font-weight="700">tau2</text>
+      <text class="t-ink2" x="720" y="328" font-size="18">the user acts on the world too</text>
+      <text class="t-ink" x="584" y="248" font-size="21" font-weight="700">tau3</text>
+      <text class="t-ink2" x="720" y="248" font-size="18">search</text>
+      <text class="t-ink" x="584" y="168" font-size="21" font-weight="700">tau-voice</text>
+      <text class="t-ink2" x="720" y="168" font-size="18">audio: noise, accents, interruptions</text>
+
+      <path class="s-ink" stroke-width="2" d="M530 440 V36 M521 48 L530 36 L539 48"/>
+      <text class="t-mut" transform="translate(508 300) rotate(-90)" font-size="17" font-weight="500" text-anchor="middle">versions add axes</text>
+      <path class="s-ink" stroke-width="2" d="M530 440 H1390 M1378 431 L1390 440 L1378 449"/>
+      <rect class="f-soft" x="600" y="456" width="96" height="34" rx="17"/><text class="t-ink" x="648" y="479" font-size="16" font-weight="600" text-anchor="middle">airline</text>
+      <rect class="f-soft" x="712" y="456" width="90" height="34" rx="17"/><text class="t-ink" x="757" y="479" font-size="16" font-weight="600" text-anchor="middle">retail</text>
+      <rect class="f-soft" x="818" y="456" width="104" height="34" rx="17"/><text class="t-ink" x="870" y="479" font-size="16" font-weight="600" text-anchor="middle">telecom</text>
+      <text class="t-mut" x="1360" y="480" font-size="17" font-weight="500" text-anchor="end">domains add values</text>
+
+      <rect class="f-surf s-acc" stroke-width="2" stroke-dasharray="6 6" x="1010" y="20" width="350" height="76" rx="12"/>
+      <text class="t-acc" x="1034" y="52" font-size="20" font-weight="700">hyper-tau</text>
+      <text class="t-mut" x="1034" y="80" font-size="16">builds the agent that is tested below</text>
+      <path class="s-acc" stroke-width="2" d="M1200 98 V118 M1192 110 L1200 118 L1208 110"/>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose: backup</span><span>B6</span></footer>
+</section>
+
+
+
+
+
+
+<!-- 26 -->
+<section class="slide" id="s26" aria-label="Backup slide 7" data-notes="If asked how you design task sets: every eval designer wears two hats, showing capabilities that matter and making sure models fail. Showcase tasks overstate readiness; failure-hunting tasks understate it. Keep both, and label which tasks serve which purpose.">
+  <h2>Two hats on one head</h2>
+  <p class="msg">Every eval designer wants to show capabilities and to find failures. The two pull task design apart.</p>
+  <div class="art" style="top:290px; width:1408px; height:520px">
+    <svg viewBox="0 0 1408 520" role="img" aria-label="A head wearing two stacked hats, and two columns of tasks: showcase tasks and failure-hunting tasks.">
+      <path class="f-soft s-faint" stroke-width="2" d="M140 510 C140 410, 210 376, 300 376 C390 376, 460 410, 460 510 Z"/>
+      <rect class="f-soft s-faint" stroke-width="2" x="276" y="340" width="48" height="44" rx="10"/>
+      <circle class="f-surf s-ink" stroke-width="2.5" cx="300" cy="286" r="72"/>
+      <path class="f-ink2" d="M236 226 C236 158, 364 158, 364 226 Z" style="fill:var(--ink2)"/>
+      <ellipse cx="300" cy="226" rx="100" ry="15" style="fill:var(--ink2)"/>
+      <rect class="f-surf" x="238" y="208" width="124" height="10" opacity="0.35"/>
+      <g transform="rotate(-7 304 150)">
+        <ellipse class="f-acc" cx="304" cy="166" rx="82" ry="12"/>
+        <rect class="f-acc" x="252" y="40" width="104" height="124" rx="6"/>
+        <rect class="f-surf" x="252" y="134" width="104" height="14" opacity="0.5"/>
+      </g>
+      <path class="s-faint" stroke-width="1.5" d="M362 96 H440"/>
+      <text class="t-acc" x="452" y="104" font-size="26" font-weight="700">Show it can</text>
+      <path class="s-faint" stroke-width="1.5" d="M366 200 H440"/>
+      <text class="t-ink" x="452" y="208" font-size="26" font-weight="700">Make it fail</text>
+
+      <text class="t-ink" x="700" y="30" font-size="24" font-weight="700">Showcase tasks</text>
+      <text class="t-mut" x="700" y="60" font-size="18">chosen to illustrate a behavior</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="700" y="84" width="300" height="64" rx="10"/><rect class="f-soft" x="720" y="110" width="260" height="12" rx="6"/><rect class="f-acc" x="720" y="110" width="216" height="12" rx="6"/>
+      <rect class="f-surf s-line" stroke-width="1.5" x="700" y="160" width="300" height="64" rx="10"/><rect class="f-soft" x="720" y="186" width="260" height="12" rx="6"/><rect class="f-acc" x="720" y="186" width="180" height="12" rx="6"/>
+      <rect class="f-surf s-line" stroke-width="1.5" x="700" y="236" width="300" height="64" rx="10"/><rect class="f-soft" x="720" y="262" width="260" height="12" rx="6"/><rect class="f-acc" x="720" y="262" width="232" height="12" rx="6"/>
+      <text class="t-mut" x="700" y="340" font-size="18">Read alone, they</text>
+      <text class="t-mut" x="700" y="366" font-size="18">overstate readiness.</text>
+      <text class="t-ink" x="1080" y="30" font-size="24" font-weight="700">Failure-hunting tasks</text>
+      <text class="t-mut" x="1080" y="60" font-size="18">chosen to expose a gap</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="1080" y="84" width="300" height="64" rx="10"/><rect class="f-soft" x="1100" y="110" width="260" height="12" rx="6"/><rect class="f-faint" x="1100" y="110" width="40" height="12" rx="6"/>
+      <rect class="f-surf s-line" stroke-width="1.5" x="1080" y="160" width="300" height="64" rx="10"/><rect class="f-soft" x="1100" y="186" width="260" height="12" rx="6"/><rect class="f-faint" x="1100" y="186" width="16" height="12" rx="6"/>
+      <rect class="f-surf s-line" stroke-width="1.5" x="1080" y="236" width="300" height="64" rx="10"/><rect class="f-soft" x="1100" y="262" width="260" height="12" rx="6"/><rect class="f-faint" x="1100" y="262" width="66" height="12" rx="6"/>
+      <text class="t-mut" x="1080" y="340" font-size="18">Read alone, they</text>
+      <text class="t-mut" x="1080" y="366" font-size="18">understate readiness.</text>
+      <rect class="f-wash" x="700" y="410" width="680" height="72" rx="12"/>
+      <text class="t-acc" x="724" y="453" font-size="21" font-weight="600">Keep both hats. Label which tasks serve which purpose.</text>
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose: backup</span><span>B7</span></footer>
+</section>
+
+
+
+
+
+<!-- 27 -->
+<section class="slide" id="s27" aria-label="Backup slide 8" data-notes="If asked where the agent ends: an arm is part of the agent, its harness; a rock is part of the world, the systems it works on; a hammer is a tool. Tools the environment provides are part of the world; tools the agent brings are part of what you measure. And a hammer is made for a particular body: a different body brings an adapter, like screenshots and clicks for an interface built for people, and that adapter is harness.">
+  <h2>Arm, rock, or hammer?</h2>
+  <p class="msg">We train models, but we deploy and evaluate agents: a model with a body. Arm, rock, or hammer? Every evaluation has to say which is which.</p>
+  <div class="art" style="top:296px; width:1408px; height:510px">
+    <svg viewBox="0 0 1408 510" role="img" aria-label="Arm, rock, and hammer; whether tools are found in the environment or brought by the agent; and adapters that let a different body use a tool.">
+
+      <rect class="f-surf s-line" stroke-width="1.5" x="0" y="0" width="448" height="122" rx="14"/>
+      <g transform="translate(20 22)"><rect x="4" y="62" width="56" height="11" rx="3" style="fill:var(--ink2)"/><path class="s-ink2" stroke-width="9" d="M32 58 L60 18 L96 34"/><circle cx="32" cy="58" r="8" class="f-surf s-ink2" stroke-width="3"/><circle cx="60" cy="18" r="7" class="f-surf s-ink2" stroke-width="3"/><path class="s-acc" stroke-width="4" d="M98 34 L110 25 M98 34 L110 44"/></g>
+      <text class="t-ink" x="148" y="44" font-size="24" font-weight="700">An arm</text>
+      <text class="t-acc" x="148" y="72" font-size="17" font-weight="600">part of the agent</text>
+      <text class="t-ink2" x="148" y="100" font-size="17">the harness: loop, memory, context</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="480" y="0" width="448" height="122" rx="14"/>
+      <g transform="translate(500 22)"><path class="f-faint" d="M6 70 L18 38 L52 24 L86 32 L102 58 L92 74 Z"/><path class="s-surf" stroke-width="2" d="M40 32 L52 52 L76 48"/></g>
+      <text class="t-ink" x="628" y="44" font-size="24" font-weight="700">A rock</text>
+      <text class="t-acc" x="628" y="72" font-size="17" font-weight="600">part of the world</text>
+      <text class="t-ink2" x="628" y="100" font-size="17">the systems the agent works on</text>
+      <rect class="f-surf s-line" stroke-width="1.5" x="960" y="0" width="448" height="122" rx="14"/>
+      <g transform="translate(980 22)"><g transform="rotate(-30 56 44)"><rect x="50" y="22" width="11" height="60" rx="4" style="fill:var(--ink2)"/><rect x="26" y="8" width="58" height="22" rx="5" class="f-acc"/></g></g>
+      <text class="t-ink" x="1108" y="44" font-size="24" font-weight="700">A hammer</text>
+      <text class="t-acc" x="1108" y="72" font-size="17" font-weight="600">a tool</text>
+      <text class="t-ink2" x="1108" y="100" font-size="17">an MCP server, a code interpreter</text>
+
+      <rect class="f-surf s-ink" stroke-width="2" x="0" y="150" width="688" height="250" rx="14"/>
+      <text class="t-ink" x="28" y="194" font-size="26" font-weight="700">Found, or brought?</text>
+      <text class="t-ink2" x="28" y="236" font-size="18">Tools the environment provides are part of</text><text class="t-ink2" x="28" y="264" font-size="18">the world, the same for every agent.</text><text class="t-ink2" x="28" y="292" font-size="18">Tools the agent brings are part of</text><text class="t-ink2" x="28" y="320" font-size="18">what you’re measuring.</text>
+      <g transform="translate(440 232)">
+        <path class="f-faint" d="M0 92 L12 64 L44 52 L76 58 L92 82 L84 96 Z"/>
+        <g transform="rotate(-8 46 44)"><rect x="18" y="40" width="58" height="9" rx="3" style="fill:var(--ink2)"/><rect x="70" y="30" width="16" height="30" rx="3" class="f-acc"/></g>
+        <text class="t-mut" x="46" y="122" font-size="15" text-anchor="middle">found</text>
+        <text class="t-mut" x="112" y="80" font-size="16" font-weight="600">or</text>
+        <rect x="134" y="90" width="50" height="9" rx="3" style="fill:var(--ink2)"/>
+        <path class="s-ink2" stroke-width="7" d="M152 88 L146 56 L178 44"/>
+        <circle class="f-surf s-ink2" stroke-width="3" cx="152" cy="88" r="6"/>
+        <circle class="f-surf s-ink2" stroke-width="3" cx="146" cy="56" r="5"/>
+        <rect x="187" y="18" width="7" height="58" rx="2" style="fill:var(--ink2)"/>
+        <rect x="176" y="10" width="30" height="13" rx="3" class="f-acc"/>
+        <path class="s-acc" stroke-width="3.5" d="M178 44 L186 36 M178 44 L186 52 M186 36 H196 M186 52 H196"/>
+        <text class="t-mut" x="167" y="122" font-size="15" text-anchor="middle">brought</text>
+      </g>
+
+      <rect class="f-surf s-ink" stroke-width="2" x="720" y="150" width="688" height="250" rx="14"/>
+      <text class="t-ink" x="748" y="194" font-size="26" font-weight="700">Does it fit the body?</text>
+      <text class="t-ink2" x="748" y="236" font-size="18">A hammer is made for a hand. A different body</text><text class="t-ink2" x="748" y="264" font-size="18">brings an adapter: screenshots and clicks</text><text class="t-ink2" x="748" y="292" font-size="18">to use an interface built for people.</text>
+      <text class="t-acc" x="748" y="330" font-size="18" font-weight="700">The adapter is harness.</text>
+      <g transform="translate(1180 214)">
+        <rect x="70" y="30" width="18" height="110" rx="5" style="fill:var(--ink2)"/>
+        <rect x="34" y="6" width="90" height="34" rx="6" class="f-acc"/>
+        <rect x="58" y="96" width="42" height="22" rx="6" class="f-wash s-acc" stroke-width="2.5"/>
+        <path class="s-acc" stroke-width="2.5" d="M100 107 H140 M58 107 H20"/>
+        <text class="t-acc" x="150" y="112" font-size="15" font-weight="600">adapter</text>
+      </g>
+
+      <rect class="f-wash" x="0" y="428" width="1408" height="72" rx="12"/>
+      <text class="t-acc" x="24" y="472" font-size="21" font-weight="600">The eval doesn’t care how you got there. Say what’s in the box, and what it cost.</text>
+
+    </svg>
+  </div>
+  <footer class="foot"><span>Fit for Purpose: backup</span><span>B8</span></footer>
+</section>
+
+</div>
+</div>
+
+<div id="notes" aria-live="polite"><div class="lbl">Speaker notes</div><p id="notes-text"></p></div>
+<nav id="controls" aria-label="Slide controls">
+  <button id="prev" aria-label="Previous slide">‹</button>
+  <span id="count">1 / 19</span>
+  <button id="next" aria-label="Next slide">›</button>
+  <button id="notes-btn" aria-pressed="false" aria-label="Show speaker notes (N)">Notes</button>
+</nav>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const stage = document.getElementById('stage');
+  const notes = document.getElementById('notes');
+  const notesText = document.getElementById('notes-text');
+  const notesBtn = document.getElementById('notes-btn');
+  const count = document.getElementById('count');
+  const progress = document.getElementById('progress');
+  let i = 0;
+
+  function fit() {
+    const vw = window.innerWidth;
+    const reserved = notes.classList.contains('open') ? notes.offsetHeight : 64;
+    const vh = window.innerHeight - reserved;
+    const pad = Math.min(vw, vh) < 600 ? 8 : 28;
+    const s = Math.min((vw - pad * 2) / 1600, (vh - pad) / 900);
+    const left = (vw - 1600 * s) / 2;
+    const top = Math.max(pad / 2, (vh - 900 * s) / 2);
+    stage.style.transform = 'translate(' + (left - vw / 2) + 'px,' + top + 'px) scale(' + s + ')';
+  }
+
+  function show(n, push) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((el, k) => {
+      el.classList.toggle('active', k === i);
+      el.setAttribute('aria-hidden', k === i ? 'false' : 'true');
+    });
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    progress.style.width = ((i + 1) / slides.length * 100) + '%';
+    notesText.textContent = slides[i].dataset.notes || '';
+    if (push !== false) {
+      try { history.replaceState(null, '', '#s' + (i + 1)); } catch (e) {}
+    }
+  }
+
+  function fromHash() {
+    const m = /^#s(\d+)$/.exec(location.hash);
+    return m ? parseInt(m[1], 10) - 1 : 0;
+  }
+
+  function toggleNotes() {
+    const open = !notes.classList.contains('open');
+    notes.classList.toggle('open', open);
+    notesBtn.setAttribute('aria-pressed', String(open));
+    fit();
+  }
+
+  document.getElementById('prev').addEventListener('click', () => show(i - 1));
+  document.getElementById('next').addEventListener('click', () => show(i + 1));
+  notesBtn.addEventListener('click', toggleNotes);
+  stage.addEventListener('click', (e) => {
+    const r = stage.getBoundingClientRect();
+    show(e.clientX < r.left + r.width / 3 ? i - 1 : i + 1);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.target.closest && e.target.closest('button') && (e.key === ' ' || e.key === 'Enter')) return;
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'n' || e.key === 'N') toggleNotes();
+  });
+  let tx = null;
+  stage.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', (e) => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) show(dx < 0 ? i + 1 : i - 1);
+    tx = null;
+  });
+  window.addEventListener('resize', fit);
+  window.addEventListener('hashchange', () => show(fromHash(), false));
+  show(fromHash(), false);
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>
